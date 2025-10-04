@@ -1,5 +1,5 @@
 {
-  "extends": "@repo/typescript-config/react-library.json",
+  "extends": "@snud2025/typescript-config/react-library.json",
   "compilerOptions": {
     "outDir": "dist"
   },

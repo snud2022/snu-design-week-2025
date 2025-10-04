@@ -11,14 +11,20 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@repo/ui": "workspace:*",
+    "@emotion/cache": "^11.14.0",
+    "@emotion/react": "^11.13.5",
+    "@emotion/styled": "^11.13.5",
+    "@snud2025/ui": "workspace:*",
+    "matter-js": "^0.20.0",
     "next": "^15.5.0",
+    "poly-decomp": "^0.3.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@snud2025/eslint-config": "workspace:*",
+    "@snud2025/typescript-config": "workspace:*",
+    "@types/matter-js": "^0.20.2",
     "@types/node": "^22.15.3",
     "@types/react": "19.1.0",
     "@types/react-dom": "19.1.1",
