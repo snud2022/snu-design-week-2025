@@ -1,102 +1,54 @@
-import Image, { type ImageProps } from "next/image";
-import { Button } from "@repo/ui/button";
-import styles from "./page.module.css";
+import { LayoutContainer, Header, Title, Subtitle, Body } from "@snud2025/ui";
+import PhysicsScene from "../components/PhysicsScene";
 
-type Props = Omit<ImageProps, "src"> & {
-  srcLight: string;
-  srcDark: string;
-};
-
-const ThemeImage = (props: Props) => {
-  const { srcLight, srcDark, ...rest } = props;
+export default function Home() {
+  const navItems = [
+    { label: "ABOUT", href: "/about" },
+    { label: "WORKS", href: "/works" },
+    { label: "PEOPLE", href: "/people" },
+    { label: "PROGRAM", href: "/program" },
+    { label: "PARTNERS", href: "/partners" },
+  ];
 
   return (
     <>
-      <Image {...rest} src={srcLight} className="imgLight" />
-      <Image {...rest} src={srcDark} className="imgDark" />
+      <Header navItems={navItems} />
+      <LayoutContainer as="div">
+        <main>
+          <Title level="title1" language="kr">
+            SNU DESIGN WEEK 2025
+          </Title>
+          <Title level="title1" language="en">
+            WRAP UP
+          </Title>
+
+          <Subtitle language="kr">서울대학교 디자인학과 디자인 위크</Subtitle>
+
+          <Body level="body1" weight="medium">
+            디자인과 기술이 만나는 특별한 경험을 선사합니다.
+          </Body>
+
+          <Body level="body2" weight="semibold">
+            다양한 작품과 프로그램을 통해 디자인의 미래를 만나보세요.
+          </Body>
+
+          {/* 물리 엔진 데모 섹션 */}
+          <div style={{ marginTop: "60px", marginBottom: "40px" }}>
+            <Title level="title3" language="kr">
+              물리 엔진 데모
+            </Title>
+            <Body
+              level="body2"
+              weight="medium"
+              style={{ marginTop: "16px", marginBottom: "24px" }}
+            >
+              SVG 그래픽들이 물리 법칙에 따라 움직입니다. 마우스로
+              드래그해보세요!
+            </Body>
+            <PhysicsScene />
+          </div>
+        </main>
+      </LayoutContainer>
     </>
-  );
-};
-
-export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <ThemeImage
-          className={styles.logo}
-          srcLight="turborepo-dark.svg"
-          srcDark="turborepo-light.svg"
-          alt="Turborepo logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>apps/web/app/page.tsx</code>
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new/clone?demo-description=Learn+to+implement+a+monorepo+with+a+two+Next.js+sites+that+has+installed+three+local+packages.&demo-image=%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F4K8ZISWAzJ8X1504ca0zmC%2F0b21a1c6246add355e55816278ef54bc%2FBasic.png&demo-title=Monorepo+with+Turborepo&demo-url=https%3A%2F%2Fexamples-basic-web.vercel.sh%2F&from=templates&project-name=Monorepo+with+Turborepo&repository-name=monorepo-turborepo&repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fturborepo%2Ftree%2Fmain%2Fexamples%2Fbasic&root-directory=apps%2Fdocs&skippable-integrations=1&teamSlug=vercel&utm_source=create-turbo"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://turborepo.com/docs?utm_source"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-        <Button appName="web" className={styles.secondary}>
-          Open alert
-        </Button>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com/templates?search=turborepo&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://turborepo.com?utm_source=create-turbo"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to turborepo.com →
-        </a>
-      </footer>
-    </div>
   );
 }
