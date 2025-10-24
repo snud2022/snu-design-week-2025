@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const VerticalContainer = styled.div<{ L: number }>`
   position: relative;
@@ -6,10 +6,13 @@ export const VerticalContainer = styled.div<{ L: number }>`
   height: ${({ L }) => L}px;
 `;
 
-export const VerticalTopKnot = styled.img`
+export const BaseKnot = styled.img`
   position: absolute;
-  transform: translateX(-50%);
   z-index: 1000;
+  transform: translate(-50%, -50%); // 공통 anchor
+`;
+
+export const VerticalTopKnot = styled(BaseKnot)`
   margin-top: -12px;
 `;
 
@@ -21,10 +24,7 @@ export const VerticalBarContainer = styled.div`
   align-items: center;
 `;
 
-export const VerticalBottomKnot = styled.img`
-  position: absolute;
-  transform: translateX(-50%);
-  z-index: 1000;
+export const VerticalBottomKnot = styled(BaseKnot)`
   bottom: 0;
   margin-bottom: -12px;
 `;
@@ -35,12 +35,9 @@ export const HorizontalContainer = styled.div<{ L: number }>`
   height: 0;
 `;
 
-export const HorizontalLeftKnot = styled.img`
-  position: absolute;
-  z-index: 1000;
+export const HorizontalLeftKnot = styled(BaseKnot)`
   left: 0;
   margin-left: -12px;
-  transform: translateY(-50%);
 `;
 
 export const HorizontalBarContainer = styled.div`
@@ -51,12 +48,9 @@ export const HorizontalBarContainer = styled.div`
   align-items: center;
 `;
 
-export const HorizontalRightKnot = styled.img`
-  position: absolute;
-  z-index: 1000;
+export const HorizontalRightKnot = styled(BaseKnot)`
   right: 0;
   margin-right: -12px;
-  transform: translateY(-50%);
 `;
 
 export const ProgressSvg = styled.svg<{ width: number; height: number }>`
