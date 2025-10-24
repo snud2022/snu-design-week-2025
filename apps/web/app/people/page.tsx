@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import RopePeopleGrid from './components/RopePeopleGrid/RopePeopleGrid';
-import * as S from './people.style';
-import { PEOPLE_MOCK } from './mocks/people';
-import { personHref } from './types/people';
-import Tab from './components/Tab/Tab';
-import { TABS } from './constants/tabs';
+import React, { useState } from "react";
+import RopePeopleGrid from "./components/RopePeopleGrid/RopePeopleGrid";
+import * as S from "./page.style";
+import { PEOPLE_MOCK } from "./mocks/people";
+import { personHref } from "./types/people";
+import Tab from "./components/Tab/Tab";
+import { TABS } from "./constants/tabs";
 
 export default function People() {
-  const [activeKey, setActiveKey] = useState<'visual' | 'industrial'>('visual');
+  const [activeKey, setActiveKey] = useState<"visual" | "industrial">("visual");
 
   return (
     <S.Wrapper>
