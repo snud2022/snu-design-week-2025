@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import ProgressBar from "../ProgressBar/ProgressBar";
+import RopeLine from "../RopeLine/RopeLine";
 import * as S from "./RopeFrame.style";
 
 type EdgeFlags = {
@@ -22,8 +22,8 @@ interface RopeFrameProps {
 }
 
 /**
- * ProgressBar(가로/세로)를 4개 조합해 사각 프레임을 구성
- * - 모서리 매듭은 인접한 변이 있을 때만 보이도록 ProgressBar의 leftKnot/rightKnot를 매핑
+ * RopeLine(가로/세로)를 4개 조합해 사각 프레임을 구성
+ * - 모서리 매듭은 인접한 변이 있을 때만 보이도록 RopeLine의 leftKnot/rightKnot를 매핑
  */
 export default function RopeFrame({
   widthSizePixel,
@@ -50,22 +50,22 @@ export default function RopeFrame({
     >
       {/* Top (가로) */}
       <S.TopSide show={show.top}>
-        <ProgressBar orientation="h" size={wLen} />
+        <RopeLine orientation="h" size={wLen} />
       </S.TopSide>
 
       {/* Bottom (가로) */}
       <S.BottomSide show={show.bottom}>
-        <ProgressBar orientation="h" size={wLen} />
+        <RopeLine orientation="h" size={wLen} />
       </S.BottomSide>
 
       {/* Left (세로) */}
       <S.LeftSide show={show.left}>
-        <ProgressBar orientation="v" size={hLen} />
+        <RopeLine orientation="v" size={hLen} />
       </S.LeftSide>
 
       {/* Right (세로) */}
       <S.RightSide show={show.right}>
-        <ProgressBar orientation="v" size={hLen} />
+        <RopeLine orientation="v" size={hLen} />
       </S.RightSide>
 
       {children}

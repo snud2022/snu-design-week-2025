@@ -16,7 +16,7 @@ export const VerticalTopKnot = styled(BaseKnot)`
   margin-top: -12px;
 `;
 
-export const VerticalBarContainer = styled.div`
+export const VerticalLineContainer = styled.div`
   position: absolute;
   transform: translateX(-50%);
   display: flex;
@@ -40,7 +40,7 @@ export const HorizontalLeftKnot = styled(BaseKnot)`
   margin-left: -12px;
 `;
 
-export const HorizontalBarContainer = styled.div`
+export const HorizontalLineContainer = styled.div`
   position: absolute;
   transform: translateY(-50%);
   display: flex;
@@ -53,7 +53,7 @@ export const HorizontalRightKnot = styled(BaseKnot)`
   margin-right: -12px;
 `;
 
-export const ProgressSvg = styled.svg<{ width: number; height: number }>`
+export const RopeLineSvg = styled.svg<{ width: number; height: number }>`
   width: ${({ width }) => width}px;
   height: ${({ height }) => height}px;
   fill: none;

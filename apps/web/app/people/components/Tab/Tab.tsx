@@ -1,7 +1,7 @@
 import * as S from "./Tab.style";
 import { useMemo } from "react";
 import { Title } from "@snud2025/ui";
-import ProgressBar from "../../../../components/ProgressBar/ProgressBar";
+import RopeLine from "../../../../components/RopeLine/RopeLine";
 import { useMediaQuery } from "../../../../hooks/useMediaQuery";
 import { useTheme } from "@emotion/react";
 
@@ -60,7 +60,7 @@ export default function Tab({
 
       {active && (
         <S.Underline side={side}>
-          <ProgressBar orientation="h" size={barLen} />
+          <RopeLine orientation="h" size={barLen} />
         </S.Underline>
       )}
     </S.Wrapper>
