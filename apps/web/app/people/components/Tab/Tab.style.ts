@@ -41,7 +41,7 @@ const TAB_SIZE = {
   mobile: 192,
 } as const;
 
-export const Underline = styled.div<{ side: string }>`
+export const Underline = styled.div`
   position: relative;
   margin: 12px 0;
 
@@ -55,7 +55,9 @@ export const Underline = styled.div<{ side: string }>`
       width: ${TAB_SIZE.desktop}px;
     }
   `}
+`;
 
+export const SideMove = styled.div<{ side: string }>`
   /* 좌/우 정렬 */
   ${({ side }) =>
     side === "left"

@@ -36,9 +36,11 @@ export default function Tab({
       </Title>
 
       {active && (
-        <S.Underline side={side}>
-          <RopeLine orientation="h" size={"100%"} />
-        </S.Underline>
+        <S.SideMove side={side}>
+          <S.Underline>
+            <RopeLine orientation="h" size={"100%"} />
+          </S.Underline>
+        </S.SideMove>
       )}
     </S.Wrapper>
   );
