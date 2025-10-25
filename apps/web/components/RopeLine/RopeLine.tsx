@@ -1,11 +1,10 @@
-"use client";
 import * as S from "./RopeLine.style";
 import { colors } from "@snud2025/ui";
 
 type Orientation = "h" | "v";
 
 interface RopeLineProps {
-  size: number; // 선의 전체 길이 (픽셀)
+  size: number | string; // 선의 전체 길이 (픽셀)
   leftKnot?: boolean; // 왼쪽/위쪽 매듭 표시 여부
   rightKnot?: boolean; // 오른쪽/아래쪽 매듭 표시 여부
   orientation?: Orientation;
@@ -23,10 +22,11 @@ export default function RopeLine({
   rightKnot = true,
   orientation = "h",
 }: RopeLineProps) {
-  // 전체 선 길이 (최소 7px 보장)
-  const L = Math.max(Number.isFinite(size) ? size : 0, 7);
-  // 내부 길이 (Line의 양쪽 strokeWidth 3.5px * 2 제외)
-  const inner = Math.max(L - 7, 0);
+  const isNumber = typeof size === "number" && Number.isFinite(size);
+
+  // number일 때만 내부 길이 계산(양쪽 3.5px씩 총 7px 제외)
+  const L = isNumber ? Math.max(size as number, 7) : size;
+  const innerNum = isNumber ? Math.max((L as number) - 7, 0) : undefined;
 
   if (orientation === "v") {
     return (
@@ -47,7 +47,8 @@ export default function RopeLine({
               x="1.75"
               y="1.75"
               width="8.5"
-              height={inner}
+              height={isNumber ? innerNum : undefined}
+              style={!isNumber ? { height: "calc(100% - 3.5px)" } : undefined}
               rx="3.25"
               fill={colors.secondaryGray}
             />
@@ -55,7 +56,8 @@ export default function RopeLine({
               x="1.75"
               y="1.75"
               width="8.5"
-              height={inner}
+              height={isNumber ? innerNum : undefined}
+              style={!isNumber ? { height: "calc(100% - 3.5px)" } : undefined}
               rx="3.25"
               stroke={colors.blackDefault}
               strokeWidth="3.5"
@@ -90,7 +92,8 @@ export default function RopeLine({
           <rect
             x="1.75"
             y="1.75"
-            width={inner}
+            width={isNumber ? innerNum : undefined}
+            style={!isNumber ? { width: "calc(100% - 3.5px)" } : undefined}
             height="8.5"
             rx="3.25"
             fill={colors.secondaryGray}
@@ -98,7 +101,8 @@ export default function RopeLine({
           <rect
             x="1.75"
             y="1.75"
-            width={inner}
+            width={isNumber ? innerNum : undefined}
+            style={!isNumber ? { width: "calc(100% - 3.5px)" } : undefined}
             height="8.5"
             rx="3.25"
             stroke={colors.blackDefault}

@@ -1,9 +1,6 @@
 import * as S from "./Tab.style";
-import { useMemo } from "react";
 import { Title } from "@snud2025/ui";
 import RopeLine from "../../../../components/RopeLine/RopeLine";
-import { useMediaQuery } from "../../../../hooks/useMediaQuery";
-import { useTheme } from "@emotion/react";
 
 export type Side = "left" | "right";
 
@@ -15,12 +12,6 @@ interface TabProps {
   onSelect?: () => void;
 }
 
-const TAB_SIZE = {
-  desktop: 300,
-  tablet: 270,
-  mobile: 192,
-} as const;
-
 export default function Tab({
   krLabel,
   enLabel,
@@ -28,20 +19,6 @@ export default function Tab({
   side,
   onSelect,
 }: TabProps) {
-  const theme = useTheme();
-
-  const qDesktop = useMemo(() => theme.mq.desktop, [theme]);
-  const qTablet = useMemo(() => theme.mq.tablet, [theme]);
-
-  const isDesktop = useMediaQuery(qDesktop);
-  const isTablet = useMediaQuery(qTablet);
-
-  const barLen = isDesktop
-    ? TAB_SIZE.desktop
-    : isTablet
-      ? TAB_SIZE.tablet
-      : TAB_SIZE.mobile;
-
   return (
     <S.Wrapper
       type="button"
@@ -60,7 +37,7 @@ export default function Tab({
 
       {active && (
         <S.Underline side={side}>
-          <RopeLine orientation="h" size={barLen} />
+          <RopeLine orientation="h" size={"100%"} />
         </S.Underline>
       )}
     </S.Wrapper>

@@ -1,9 +1,10 @@
-'use client';
-import React, { useEffect, useMemo, useRef } from 'react';
-import HoverStone from '../../../../components/HoverStone/HoverStone';
-import Matter from 'matter-js';
-import { createRoot, Root } from 'react-dom/client';
-import * as S from './PhysicsCell.style';
+"use client";
+
+import React, { useEffect, useMemo, useRef } from "react";
+import HoverStone from "../../../../components/HoverStone/HoverStone";
+import Matter from "matter-js";
+import { createRoot, Root } from "react-dom/client";
+import * as S from "./PhysicsCell.style";
 
 export type SpriteInput = {
   url: string;
@@ -27,7 +28,6 @@ export default function PhysicsCell({
   debugCanvas = false,
   onReady,
 }: PhysicsCellProps) {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const domLayerRef = useRef<HTMLDivElement | null>(null);
 
   // 후보에서 2개의 파츠 랜덤 선택
@@ -36,7 +36,7 @@ export default function PhysicsCell({
 
     // 배열에서 중복되지 않는 2개 요소를 랜덤하게 선택하는 헬퍼 함수
     const pickTwo = <T,>(arr: T[]): [T, T] => {
-      if (arr.length < 2) throw new Error('need >= 2 items');
+      if (arr.length < 2) throw new Error("need >= 2 items");
       const a = Math.floor(Math.random() * arr.length);
       let b = Math.floor(Math.random() * (arr.length - 1));
       if (b >= a) b += 1; // 중복 방지
@@ -45,7 +45,7 @@ export default function PhysicsCell({
 
     const [c1, c2] = pickTwo(pool);
     return [c1, c2] as const;
-  }, [pool, cellSize]);
+  }, [pool]);
 
   useEffect(() => {
     const domLayer = domLayerRef.current;
@@ -141,9 +141,9 @@ export default function PhysicsCell({
     Composite.add(world, bodies);
 
     // 단일 root로 HoverStone 렌더
-    const mount = document.createElement('div');
-    mount.style.position = 'absolute';
-    mount.style.inset = '0';
+    const mount = document.createElement("div");
+    mount.style.position = "absolute";
+    mount.style.inset = "0";
     domLayer.appendChild(mount);
     const root: Root = createRoot(mount);
 
@@ -152,7 +152,9 @@ export default function PhysicsCell({
       <S.MountContainer>
         {picks.map((p, i) => (
           <S.StoneWrapper key={i} data-stone={String(i)}>
-            <HoverStone asset={p} />
+            <S.StoneScale>
+              <HoverStone asset={p} />
+            </S.StoneScale>
           </S.StoneWrapper>
         ))}
       </S.MountContainer>
@@ -204,7 +206,7 @@ export default function PhysicsCell({
         }
       });
     };
-  }, [cellSize, picks, debugCanvas]);
+  }, [cellSize, picks, debugCanvas, onReady]);
 
   return (
     <S.PhysicsContainer cellSize={cellSize} zIndex={zIndex}>

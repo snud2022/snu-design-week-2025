@@ -1,19 +1,23 @@
 import styled from "@emotion/styled";
 
-export const VerticalContainer = styled.div<{ L: number }>`
+const lenToCss = (v: number | string) => (typeof v === "number" ? `${v}px` : v);
+
+export const VerticalContainer = styled.div<{ L: number | string }>`
   position: relative;
   width: 0;
-  height: ${({ L }) => L}px;
+  height: ${({ L }) => lenToCss(L)};
 `;
 
 export const BaseKnot = styled.img`
   position: absolute;
   z-index: 1000;
-  transform: translate(-50%, -50%); // 공통 anchor
+  pointer-events: none;
 `;
 
 export const VerticalTopKnot = styled(BaseKnot)`
-  margin-top: -12px;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 export const VerticalLineContainer = styled.div`
@@ -26,18 +30,20 @@ export const VerticalLineContainer = styled.div`
 
 export const VerticalBottomKnot = styled(BaseKnot)`
   bottom: 0;
-  margin-bottom: -12px;
+  left: 50%;
+  transform: translate(-50%, 50%);
 `;
 
-export const HorizontalContainer = styled.div<{ L: number }>`
+export const HorizontalContainer = styled.div<{ L: number | string }>`
   position: relative;
-  width: ${({ L }) => L}px;
+  width: ${({ L }) => lenToCss(L)};
   height: 0;
 `;
 
 export const HorizontalLeftKnot = styled(BaseKnot)`
   left: 0;
-  margin-left: -12px;
+  top: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 export const HorizontalLineContainer = styled.div`
@@ -50,11 +56,15 @@ export const HorizontalLineContainer = styled.div`
 
 export const HorizontalRightKnot = styled(BaseKnot)`
   right: 0;
-  margin-right: -12px;
+  top: 50%;
+  transform: translate(50%, -50%);
 `;
 
-export const RopeLineSvg = styled.svg<{ width: number; height: number }>`
-  width: ${({ width }) => width}px;
-  height: ${({ height }) => height}px;
+export const RopeLineSvg = styled.svg<{
+  width: number | string;
+  height: number | string;
+}>`
+  width: ${({ width }) => lenToCss(width)};
+  height: ${({ height }) => lenToCss(height)};
   fill: none;
 `;

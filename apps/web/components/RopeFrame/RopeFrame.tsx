@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import RopeLine from "../RopeLine/RopeLine";
 import * as S from "./RopeFrame.style";

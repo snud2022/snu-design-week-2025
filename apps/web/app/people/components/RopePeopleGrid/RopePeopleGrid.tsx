@@ -1,16 +1,13 @@
-import React, { useLayoutEffect, useRef, useState, useMemo } from "react";
+"use client";
+
+import React, { useLayoutEffect, useRef, useState } from "react";
 import RopeFrame from "../../../../components/RopeFrame/RopeFrame";
 import { Subtitle } from "@snud2025/ui";
 import { formatNameEn } from "../../utils/formatNameEn";
 import PhysicsCell from "../PhysicsCell/PhysicsCell";
 import Link from "next/link";
 import * as S from "./RopePeopleGrid.style";
-import {
-  getResponsiveConfigs,
-  RESPONSIVE_SCALES,
-} from "../../../../constants/peopleGraphic";
-import { useMediaQuery } from "../../../../hooks/useMediaQuery";
-import { useTheme } from "@emotion/react";
+import { peopleGraphicConfigs } from "../../../../constants/peopleGraphic";
 
 interface RopeGridProps {
   className?: string;
@@ -32,18 +29,6 @@ export default function RopePeopleGrid({
   const [cell, setCell] = useState(0); // 셀 한 변 크기(px)
   const ref = useRef<HTMLDivElement>(null);
   const [physicsReady, setPhysicsReady] = useState(false);
-
-  const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.mq.desktop);
-  const isTablet = useMediaQuery(theme.mq.tablet);
-
-  const scale = isDesktop
-    ? RESPONSIVE_SCALES.desktop
-    : isTablet
-      ? RESPONSIVE_SCALES.tablet
-      : RESPONSIVE_SCALES.mobile;
-
-  const scaledPool = useMemo(() => getResponsiveConfigs(scale), [scale]);
 
   const rows = 2;
   const cols = 2;
@@ -83,7 +68,7 @@ export default function RopePeopleGrid({
         <S.MainContainer>
           <PhysicsCell
             cellSize={cell * 2}
-            pool={scaledPool}
+            pool={peopleGraphicConfigs}
             onReady={() => setPhysicsReady(true)}
           />
           <S.GridContainer

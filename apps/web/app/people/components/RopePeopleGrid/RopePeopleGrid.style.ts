@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const LinkContainer = styled.div`
   display: contents;
@@ -14,8 +14,6 @@ export const GridContainer = styled.div<{
   ready: boolean;
 }>`
   display: grid;
-  width: calc(var(--rope-cell) * 2px);
-  height: calc(var(--rope-cell) * 2px);
   grid-template-columns: repeat(${({ cols }) => cols}, 1fr);
   grid-template-rows: repeat(${({ rows }) => rows}, 1fr);
   pointer-events: none;
