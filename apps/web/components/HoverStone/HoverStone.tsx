@@ -1,5 +1,5 @@
-import React from 'react';
-import * as S from './HoverStone.style';
+import React from "react";
+import * as S from "./HoverStone.style";
 
 export type PartAsset = {
   url: string;
