@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
-
-const lenToCss = (v: number | string) => (typeof v === "number" ? `${v}px` : v);
+import { lenToCss } from "../../utils/styleUtils";
 
 export const VerticalContainer = styled.div<{ L: number | string }>`
   position: relative;
