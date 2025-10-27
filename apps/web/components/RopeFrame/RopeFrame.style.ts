@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { zIndex } from "../../constants/zIndex";
 
 export const RopeFrameContainer = styled.div<{
   widthSizePixel: number;
@@ -7,6 +8,7 @@ export const RopeFrameContainer = styled.div<{
   position: relative;
   width: ${({ widthSizePixel }) => widthSizePixel}px;
   height: ${({ heightSizePixel }) => heightSizePixel}px;
+  z-index: ${zIndex.base};
 `;
 
 export const TopSide = styled.div<{ show: boolean }>`
