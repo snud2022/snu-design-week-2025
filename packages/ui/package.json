@@ -20,12 +20,14 @@
     "eslint": "^9.34.0",
     "typescript": "5.9.2",
     "clsx": "^2.1.1",
-    "tailwind-merge": "^2.5.4"
+    "tailwind-merge": "^2.5.4",
+    "next": "^15.0.0"
   },
   "peerDependencies": {
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "@emotion/react": "^11.13.5",
-    "@emotion/styled": "^11.13.5"
+    "@emotion/styled": "^11.13.5",
+    "next": "^15.0.0"
   }
 }
