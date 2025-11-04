@@ -14,7 +14,7 @@ export const RESPONSIVE_SCALES = {
 } as const;
 
 // 기본 크기 (데스크톱 기준)
-const baseConfigs: MainGraphicConfig[] = [
+export const BASE_MAIN_GRAPHIC_CONFIGS: MainGraphicConfig[] = [
   {
     url: "/mainGraphic/mainGraphic-W.png",
     xPosition: 154,
@@ -52,9 +52,29 @@ const baseConfigs: MainGraphicConfig[] = [
   },
 ];
 
+// 상수 정의
+export const BREAKPOINTS = {
+  tablet: 600,
+  desktop: 1280,
+} as const;
+
+export const PHYSICS_CONFIG = {
+  positionIterations: 10,
+  velocityIterations: 8,
+  gravityY: 0.6,
+  gravityScale: 0.001,
+  fps: 60,
+  wallThickness: 50,
+  wallOffset: 10,
+} as const;
+
+export const MOUSE_CONFIG = {
+  stiffness: 0.2,
+} as const;
+
 // 반응형 설정을 적용한 함수
 export const getResponsiveConfigs = (scale: number): MainGraphicConfig[] => {
-  return baseConfigs.map((config) => ({
+  return BASE_MAIN_GRAPHIC_CONFIGS.map((config) => ({
     ...config,
     xPosition: config.xPosition * scale,
     yPosition: config.yPosition * scale,
@@ -62,8 +82,3 @@ export const getResponsiveConfigs = (scale: number): MainGraphicConfig[] => {
     height: config.height * scale,
   }));
 };
-
-// 기본 export (데스크톱용)
-export const mainGraphicConfigs = getResponsiveConfigs(
-  RESPONSIVE_SCALES.desktop
-);
