@@ -8,9 +8,9 @@ export type MainGraphicConfig = {
 
 // 반응형 스케일 팩터
 export const RESPONSIVE_SCALES = {
-  mobile: 0.2, // 340px 기준 (360~599px)
-  tablet: 0.3, // 540px 기준 (600~1279px)
-  desktop: 0.7, // 1200px 기준 (1280px~)
+  mobile: 0.3, // 데스크탑의 34% (0.7 * 0.34)
+  tablet: 0.45, // 데스크탑의 50% (0.7 * 0.5)
+  desktop: 0.9, // 기본 크기 (1280px~)
 } as const;
 
 // 기본 크기 (데스크톱 기준)
