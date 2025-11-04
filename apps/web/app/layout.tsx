@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import Script from "next/script";
 import "./globals.css";
 import EmotionRegistry from "./emotion-registry";
+import { Header } from "@snud2025/ui";
 
 const pretendard = localFont({
   src: "./fonts/PretendardVariable.woff2",
@@ -48,7 +49,10 @@ export default function RootLayout({
         />
       </head>
       <body className={`${pretendard.variable} ${bvhAntoPlot.variable}`}>
-        <EmotionRegistry>{children}</EmotionRegistry>
+        <EmotionRegistry>
+          <Header />
+          {children}
+        </EmotionRegistry>
       </body>
     </html>
   );
