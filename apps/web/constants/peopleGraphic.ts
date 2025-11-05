@@ -1,6 +1,26 @@
+// Tied style Typo SVG Component
+import TiedBrand from "../public/subGraphic/TiedBrand.svg";
+import TiedGraphic from "../public/subGraphic/TiedGraphic.svg";
+import TiedLiving from "../public/subGraphic/TiedLiving.svg";
+import TiedMedia from "../public/subGraphic/TiedMedia.svg";
+import TiedMobility from "../public/subGraphic/TiedMobility.svg";
+import TiedProduct from "../public/subGraphic/TiedProduct.svg";
+import TiedSpace from "../public/subGraphic/TiedSpace.svg";
+import TiedUIUX from "../public/subGraphic/TiedUIUX.svg";
+
+// Inside style Typo SVG Component
+import InsideBrand from "../public/subGraphic/InsideBrand.svg";
+import InsideGraphic from "../public/subGraphic/InsideGraphic.svg";
+import InsideLiving from "../public/subGraphic/InsideLiving.svg";
+import InsideMedia from "../public/subGraphic/InsideMedia.svg";
+import InsideMobility from "../public/subGraphic/InsideMobility.svg";
+import InsideProduct from "../public/subGraphic/InsideProduct.svg";
+import InsideSpace from "../public/subGraphic/InsideSpace.svg";
+import InsideUIUX from "../public/subGraphic/InsideUIUX.svg";
+
 export type PeopleGraphicConfig = {
-  url: string;
-  hoverUrl: string;
+  Svg: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  HoverSvg: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   width: number;
   height: number;
 };
@@ -8,60 +28,59 @@ export type PeopleGraphicConfig = {
 // 반응형 스케일 팩터
 export const RESPONSIVE_SCALES = {
   mobile: 1,
-  tablet: 0.8,
+  tablet: 0.75,
   desktop: 1,
 } as const;
 
 // 기본 크기
 const baseConfigs: PeopleGraphicConfig[] = [
   {
-    url: "/subGraphic/TiedBrand.png",
-    hoverUrl: "/subGraphic/InsideBrand.png",
+    Svg: TiedBrand,
+    HoverSvg: InsideBrand,
     width: 107,
     height: 151,
   },
   {
-    url: "/subGraphic/TiedGraphic.png",
-    hoverUrl: "/subGraphic/InsideGraphic.png",
+    Svg: TiedGraphic,
+    HoverSvg: InsideGraphic,
     width: 126,
     height: 150,
   },
   {
-    url: "/subGraphic/TiedLiving.png",
-    hoverUrl: "/subGraphic/InsideLiving.png",
-    width: 118,
-    height: 151,
-  },
-  {
-    url: "/subGraphic/TiedMedia.png",
-    hoverUrl: "/subGraphic/InsideMedia.png",
+    Svg: TiedMedia,
+    HoverSvg: InsideMedia,
     width: 245,
     height: 148,
   },
   {
-    url: "/subGraphic/TiedMobility.png",
-    hoverUrl: "/subGraphic/InsideMobility.png",
-    width: 261,
-    height: 150,
+    Svg: TiedUIUX,
+    HoverSvg: InsideUIUX,
+    width: 135,
+    height: 151,
   },
-
   {
-    url: "/subGraphic/TiedProduct.png",
-    hoverUrl: "/subGraphic/InsideProduct.png",
+    Svg: TiedLiving,
+    HoverSvg: InsideLiving,
+    width: 118,
+    height: 151,
+  },
+  {
+    Svg: TiedProduct,
+    HoverSvg: InsideProduct,
     width: 104,
     height: 152,
   },
   {
-    url: "/subGraphic/TiedSpace.png",
-    hoverUrl: "/subGraphic/InsideSpace.png",
+    Svg: TiedSpace,
+    HoverSvg: InsideSpace,
     width: 120,
     height: 151,
   },
   {
-    url: "/subGraphic/TiedUIUX.png",
-    hoverUrl: "/subGraphic/InsideUIUX.png",
-    width: 120,
-    height: 151,
+    Svg: TiedMobility,
+    HoverSvg: InsideMobility,
+    width: 261,
+    height: 150,
   },
 ];
 

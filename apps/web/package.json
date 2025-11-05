@@ -24,6 +24,7 @@
   "devDependencies": {
     "@snud2025/eslint-config": "workspace:*",
     "@snud2025/typescript-config": "workspace:*",
+    "@svgr/webpack": "^8.1.0",
     "@types/matter-js": "^0.20.2",
     "@types/node": "^22.15.3",
     "@types/react": "19.1.0",

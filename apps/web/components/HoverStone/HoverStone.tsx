@@ -1,18 +1,14 @@
+"use client";
 import React from "react";
 import * as S from "./HoverStone.style";
-
-export type PartAsset = {
-  url: string;
-  hoverUrl: string;
-  width: number;
-  height: number;
-};
+import type { PeopleGraphicConfig } from "../../constants/peopleGraphic";
 
 interface HoverStoneProps {
-  asset: PartAsset;
+  asset: PeopleGraphicConfig;
   width?: number;
   height?: number;
   rotateDeg?: number;
+  active?: boolean; // 선택된 상태를 항상 보여줄지 여부
   style?: React.CSSProperties;
   className?: string;
 }
@@ -28,36 +24,29 @@ export default function HoverStone({
   width = asset.width,
   height = asset.height,
   rotateDeg = 0,
+  active = false,
   style,
   className,
 }: HoverStoneProps) {
   return (
-    <S.HoverableStone
-      className={className}
+    <S.Stone
+      className={`stone ${active ? "active" : ""} ${className || ""}`}
       style={style}
-      $w={width}
       $h={height}
+      $w={width}
       $rotate={rotateDeg}
       role="img"
       aria-label=""
     >
       {/* 기본 상태 이미지 */}
-      <S.BaseImg
-        src={asset.url}
-        alt=""
-        width={width}
-        height={height}
-        draggable={false}
-      />
+      <S.SvgLayer className="base">
+        <asset.Svg preserveAspectRatio="xMidYMid meet" />
+      </S.SvgLayer>
 
       {/* 호버 상태 이미지 */}
-      <S.HoverImg
-        src={asset.hoverUrl}
-        alt=""
-        width={width}
-        height={height}
-        draggable={false}
-      />
-    </S.HoverableStone>
+      <S.SvgLayer className="hover">
+        <asset.HoverSvg preserveAspectRatio="xMidYMid meet" />
+      </S.SvgLayer>
+    </S.Stone>
   );
 }

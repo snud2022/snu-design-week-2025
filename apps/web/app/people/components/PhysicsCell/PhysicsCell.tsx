@@ -5,17 +5,13 @@ import HoverStone from "../../../../components/HoverStone/HoverStone";
 import Matter from "matter-js";
 import { createRoot, Root } from "react-dom/client";
 import * as S from "./PhysicsCell.style";
-
-export type SpriteInput = {
-  url: string;
-  hoverUrl: string;
-  width: number;
-  height: number;
-};
+import type { PeopleGraphicConfig } from "../../../../constants/peopleGraphic";
+import { RESPONSIVE_SCALES } from "../../../../constants/peopleGraphic";
+import { useTheme } from "@emotion/react";
 
 interface PhysicsCellProps {
   cellSize: number;
-  pool: SpriteInput[];
+  pool: PeopleGraphicConfig[];
   zIndex?: number;
   debugCanvas?: boolean;
   onReady?: () => void;
@@ -28,6 +24,7 @@ export default function PhysicsCell({
   debugCanvas = false,
   onReady,
 }: PhysicsCellProps) {
+  const theme = useTheme();
   const domLayerRef = useRef<HTMLDivElement | null>(null);
 
   // 후보에서 2개의 파츠 랜덤 선택
@@ -53,6 +50,19 @@ export default function PhysicsCell({
 
     const { Engine, Composite, Bodies, Body } = Matter;
 
+    // 현재 스케일 계산
+    const getScale = () => {
+      if (typeof window === "undefined") return 1;
+      const width = window.innerWidth;
+      if (width >= theme.breakpoints.desktop) return RESPONSIVE_SCALES.desktop;
+      if (width >= theme.breakpoints.tablet) return RESPONSIVE_SCALES.tablet;
+      return RESPONSIVE_SCALES.mobile;
+    };
+
+    const currentScale = getScale();
+    // 물리 엔진의 실제 작동 크기 (scale된 컨테이너 크기)
+    const physicsCellSize = cellSize / currentScale;
+
     // Matter 엔진
     const engine = Engine.create({
       positionIterations: 10,
@@ -72,10 +82,20 @@ export default function PhysicsCell({
       });
 
     Composite.add(world, [
-      wall(cellSize / 2, -offset, cellSize + 2 * offset, 10),
-      wall(cellSize / 2, cellSize + offset, cellSize + 2 * offset, 10),
-      wall(-offset, cellSize / 2, 10, cellSize + 2 * offset),
-      wall(cellSize + offset, cellSize / 2, 10, cellSize + 2 * offset),
+      wall(physicsCellSize / 2, -offset, physicsCellSize + 2 * offset, 10),
+      wall(
+        physicsCellSize / 2,
+        physicsCellSize + offset,
+        physicsCellSize + 2 * offset,
+        10
+      ),
+      wall(-offset, physicsCellSize / 2, 10, physicsCellSize + 2 * offset),
+      wall(
+        physicsCellSize + offset,
+        physicsCellSize / 2,
+        10,
+        physicsCellSize + 2 * offset
+      ),
     ]);
 
     // 초기 비겹침 위치 샘플링 (물체들이 겹치지 않도록 배치)
@@ -108,8 +128,8 @@ export default function PhysicsCell({
         x = 0,
         y = 0;
       for (let t = 0; t < maxTry && !ok; t++) {
-        x = Math.random() * (cellSize - w) + w / 2;
-        y = Math.random() * (cellSize - h) + h / 2;
+        x = Math.random() * (physicsCellSize - w) + w / 2;
+        y = Math.random() * (physicsCellSize - h) + h / 2;
         ok = bodies.every((b, bi) => {
           const pick = picks[bi];
           if (!pick) return true;
@@ -152,9 +172,7 @@ export default function PhysicsCell({
       <S.MountContainer>
         {picks.map((p, i) => (
           <S.StoneWrapper key={i} data-stone={String(i)}>
-            <S.StoneScale>
-              <HoverStone asset={p} />
-            </S.StoneScale>
+            <HoverStone asset={p} />
           </S.StoneWrapper>
         ))}
       </S.MountContainer>
