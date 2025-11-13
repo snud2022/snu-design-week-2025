@@ -16,6 +16,7 @@ const StyledTitle = styled.h1<{ level: TitleLevel; language: Language }>`
   ${({ level, language }) => typography[level][language]}
   margin: 0;
   padding: 0;
+  word-break: keep-all;
 `;
 
 export const Title = ({
