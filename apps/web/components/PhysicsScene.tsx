@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Matter from "matter-js";
 import {
   addSprites,
@@ -22,33 +22,77 @@ interface PhysicsSceneProps {
   footerHeight?: number;
 }
 
-// 브레이크포인트 감지 커스텀 훅
-const useBreakpoint = (isClient: boolean): Breakpoint => {
-  const [breakpoint, setBreakpoint] = useState<Breakpoint>("mobile");
+/**
+ * 브레이크포인트를 계산하는 헬퍼 함수
+ */
+const getBreakpoint = (width: number): Breakpoint => {
+  if (width < BREAKPOINTS.tablet) return "mobile";
+  if (width < BREAKPOINTS.desktop) return "tablet";
+  return "desktop";
+};
+
+/**
+ * ResizeObserver를 사용하여 브레이크포인트 변경을 감지하는 커스텀 훅
+ * 브레이크포인트가 변경될 때만 콜백을 호출
+ */
+const useBreakpointChange = (
+  isClient: boolean,
+  containerRef: React.RefObject<HTMLDivElement | null>,
+  onBreakpointChange: () => void
+) => {
+  const previousBreakpointRef = useRef<Breakpoint | null>(null);
 
   useEffect(() => {
-    if (!isClient || typeof window === "undefined") return;
+    if (!isClient || typeof window === "undefined" || !containerRef.current)
+      return;
 
-    const getBreakpoint = (width: number): Breakpoint => {
-      if (width < BREAKPOINTS.tablet) return "mobile";
-      if (width < BREAKPOINTS.desktop) return "tablet";
-      return "desktop";
+    const container = containerRef.current;
+
+    // ResizeObserver를 사용하여 컨테이너 크기 변경 감지
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const width = entry.contentRect.width || window.innerWidth;
+        const currentBreakpoint = getBreakpoint(width);
+
+        // 이전 브레이크포인트와 비교하여 변경 여부 확인
+        if (previousBreakpointRef.current !== null) {
+          if (previousBreakpointRef.current !== currentBreakpoint) {
+            previousBreakpointRef.current = currentBreakpoint;
+            onBreakpointChange();
+          }
+        } else {
+          // 초기값 설정
+          previousBreakpointRef.current = currentBreakpoint;
+        }
+      }
+    });
+
+    // 초기 브레이크포인트 설정
+    const initialBreakpoint = getBreakpoint(window.innerWidth);
+    previousBreakpointRef.current = initialBreakpoint;
+
+    // 컨테이너 관찰 시작
+    resizeObserver.observe(container);
+
+    // 폴백: window resize 이벤트도 함께 감지 (더 넓은 호환성)
+    const handleResize = () => {
+      const currentBreakpoint = getBreakpoint(window.innerWidth);
+      if (
+        previousBreakpointRef.current !== null &&
+        previousBreakpointRef.current !== currentBreakpoint
+      ) {
+        previousBreakpointRef.current = currentBreakpoint;
+        onBreakpointChange();
+      }
     };
 
-    const updateBreakpoint = () => {
-      setBreakpoint((prev) => {
-        const current = getBreakpoint(window.innerWidth);
-        return prev !== current ? current : prev;
-      });
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", handleResize);
     };
-
-    setBreakpoint(getBreakpoint(window.innerWidth));
-    window.addEventListener("resize", updateBreakpoint);
-
-    return () => window.removeEventListener("resize", updateBreakpoint);
-  }, [isClient]);
-
-  return breakpoint;
+  }, [isClient, containerRef, onBreakpointChange]);
 };
 
 const PhysicsScene = ({
@@ -57,15 +101,23 @@ const PhysicsScene = ({
 }: PhysicsSceneProps = {}) => {
   const sceneRef = useRef<HTMLDivElement>(null);
   const [isClient, setIsClient] = useState(false);
-  const breakpoint = useBreakpoint(isClient);
+  const [breakpointKey, setBreakpointKey] = useState(0); // 브레이크포인트 변경 시 재초기화를 위한 키
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
+  // 브레이크포인트 변경 시 재초기화를 트리거하는 콜백
+  const handleBreakpointChange = useCallback(() => {
+    setBreakpointKey((prev) => prev + 1);
+  }, []);
+
+  // 브레이크포인트 변경 감지
+  useBreakpointChange(isClient, sceneRef, handleBreakpointChange);
+
   // Matter.js 초기화 및 실행
   useEffect(() => {
-    if (!isClient || typeof window === "undefined" || !breakpoint) return;
+    if (!isClient || typeof window === "undefined") return;
 
     const { Engine, Render, Runner, Mouse, MouseConstraint } = Matter;
 
@@ -160,7 +212,7 @@ const PhysicsScene = ({
       render.canvas.remove();
       render.textures = {};
     };
-  }, [isClient, headerHeight, footerHeight, breakpoint]);
+  }, [isClient, headerHeight, footerHeight, breakpointKey]);
 
   if (!isClient) {
     return (
@@ -187,6 +239,9 @@ const PhysicsScene = ({
         marginTop: `-${headerHeight / 2}px`,
         position: "relative",
         zIndex: 1,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     />
   );
