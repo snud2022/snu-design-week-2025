@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
-import { StyledContainer } from "./LayoutContainer.style";
+import * as S from "./LayoutContainer.style";
 
 interface LayoutContainerProps {
   children: ReactNode;
@@ -12,5 +12,5 @@ export const LayoutContainer = ({
   children,
   as: Component = "div",
 }: LayoutContainerProps) => {
-  return <StyledContainer as={Component}>{children}</StyledContainer>;
+  return <S.StyledContainer as={Component}>{children}</S.StyledContainer>;
 };

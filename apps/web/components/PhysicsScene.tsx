@@ -1,136 +1,189 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Matter from "matter-js";
-import { addSprites } from "../utils/matter-helpers";
 import {
+  addSprites,
+  centerizeConfigs,
+  createWalls,
+  getCanvasSize,
+} from "../utils/matter-helpers";
+import {
+  BREAKPOINTS,
   getResponsiveConfigs,
-  RESPONSIVE_SCALES,
+  MOUSE_CONFIG,
+  PHYSICS_CONFIG,
 } from "../constants/mainGraphic";
 
-const PhysicsScene = () => {
-  const sceneRef = useRef(null);
+// 타입 정의
+type Breakpoint = "mobile" | "tablet" | "desktop";
+
+interface PhysicsSceneProps {
+  headerHeight?: number;
+  footerHeight?: number;
+}
+
+/**
+ * 브레이크포인트를 계산하는 헬퍼 함수
+ */
+const getBreakpoint = (width: number): Breakpoint => {
+  if (width < BREAKPOINTS.tablet) return "mobile";
+  if (width < BREAKPOINTS.desktop) return "tablet";
+  return "desktop";
+};
+
+/**
+ * ResizeObserver를 사용하여 브레이크포인트 변경을 감지하는 커스텀 훅
+ * 브레이크포인트가 변경될 때만 콜백을 호출
+ */
+const useBreakpointChange = (
+  isClient: boolean,
+  containerRef: React.RefObject<HTMLDivElement | null>,
+  onBreakpointChange: () => void
+) => {
+  const previousBreakpointRef = useRef<Breakpoint | null>(null);
+
+  useEffect(() => {
+    if (!isClient || typeof window === "undefined" || !containerRef.current)
+      return;
+
+    const container = containerRef.current;
+
+    // ResizeObserver를 사용하여 컨테이너 크기 변경 감지
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const width = entry.contentRect.width || window.innerWidth;
+        const currentBreakpoint = getBreakpoint(width);
+
+        // 이전 브레이크포인트와 비교하여 변경 여부 확인
+        if (previousBreakpointRef.current !== null) {
+          if (previousBreakpointRef.current !== currentBreakpoint) {
+            previousBreakpointRef.current = currentBreakpoint;
+            onBreakpointChange();
+          }
+        } else {
+          // 초기값 설정
+          previousBreakpointRef.current = currentBreakpoint;
+        }
+      }
+    });
+
+    // 초기 브레이크포인트 설정
+    const initialBreakpoint = getBreakpoint(window.innerWidth);
+    previousBreakpointRef.current = initialBreakpoint;
+
+    // 컨테이너 관찰 시작
+    resizeObserver.observe(container);
+
+    // 폴백: window resize 이벤트도 함께 감지 (더 넓은 호환성)
+    const handleResize = () => {
+      const currentBreakpoint = getBreakpoint(window.innerWidth);
+      if (
+        previousBreakpointRef.current !== null &&
+        previousBreakpointRef.current !== currentBreakpoint
+      ) {
+        previousBreakpointRef.current = currentBreakpoint;
+        onBreakpointChange();
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [isClient, containerRef, onBreakpointChange]);
+};
+
+const PhysicsScene = ({
+  headerHeight = 150,
+  footerHeight = 92,
+}: PhysicsSceneProps = {}) => {
+  const sceneRef = useRef<HTMLDivElement>(null);
   const [isClient, setIsClient] = useState(false);
+  const [breakpointKey, setBreakpointKey] = useState(0); // 브레이크포인트 변경 시 재초기화를 위한 키
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
+  // 브레이크포인트 변경 시 재초기화를 트리거하는 콜백
+  const handleBreakpointChange = useCallback(() => {
+    setBreakpointKey((prev) => prev + 1);
+  }, []);
+
+  // 브레이크포인트 변경 감지
+  useBreakpointChange(isClient, sceneRef, handleBreakpointChange);
+
+  // Matter.js 초기화 및 실행
   useEffect(() => {
-    // window 객체가 사용 가능한지 확인
     if (!isClient || typeof window === "undefined") return;
 
-    // Matter.js 모듈 선언
-    const {
-      Engine,
-      Render,
-      Runner,
-      Composite,
-      Bodies,
-      Mouse,
-      MouseConstraint,
-    } = Matter;
+    const { Engine, Render, Runner, Mouse, MouseConstraint } = Matter;
 
-    // 엔진 및 월드 생성
+    // 1. 엔진 및 월드 생성
     const engine = Engine.create({
-      positionIterations: 10,
-      velocityIterations: 8,
+      positionIterations: PHYSICS_CONFIG.positionIterations,
+      velocityIterations: PHYSICS_CONFIG.velocityIterations,
     });
     const world = engine.world;
-    engine.world.gravity.y = 0.8; // 중력 설정 (조금 약하게)
-    engine.world.gravity.scale = 0.001; // 중력 스케일 조정
+    engine.world.gravity.y = PHYSICS_CONFIG.gravityY;
+    engine.world.gravity.scale = PHYSICS_CONFIG.gravityScale;
 
-    // 반응형 캔버스 크기 결정
-    const getCanvasSize = () => {
-      const width = window.innerWidth;
-      if (width < 600) {
-        return { width: 340, height: 240, scale: RESPONSIVE_SCALES.mobile };
-      } else if (width < 1280) {
-        return { width: 540, height: 360, scale: RESPONSIVE_SCALES.tablet };
-      } else {
-        return { width: 1200, height: 800, scale: RESPONSIVE_SCALES.desktop };
-      }
-    };
+    // 2. 캔버스 크기 계산
+    const {
+      width: canvasWidth,
+      height: canvasHeight,
+      scale,
+    } = getCanvasSize(headerHeight, footerHeight);
+    const centerX = canvasWidth / 2;
+    const centerY = canvasHeight / 2;
 
-    const { width: canvasWidth, height: canvasHeight, scale } = getCanvasSize();
-
-    // 렌더러 생성
+    // 3. 렌더러 생성 및 시작
     const render = Render.create({
-      element: sceneRef.current, // document.body 대신 ref 사용
-      engine: engine,
+      element: sceneRef.current,
+      engine,
       options: {
         width: canvasWidth,
         height: canvasHeight,
-        wireframes: false, // 와이어프레임 끄기
-        background: "#f0f0f0",
+        wireframes: false,
+        background: "#ffffff",
       },
     });
-
     Render.run(render);
 
-    // 러너 생성
+    // 4. 러너 생성 및 시작
     const runner = Runner.create({
       isFixed: true,
-      fps: 60,
+      fps: PHYSICS_CONFIG.fps,
     });
     Runner.run(runner, engine);
 
-    // 반응형 설정으로 이미지 스프라이트 객체들을 로드
+    // 5. 스프라이트 생성 및 배치
     const responsiveConfigs = getResponsiveConfigs(scale);
-    addSprites(responsiveConfigs, world);
+    const centeredConfigs = centerizeConfigs(
+      responsiveConfigs,
+      centerX,
+      centerY
+    );
+    addSprites(centeredConfigs, world);
 
-    // 벽(테두리) 생성
-    const offset = 10;
-    const options = {
-      isStatic: true,
-      density: 1,
-      friction: 0.8,
-      restitution: 0.1,
-    };
-    Composite.add(world, [
-      Bodies.rectangle(canvasWidth / 2, -offset, canvasWidth + 2 * offset, 50, {
-        ...options,
-      }), // 천장
-      Bodies.rectangle(
-        canvasWidth / 2,
-        canvasHeight + offset,
-        canvasWidth + 2 * offset,
-        50,
-        {
-          ...options,
-        }
-      ), // 바닥
-      Bodies.rectangle(
-        -offset,
-        canvasHeight / 2,
-        50,
-        canvasHeight + 2 * offset,
-        {
-          ...options,
-        }
-      ), // 왼쪽 벽
-      Bodies.rectangle(
-        canvasWidth + offset,
-        canvasHeight / 2,
-        50,
-        canvasHeight + 2 * offset,
-        {
-          ...options,
-        }
-      ), // 오른쪽 벽
-    ]);
+    // 6. 경계 벽 생성
+    createWalls(world, canvasWidth, canvasHeight);
 
-    // 마우스 컨트롤 추가
+    // 7. 마우스 인터랙션 설정
     const mouse = Mouse.create(render.canvas);
     const mouseConstraint = MouseConstraint.create(engine, {
-      mouse: mouse,
+      mouse,
       constraint: {
-        stiffness: 0.2,
+        stiffness: MOUSE_CONFIG.stiffness,
         render: { visible: true },
       },
     });
+    const { Composite } = Matter;
     Composite.add(world, mouseConstraint);
 
-    // 마우스가 캔버스를 벗어나도 드래그 유지
+    // 8. 전역 마우스 이벤트 핸들러
     const handleMouseMove = (event: MouseEvent) => {
       if (mouseConstraint.body) {
         const rect = render.canvas.getBoundingClientRect();
@@ -145,13 +198,11 @@ const PhysicsScene = () => {
       }
     };
 
-    // 전역 마우스 이벤트 리스너 추가
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseUp);
 
-    // --- 🧹 클린업 함수: 컴포넌트가 사라질 때 Matter.js 인스턴스 정리 ---
+    // 9. 클린업
     return () => {
-      // 이벤트 리스너 제거
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
 
@@ -161,7 +212,7 @@ const PhysicsScene = () => {
       render.canvas.remove();
       render.textures = {};
     };
-  }, [isClient]); // isClient가 변경될 때 실행
+  }, [isClient, headerHeight, footerHeight, breakpointKey]);
 
   if (!isClient) {
     return (
@@ -180,7 +231,20 @@ const PhysicsScene = () => {
     );
   }
 
-  return <div ref={sceneRef} suppressHydrationWarning />;
+  return (
+    <div
+      ref={sceneRef}
+      suppressHydrationWarning
+      style={{
+        marginTop: `-${headerHeight / 2}px`,
+        position: "relative",
+        zIndex: 1,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    />
+  );
 };
 
 export default PhysicsScene;

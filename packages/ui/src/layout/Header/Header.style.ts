@@ -1,168 +1,159 @@
 import styled from "@emotion/styled";
 import { colors } from "../../colors";
+import { mq } from "../../constants/breakpoints";
+import { fonts, fontSizes } from "../../typo/fonts";
 
-export const StyledHeader = styled.header`
-  width: 100%;
-  background-color: #ffffff;
-  padding: 20px 0;
-  box-sizing: border-box;
-  border-bottom: 1px solid ${colors.secondaryGray};
+export const StyledHeader = styled.header({
+  width: "100%",
+  position: "sticky",
+  top: 0,
+  zIndex: 100,
+  boxSizing: "border-box",
+  alignItems: "center",
+  backgroundColor: "transparent",
+});
 
-  .header-content {
-    width: 100%;
-    margin: 0 auto;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+export const HeaderContent = styled.div({
+  width: "100%",
+  margin: "0 auto",
+  padding: "40px",
 
-    /* MOBILE (360~599px): contents 영역 340px + 좌우 마진 보장 */
-    max-width: 340px;
+  boxSizing: "border-box",
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  alignItems: "center",
 
-    /* TABLET (600~1279px): contents 영역 540px + 좌우 마진 보장 */
-    @media (min-width: 600px) {
-      max-width: 540px;
-    }
+  [mq.tablet]: {
+    padding: "40px 20px",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "36px",
+  },
+  [mq.mobile]: {
+    padding: "20px",
+  },
+});
 
-    /* DESKTOP (1280px~): contents 영역 1200px + 좌우 마진 보장 */
-    @media (min-width: 1280px) {
-      max-width: 1200px;
-    }
-  }
+export const LogoArea = styled.div({
+  position: "relative",
+  zIndex: 10,
+  width: "187px",
+  height: "50px",
+  [mq.desktop]: {
+    width: "290px",
+    height: "72px",
+  },
+});
 
-  .logo-area {
-    font-size: 18px;
-    font-weight: bold;
-    color: ${colors.blackDefault};
-    z-index: 10;
+export const NavArea = styled.nav({
+  display: "flex",
+  gap: "auto",
+  color: colors.blackDefault,
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "space-between",
+  width: "100%",
+  maxWidth: "880px",
+  marginLeft: "120px",
+  [mq.mobile]: {
+    display: "none",
+  },
+  [mq.tablet]: {
+    width: "100%",
+    marginLeft: "0",
+    maxWidth: "800px",
+  },
+  [mq.desktop]: {
+    width: "auto",
+    gap: "40px",
+  },
+});
 
-    /* MOBILE: 작은 로고 */
-    @media (max-width: 599px) {
-      font-size: 16px;
-    }
+export const NavLink = styled.a({
+  fontFamily: fonts.english.title,
+  fontSize: fontSizes["2xl"],
+  fontWeight: 700,
+  lineHeight: "130%",
+  letterSpacing: "-0.24px",
+  textTransform: "uppercase",
+  textDecoration: "none",
+  color: colors.blackDefault,
+  transition: "opacity 0.2s ease, transform 0.2s ease",
+  "&:hover": {
+    opacity: 0.8,
+    transform: "rotate(7deg)",
+  },
+  [mq.tablet]: {
+    fontSize: fontSizes["lg"],
+  },
+  [mq.desktop]: {
+    gap: "15px",
+    fontSize: fontSizes["2xl"],
+  },
+});
 
-    /* TABLET: 중간 로고 */
-    @media (min-width: 600px) and (max-width: 1279px) {
-      font-size: 18px;
-    }
+export const HamburgerLine = styled.div({
+  width: "20px",
+  height: "2px",
+  backgroundColor: colors.blackDefault,
+  transition: "all 0.3s ease",
+});
 
-    /* DESKTOP: 큰 로고 */
-    @media (min-width: 1280px) {
-      font-size: 20px;
-    }
-  }
+export const MobileMenuButton = styled.button({
+  display: "none",
+  background: "none",
+  border: "none",
+  cursor: "pointer",
+  padding: "8px",
+  zIndex: 10,
+  [mq.mobile]: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "4px",
+  },
+});
 
-  .nav-area {
-    display: flex;
-    gap: 20px;
-    align-items: center;
+export const ActiveMobileMenuButton = styled(MobileMenuButton)({
+  [`& > ${HamburgerLine}:nth-of-type(1)`]: {
+    transform: "rotate(45deg) translate(5px, 5px)",
+  },
+  [`& > ${HamburgerLine}:nth-of-type(2)`]: {
+    opacity: 0,
+  },
+  [`& > ${HamburgerLine}:nth-of-type(3)`]: {
+    transform: "rotate(-45deg) translate(7px, -6px)",
+  },
+});
 
-    a {
-      color: ${colors.blackDefault};
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      transition: opacity 0.2s ease;
+export const MobileMenu = styled.div<{ isActive: boolean }>((props) => ({
+  position: "fixed",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100vh",
+  backgroundColor: "rgba(0, 0, 0, 0.8)",
+  zIndex: 5,
+  display: props.isActive ? "flex" : "none",
+  justifyContent: "center",
+  alignItems: "center",
+}));
 
-      &:hover {
-        color: ${colors.primaryGreen};
-        opacity: 0.8;
-      }
-    }
-
-    /* MOBILE: 네비게이션 숨김 (햄버거 메뉴로 대체) */
-    @media (max-width: 599px) {
-      display: none;
-    }
-
-    /* TABLET: 간소화된 네비게이션 */
-    @media (min-width: 600px) and (max-width: 1279px) {
-      gap: 15px;
-
-      a {
-        font-size: 13px;
-      }
-    }
-
-    /* DESKTOP: 전체 네비게이션 */
-    @media (min-width: 1280px) {
-      gap: 30px;
-
-      a {
-        font-size: 16px;
-      }
-    }
-  }
-
-  .mobile-menu-button {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-    z-index: 10;
-
-    /* MOBILE: 햄버거 메뉴 표시 */
-    @media (max-width: 599px) {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .hamburger-line {
-      width: 20px;
-      height: 2px;
-      background-color: ${colors.blackDefault};
-      transition: all 0.3s ease;
-    }
-
-    &.active {
-      .hamburger-line:nth-of-type(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-      }
-      .hamburger-line:nth-of-type(2) {
-        opacity: 0;
-      }
-      .hamburger-line:nth-of-type(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
-      }
-    }
-  }
-
-  .mobile-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 5;
-    display: none;
-    justify-content: center;
-    align-items: center;
-
-    &.active {
-      display: flex;
-    }
-
-    .mobile-nav {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      text-align: center;
-
-      a {
-        color: #ffffff;
-        text-decoration: none;
-        font-size: 24px;
-        font-weight: 500;
-        transition: opacity 0.2s ease;
-
-        &:hover {
-          color: ${colors.primaryGreen};
-          opacity: 0.8;
-        }
-      }
-    }
-  }
-`;
+export const MobileNav = styled.nav({
+  display: "flex",
+  flexDirection: "column",
+  gap: "30px",
+  textAlign: "center",
+  "& a": {
+    color: "#ffffff",
+    textDecoration: "none",
+    fontSize: "24px",
+    fontWeight: 500,
+    transition: "opacity 0.2s ease",
+    "&:hover": {
+      color: colors.primaryGreen,
+      opacity: 0.8,
+    },
+  },
+});
