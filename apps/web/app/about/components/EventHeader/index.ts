@@ -3,4 +3,4 @@
  * 이벤트 제목과 이벤트 정보를 표시합니다.
  * 프레임을 통해 상단, 하단 로프를 디자인합니다.
  */
-export * from "./EventHeader";
+export { default as EventHeader } from "./EventHeader";

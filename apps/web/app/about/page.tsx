@@ -2,10 +2,12 @@
 
 import * as S from "./page.style";
 import Image from "next/image";
-import EventHeader from "./components/EventHeader/EventHeader";
-import Description from "./components/Description/Description";
-import CommitteeSection from "./components/CommitteeSection/CommitteeSection";
-import HelperSection from "./components/HelperSection/HelperSection";
+import {
+  EventHeader,
+  Description,
+  CommitteeSection,
+  HelperSection,
+} from "./components";
 import {
   HELPER_SECTION,
   LEADERSHIP,
