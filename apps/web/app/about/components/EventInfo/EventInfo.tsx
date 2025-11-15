@@ -1,5 +1,3 @@
-"use client";
-
 import { Subtitle } from "@snud2025/ui";
 import type { EventInfo } from "../../types/eventInfo";
 import * as S from "./EventInfo.style";

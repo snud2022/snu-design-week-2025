@@ -1,5 +1,3 @@
-"use client";
-
 import * as S from "./page.style";
 import Image from "next/image";
 import {

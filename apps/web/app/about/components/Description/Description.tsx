@@ -1,5 +1,3 @@
-"use client";
-
 import { Body } from "@snud2025/ui";
 import type { AboutContent } from "../../types/description";
 import { splitLines } from "../../utils/lineBreak";
