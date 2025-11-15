@@ -17,6 +17,7 @@ const StyledBody = styled.p<{ level: BodyLevel; weight: BodyWeight }>`
   ${({ level, weight }) => typography[level][weight]}
   margin: 0;
   padding: 0;
+  word-break: keep-all;
 `;
 
 export const Body = ({
