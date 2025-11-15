@@ -32,9 +32,11 @@ export const PosterContainer = styled.div({
   alignSelf: "flex-start",
   flexShrink: "0",
   height: "fit-content",
+
   "& img": {
     width: "100%",
     height: "auto",
+    boxShadow: "-1px 1px 20px 0 rgba(0, 0, 0, 0.25)",
   },
   [mq.tablet]: {
     position: "relative",
