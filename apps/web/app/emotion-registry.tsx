@@ -4,8 +4,6 @@ import React, { useMemo } from "react";
 import { useServerInsertedHTML } from "next/navigation";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
-import { ThemeProvider } from "@emotion/react";
-import { theme } from "../styles/theme";
 
 export default function EmotionRegistry({
   children,
@@ -51,9 +49,5 @@ export default function EmotionRegistry({
     );
   });
 
-  return (
-    <CacheProvider value={cache}>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
-    </CacheProvider>
-  );
+  return <CacheProvider value={cache}>{children}</CacheProvider>;
 }
