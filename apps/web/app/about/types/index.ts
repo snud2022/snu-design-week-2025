@@ -1,0 +1,9 @@
+/**
+ * 각 컴포넌트에서 사용하는 타입을 정의합니다.
+ * 변하지 않는 정보들을 타입화 하여 코드의 가독성과 유지보수성을 높입니다.
+ */
+export * from "./eventHeader";
+export * from "./eventInfo";
+export * from "./committeeSection";
+export * from "./helperSection";
+export * from "./description";

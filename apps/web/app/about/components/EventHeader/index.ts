@@ -1,0 +1,6 @@
+/**
+ * 이벤트 헤더 컴포넌트를 내보냅니다.
+ * 이벤트 제목과 이벤트 정보를 표시합니다.
+ * 프레임을 통해 상단, 하단 로프를 디자인합니다.
+ */
+export { default as EventHeader } from "./EventHeader";
