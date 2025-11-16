@@ -59,17 +59,3 @@ export const StoneWrapper = styled.div`
   transform-origin: center center;
   will-change: transform;
 `;
-
-/* 반응형 스케일을 담당하는 내부 래퍼 */
-export const StoneScale = styled.div`
-  transform: scale(${PEOPLE_RESPONSIVE_SCALES.mobile});
-  transform-origin: center center;
-  will-change: transform;
-
-  ${mq.tablet} {
-    transform: scale(${PEOPLE_RESPONSIVE_SCALES.tablet});
-  }
-  ${mq.desktop} {
-    transform: scale(${PEOPLE_RESPONSIVE_SCALES.desktop});
-  }
-`;
