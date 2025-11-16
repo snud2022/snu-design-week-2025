@@ -4,7 +4,7 @@ import React from "react";
 import * as S from "./WorksGrid.style";
 import { Title } from "@snud2025/ui";
 import AllWorksGrid from "../AllWorksGrid/AllWorksGrid";
-import ProjectDetail from "../ProjectDetail/ProjectDetail";
+import ProjectDetail from "../CategoryDetail/CategoryDetail";
 
 interface WorksGridProps {
   selectedFilterIndex: number | null;

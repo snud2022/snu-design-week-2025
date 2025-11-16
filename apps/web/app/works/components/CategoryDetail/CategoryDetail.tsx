@@ -4,13 +4,13 @@ import {
   FILTER_INDEX_TO_CATEGORY,
   CATEGORY_INFO,
 } from "../../constants/categories";
-import * as S from "./ProjectDetail.style";
+import * as S from "./CategoryDetail.style";
 
-interface ProjectDetailProps {
+interface CategoryDetailProps {
   filterIndex: number | null;
 }
 
-export default function ProjectDetail({ filterIndex }: ProjectDetailProps) {
+export default function CategoryDetail({ filterIndex }: CategoryDetailProps) {
   if (filterIndex === null) return null;
 
   const category = FILTER_INDEX_TO_CATEGORY[filterIndex];
