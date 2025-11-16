@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-import { colors } from "@snud2025/ui";
+import { colors, mq } from "@snud2025/ui";
 
 export const Wrapper = styled.button<{ active: boolean; side: string }>`
   /* 공통 레이아웃 */
@@ -47,14 +47,12 @@ export const Underline = styled.div`
 
   width: ${TAB_SIZE.mobile}px;
 
-  ${({ theme }) => css`
-    ${theme.mq.tablet} {
-      width: ${TAB_SIZE.tablet}px;
-    }
-    ${theme.mq.desktop} {
-      width: ${TAB_SIZE.desktop}px;
-    }
-  `}
+  ${mq.tablet} {
+    width: ${TAB_SIZE.tablet}px;
+  }
+  ${mq.desktop} {
+    width: ${TAB_SIZE.desktop}px;
+  }
 `;
 
 export const SideMove = styled.div<{ side: string }>`

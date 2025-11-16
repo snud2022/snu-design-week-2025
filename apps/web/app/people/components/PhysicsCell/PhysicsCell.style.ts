@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
-import { css } from "@emotion/react";
-import { RESPONSIVE_SCALES } from "../../../../constants/peopleGraphic";
-import { theme } from "../../../../styles/theme";
+import { mq } from "@snud2025/ui";
+import { PEOPLE_RESPONSIVE_SCALES } from "../../../../constants/peopleGraphic";
 
 export const PhysicsContainer = styled.div<{
   cellSize: number;
@@ -27,7 +26,7 @@ export const MountContainer = styled.div`
   pointer-events: auto;
 
   /* 스케일은 CSS 변수로 관리 */
-  --scale: ${RESPONSIVE_SCALES.mobile};
+  --scale: ${PEOPLE_RESPONSIVE_SCALES.mobile};
 
   /*  모션 최소화  */
   @media (prefers-reduced-motion: reduce) {
@@ -37,16 +36,12 @@ export const MountContainer = styled.div`
     }
   }
 
-  // createRoot로 랜더링 시 ThemeProvider context 접근 불가능
-  // 따라서 theme을 직접 import 하여 사용
-  ${css`
-    ${theme.mq.tablet} {
-      --scale: ${RESPONSIVE_SCALES.tablet};
-    }
-    ${theme.mq.desktop} {
-      --scale: ${RESPONSIVE_SCALES.desktop};
-    }
-  `}
+  ${mq.tablet} {
+    --scale: ${PEOPLE_RESPONSIVE_SCALES.tablet};
+  }
+  ${mq.desktop} {
+    --scale: ${PEOPLE_RESPONSIVE_SCALES.desktop};
+  }
 
   /* 전체 컨테이너 크기 조정 */
   width: calc(100% / var(--scale));
@@ -62,5 +57,19 @@ export const StoneWrapper = styled.div`
   left: 0;
   top: 0;
   transform-origin: center center;
-  pointer-events: none;
+  will-change: transform;
+`;
+
+/* 반응형 스케일을 담당하는 내부 래퍼 */
+export const StoneScale = styled.div`
+  transform: scale(${PEOPLE_RESPONSIVE_SCALES.mobile});
+  transform-origin: center center;
+  will-change: transform;
+
+  ${mq.tablet} {
+    transform: scale(${PEOPLE_RESPONSIVE_SCALES.tablet});
+  }
+  ${mq.desktop} {
+    transform: scale(${PEOPLE_RESPONSIVE_SCALES.desktop});
+  }
 `;

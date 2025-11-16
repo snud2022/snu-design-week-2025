@@ -40,12 +40,20 @@ export default function HoverStone({
     >
       {/* 기본 상태 이미지 */}
       <S.SvgLayer className="base">
-        <asset.Svg preserveAspectRatio="xMidYMid meet" />
+        <asset.Svg
+          preserveAspectRatio="xMidYMid meet"
+          width="100%"
+          height="100%"
+        />
       </S.SvgLayer>
 
       {/* 호버 상태 이미지 */}
       <S.SvgLayer className="hover">
-        <asset.HoverSvg preserveAspectRatio="xMidYMid meet" />
+        <asset.HoverSvg
+          preserveAspectRatio="xMidYMid meet"
+          width="100%"
+          height="100%"
+        />
       </S.SvgLayer>
     </S.Stone>
   );

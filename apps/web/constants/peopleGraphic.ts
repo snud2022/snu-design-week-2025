@@ -25,15 +25,22 @@ export type PeopleGraphicConfig = {
   height: number;
 };
 
-// 반응형 스케일 팩터
-export const RESPONSIVE_SCALES = {
+// People 페이지 반응형 스케일 팩터
+export const PEOPLE_RESPONSIVE_SCALES = {
+  mobile: 0.9,
+  tablet: 0.9 * 0.85,
+  desktop: 0.9,
+} as const;
+
+// Works 페이지 반응형 스케일 팩터
+export const WORKS_RESPONSIVE_SCALES = {
   mobile: 1,
   tablet: 0.75,
   desktop: 1,
 } as const;
 
 // 기본 크기
-const baseConfigs: PeopleGraphicConfig[] = [
+export const peopleGraphicConfigs: PeopleGraphicConfig[] = [
   {
     Svg: TiedBrand,
     HoverSvg: InsideBrand,
@@ -56,7 +63,7 @@ const baseConfigs: PeopleGraphicConfig[] = [
     Svg: TiedUIUX,
     HoverSvg: InsideUIUX,
     width: 135,
-    height: 151,
+    height: 150,
   },
   {
     Svg: TiedLiving,
@@ -86,14 +93,9 @@ const baseConfigs: PeopleGraphicConfig[] = [
 
 // 반응형 설정을 적용한 함수
 export const getResponsiveConfigs = (scale: number): PeopleGraphicConfig[] => {
-  return baseConfigs.map((config) => ({
+  return peopleGraphicConfigs.map((config) => ({
     ...config,
     width: config.width * scale,
     height: config.height * scale,
   }));
 };
-
-// 기본 export (데스크톱용)
-export const peopleGraphicConfigs = getResponsiveConfigs(
-  RESPONSIVE_SCALES.desktop
-);

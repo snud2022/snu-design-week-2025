@@ -1,13 +1,20 @@
 "use client";
 
+import type { PeopleGraphicConfig } from "../../../../constants/peopleGraphic";
+import { PEOPLE_RESPONSIVE_SCALES } from "../../../../constants/peopleGraphic";
 import React, { useEffect, useMemo, useRef } from "react";
 import HoverStone from "../../../../components/HoverStone/HoverStone";
 import Matter from "matter-js";
 import { createRoot, Root } from "react-dom/client";
+import { breakpoints } from "@snud2025/ui";
 import * as S from "./PhysicsCell.style";
-import type { PeopleGraphicConfig } from "../../../../constants/peopleGraphic";
-import { RESPONSIVE_SCALES } from "../../../../constants/peopleGraphic";
-import { useTheme } from "@emotion/react";
+
+export type SpriteInput = {
+  url: string;
+  hoverUrl: string;
+  width: number;
+  height: number;
+};
 
 interface PhysicsCellProps {
   cellSize: number;
@@ -24,7 +31,6 @@ export default function PhysicsCell({
   debugCanvas = false,
   onReady,
 }: PhysicsCellProps) {
-  const theme = useTheme();
   const domLayerRef = useRef<HTMLDivElement | null>(null);
 
   // 후보에서 2개의 파츠 랜덤 선택
@@ -54,9 +60,9 @@ export default function PhysicsCell({
     const getScale = () => {
       if (typeof window === "undefined") return 1;
       const width = window.innerWidth;
-      if (width >= theme.breakpoints.desktop) return RESPONSIVE_SCALES.desktop;
-      if (width >= theme.breakpoints.tablet) return RESPONSIVE_SCALES.tablet;
-      return RESPONSIVE_SCALES.mobile;
+      if (width >= breakpoints.desktop) return PEOPLE_RESPONSIVE_SCALES.desktop;
+      if (width >= breakpoints.tablet) return PEOPLE_RESPONSIVE_SCALES.tablet;
+      return PEOPLE_RESPONSIVE_SCALES.desktop;
     };
 
     const currentScale = getScale();
@@ -195,11 +201,14 @@ export default function PhysicsCell({
 
           const w = pick.width;
           const h = pick.height;
-          const el = container.querySelector<HTMLDivElement>(
+          const wrapper = container.querySelector<HTMLDivElement>(
             `[data-stone="${i}"]`
           );
-          if (el) {
-            el.style.transform = `translate(${b.position.x - w / 2}px, ${b.position.y - h / 2}px) rotate(${b.angle}rad)`;
+          if (wrapper) {
+            // StoneWrapper에 위치와 회전 설정 (scale은 CSS에서 처리)
+            wrapper.style.left = `${b.position.x - w / 2}px`;
+            wrapper.style.top = `${b.position.y - h / 2}px`;
+            wrapper.style.transform = `rotate(${b.angle}rad)`;
           }
         }
       }
