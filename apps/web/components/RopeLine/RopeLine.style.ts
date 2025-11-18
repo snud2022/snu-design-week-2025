@@ -9,7 +9,7 @@ export const VerticalContainer = styled.div<{ L: number | string }>`
 
 export const BaseKnot = styled.img`
   position: absolute;
-  z-index: 1000;
+  z-index: 4;
   pointer-events: none;
 `;
 

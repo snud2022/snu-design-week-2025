@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import { css } from "@emotion/react";
-import { RESPONSIVE_SCALES } from "../../../../constants/peopleGraphic";
+import { mq } from "@snud2025/ui";
+import { PEOPLE_RESPONSIVE_SCALES } from "../../../../constants/peopleGraphic";
 
 export const PhysicsContainer = styled.div<{
   cellSize: number;
@@ -24,6 +24,32 @@ export const MountContainer = styled.div`
   position: absolute;
   inset: 0;
   pointer-events: auto;
+
+  /* 스케일은 CSS 변수로 관리 */
+  --scale: ${PEOPLE_RESPONSIVE_SCALES.mobile};
+
+  /*  모션 최소화  */
+  @media (prefers-reduced-motion: reduce) {
+    & * {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+
+  ${mq.tablet} {
+    --scale: ${PEOPLE_RESPONSIVE_SCALES.tablet};
+  }
+  ${mq.desktop} {
+    --scale: ${PEOPLE_RESPONSIVE_SCALES.desktop};
+  }
+
+  /* 전체 컨테이너 크기 조정 */
+  width: calc(100% / var(--scale));
+  height: calc(100% / var(--scale));
+
+  /* 스케일 적용 */
+  transform: scale(var(--scale));
+  transform-origin: 0 0;
 `;
 
 export const StoneWrapper = styled.div`
@@ -31,26 +57,5 @@ export const StoneWrapper = styled.div`
   left: 0;
   top: 0;
   transform-origin: center center;
+  will-change: transform;
 `;
-
-/* 반응형 스케일만 담당하는 내부 래퍼 */
-export const StoneScale = styled.div(
-  ({ theme }) => css`
-    transform: scale(${RESPONSIVE_SCALES.mobile});
-    transform-origin: center center;
-    will-change: transform;
-
-    ${theme?.mq?.tablet &&
-    css`
-      ${theme.mq.tablet} {
-        transform: scale(${RESPONSIVE_SCALES.tablet});
-      }
-    `}
-    ${theme?.mq?.desktop &&
-    css`
-      ${theme.mq.desktop} {
-        transform: scale(${RESPONSIVE_SCALES.desktop});
-      }
-    `}
-  `
-);

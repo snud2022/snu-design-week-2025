@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { zIndex } from "../../../../constants/zIndex";
 
 export const LinkContainer = styled.div`
   display: contents;
@@ -29,5 +30,13 @@ export const ContentContainer = styled.div`
   justify-content: center;
   text-align: center;
   white-space: pre-line;
-  background: #fff;
+`;
+
+export const VeilBackground = styled.img<{
+  $cell: number;
+}>`
+  width: ${({ $cell }) => `${$cell}px`};
+  height: ${({ $cell }) => `${$cell}px`};
+  position: absolute;
+  z-index: ${zIndex.below};
 `;

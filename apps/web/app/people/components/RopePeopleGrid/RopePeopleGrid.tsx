@@ -80,6 +80,7 @@ export default function RopePeopleGrid({
           >
             {/* 이름이 들어있는 프레임 */}
             <RopeFrame widthSizePixel={cell} heightSizePixel={cell}>
+              <S.VeilBackground src="/Veil.svg" alt="veil" $cell={cell} />
               <S.ContentContainer>
                 <Subtitle language="kr">{nameKo}</Subtitle>
                 <Subtitle language="en">{formatNameEn(nameEn)}</Subtitle>
