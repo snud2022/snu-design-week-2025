@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { colors } from "../../colors";
 import { mq } from "../../constants/breakpoints";
-import { fonts, fontSizes } from "../../typo/fonts";
+import { fonts, fontSizes, fontWeights } from "../../typo/fonts";
 
 export const StyledHeader = styled.header({
   width: "100%",
@@ -132,28 +132,70 @@ export const MobileMenu = styled.div<{ isActive: boolean }>((props) => ({
   top: 0,
   left: 0,
   width: "100%",
-  height: "100vh",
-  backgroundColor: "rgba(0, 0, 0, 0.8)",
-  zIndex: 5,
+  backgroundColor: "white",
+  zIndex: 200,
   display: props.isActive ? "flex" : "none",
-  justifyContent: "center",
-  alignItems: "center",
+  flexDirection: "column",
+  padding: "20px",
+  boxSizing: "border-box",
+  boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.3)",
+  [mq.desktop]: {
+    display: "none",
+  },
+  [mq.tablet]: {
+    display: "none",
+  },
 }));
+
+export const MobileMenuHeader = styled.div({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "flex-start",
+  width: "100%",
+  marginBottom: "auto",
+});
+
+export const CloseButton = styled.button({
+  background: "none",
+  border: "none",
+  cursor: "pointer",
+  padding: "8px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  transition: "opacity 0.2s ease",
+  "&:hover": {
+    opacity: 0.6,
+  },
+});
+
+export const CloseIcon = styled.span({
+  fontFamily: fonts.english.title,
+  fontSize: fontSizes["4xl"],
+  fontWeight: fontWeights.regular,
+  color: colors.blackDefault,
+  lineHeight: 1,
+});
 
 export const MobileNav = styled.nav({
   display: "flex",
   flexDirection: "column",
-  gap: "30px",
-  textAlign: "center",
-  "& a": {
-    color: "#ffffff",
-    textDecoration: "none",
-    fontSize: "24px",
-    fontWeight: 500,
-    transition: "opacity 0.2s ease",
-    "&:hover": {
-      color: colors.primaryGreen,
-      opacity: 0.8,
-    },
+  padding: "20px 0",
+  gap: "16px",
+  alignItems: "center",
+  justifyContent: "center",
+  flex: 1,
+});
+
+export const MobileNavLink = styled.a({
+  fontFamily: fonts.english.title,
+  fontSize: fontSizes["2xl"],
+  fontWeight: fontWeights.regular,
+  color: colors.blackDefault,
+  textDecoration: "none",
+  textTransform: "uppercase",
+  transition: "opacity 0.2s ease",
+  "&:hover": {
+    opacity: 0.6,
   },
 });

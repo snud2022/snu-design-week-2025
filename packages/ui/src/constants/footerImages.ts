@@ -48,10 +48,4 @@ export const footerImages: FooterImage[] = [
     alt: "D-Strict",
     href: "https://www.dstrict.com/",
   },
-  {
-    id: "footer-8",
-    src: "/footer/sugatsune.png",
-    alt: "Sugatsune",
-    href: "https://global.sugatsune.com/kr/kr/",
-  },
 ];
