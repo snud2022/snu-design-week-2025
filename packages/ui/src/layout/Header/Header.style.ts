@@ -127,14 +127,14 @@ export const ActiveMobileMenuButton = styled(MobileMenuButton)({
   },
 });
 
-export const MobileMenu = styled.div<{ isActive: boolean }>((props) => ({
+export const MobileMenu = styled.div({
   position: "fixed",
   top: 0,
   left: 0,
   width: "100%",
   backgroundColor: "white",
   zIndex: 200,
-  display: props.isActive ? "flex" : "none",
+  display: "flex",
   flexDirection: "column",
   padding: "20px",
   boxSizing: "border-box",
@@ -145,7 +145,7 @@ export const MobileMenu = styled.div<{ isActive: boolean }>((props) => ({
   [mq.tablet]: {
     display: "none",
   },
-}));
+});
 
 export const MobileMenuHeader = styled.div({
   display: "flex",
