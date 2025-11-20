@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import * as S from "./Header.style";
 import Link from "next/link";
 import { Title } from "../../typo";
 
 export const Header = () => {
+  const [isMounted, setIsMounted] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navItems = [
     { label: "ABOUT", href: "/about" },
@@ -16,6 +17,10 @@ export const Header = () => {
     { label: "PARTNERS", href: "/partners" },
   ];
 
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -23,6 +28,10 @@ export const Header = () => {
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
   };
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <S.StyledHeader>
