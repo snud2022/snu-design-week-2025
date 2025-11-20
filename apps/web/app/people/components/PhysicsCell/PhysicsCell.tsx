@@ -105,7 +105,7 @@ export default function PhysicsCell({
     ]);
 
     // 초기 비겹침 위치 샘플링 (물체들이 겹치지 않도록 배치)
-    const bodies: Matter.Body[] = [];
+    const bodies: any[] = [];
     const maxTry = 80;
 
     // 두 사각형이 겹치는지 확인하는 함수
