@@ -103,9 +103,9 @@ export const addSprites = async (
       config.height,
       {
         density: 0.001, // 물체의 밀도
-        frictionAir: 0.01, // 공기 마찰력
-        restitution: 0.3, // 반발력
-        friction: 0.002, // 마찰력
+        frictionAir: 0.05, // 공기 마찰력
+        restitution: 0.1, // 반발력
+        friction: 0.5, // 마찰력
         angularVelocity: 0, // 각속도
         angularSpeed: 0, // 각속도
       }
@@ -184,8 +184,8 @@ export const createWalls = (
   const wallOptions = {
     isStatic: true,
     density: 1,
-    friction: 0.8,
-    restitution: 0.1,
+    friction: 1.0, // 벽 마찰력 증가 (0.8 → 1.0)
+    restitution: 0.05, // 벽 반발력 감소 (0.1 → 0.05)
     render: { visible: false },
   };
 
