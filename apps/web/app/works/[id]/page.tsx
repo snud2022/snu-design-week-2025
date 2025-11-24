@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { useParams } from "next/navigation";
+import { useParams, notFound } from "next/navigation";
 import {
   GoBackButton,
   StudentCard,
@@ -20,11 +20,7 @@ export default function ProjectDetailPage() {
   const project = projectDetails.find((p) => p.id === id);
 
   if (!project) {
-    return (
-      <S.Wrapper>
-        <S.NotFound>Project not found</S.NotFound>
-      </S.Wrapper>
-    );
+    notFound();
   }
 
   return (

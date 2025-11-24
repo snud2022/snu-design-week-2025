@@ -84,10 +84,3 @@ export const ContentContainer = styled.div`
     gap: 24px;
   }
 `;
-
-export const NotFound = styled.div`
-  text-align: center;
-  padding: 80px 20px;
-  font-size: 24px;
-  color: rgba(255, 255, 255, 0.6);
-`;
