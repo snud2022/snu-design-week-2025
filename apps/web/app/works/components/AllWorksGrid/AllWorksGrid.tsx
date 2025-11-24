@@ -1,29 +1,31 @@
 import React from "react";
 import { studentProjects } from "../../mocks/projects";
-import {
-  FILTER_INDEX_TO_CATEGORY,
-  CATEGORY_INFO,
-} from "../../constants/categories";
+import { getCategoryByIndex } from "../../utils/categories";
 import ProjectCard from "../ProjectCard/ProjectCard";
 import * as S from "./AllWorksGrid.style";
 
-export default function AllWorksGrid() {
+interface AllWorksGridProps {
+  selectedFilterIndex: number | null;
+}
+
+export default function AllWorksGrid({
+  selectedFilterIndex,
+}: AllWorksGridProps) {
+  // selectedFilterIndex가 null이면 모든 프로젝트, 숫자면 해당 filterIndex만 필터링
+  const filteredProjects =
+    selectedFilterIndex === null
+      ? studentProjects
+      : studentProjects.filter(
+          (project) => project.filterIndex === selectedFilterIndex
+        );
+
   return (
     <S.GridContainer>
-      {studentProjects.map((project) => {
-        const category = FILTER_INDEX_TO_CATEGORY[project.filterIndex];
+      {filteredProjects.map((project) => {
+        const category = getCategoryByIndex(project.filterIndex);
         if (!category) return null;
 
-        const categoryInfo = CATEGORY_INFO[category];
-
-        return (
-          <ProjectCard
-            key={project.id}
-            project={project}
-            categoryNameEn={categoryInfo.categoryNameEn}
-            onClick={() => {}}
-          />
-        );
+        return <ProjectCard key={project.id} project={project} />;
       })}
     </S.GridContainer>
   );

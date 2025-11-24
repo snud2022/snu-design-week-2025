@@ -1,9 +1,7 @@
 import React from "react";
 import { Title, Body } from "@snud2025/ui";
-import {
-  FILTER_INDEX_TO_CATEGORY,
-  CATEGORY_INFO,
-} from "../../constants/categories";
+import { getCategoryByIndex } from "../../utils/categories";
+import { CATEGORY_INFO } from "../../constants/categories";
 import * as S from "./CategoryDetail.style";
 
 interface CategoryDetailProps {
@@ -13,7 +11,7 @@ interface CategoryDetailProps {
 export default function CategoryDetail({ filterIndex }: CategoryDetailProps) {
   if (filterIndex === null) return null;
 
-  const category = FILTER_INDEX_TO_CATEGORY[filterIndex];
+  const category = getCategoryByIndex(filterIndex);
   if (!category) return null;
 
   const categoryInfo = CATEGORY_INFO[category];
