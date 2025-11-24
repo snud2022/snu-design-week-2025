@@ -1,7 +1,4 @@
-export type Position = {
-  tablet: { x: number; y: number; rotate: number };
-  desktop: { x: number; y: number; rotate: number };
-};
+import type { Position } from "../types/position";
 
 // 각 파츠의 고정 위치 (index 순서)
 export const STONE_POSITIONS: Position[] = [
