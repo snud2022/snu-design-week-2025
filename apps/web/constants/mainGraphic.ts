@@ -59,17 +59,17 @@ export const BREAKPOINTS = {
 } as const;
 
 export const PHYSICS_CONFIG = {
-  positionIterations: 10,
-  velocityIterations: 8,
-  gravityY: 0.6,
+  positionIterations: 20,
+  velocityIterations: 15,
+  gravityY: 0.9,
   gravityScale: 0.001,
   fps: 60,
-  wallThickness: 50,
+  wallThickness: 100,
   wallOffset: 10,
 } as const;
 
 export const MOUSE_CONFIG = {
-  stiffness: 0.2,
+  stiffness: 0.01,
 } as const;
 
 // 반응형 설정을 적용한 함수

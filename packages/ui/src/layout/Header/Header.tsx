@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import * as S from "./Header.style";
 import Link from "next/link";
+import { Title } from "../../typo";
 
 export const Header = () => {
+  const [isMounted, setIsMounted] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navItems = [
     { label: "ABOUT", href: "/about" },
@@ -15,6 +17,10 @@ export const Header = () => {
     { label: "PARTNERS", href: "/partners" },
   ];
 
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -22,6 +28,10 @@ export const Header = () => {
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
   };
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <S.StyledHeader>
@@ -71,15 +81,46 @@ export const Header = () => {
       </S.HeaderContent>
 
       {/* 모바일 오버레이 메뉴 */}
-      <S.MobileMenu isActive={isMobileMenuOpen}>
-        <S.MobileNav>
-          {navItems.map((item) => (
-            <a key={item.href} href={item.href} onClick={closeMobileMenu}>
-              {item.label}
-            </a>
-          ))}
-        </S.MobileNav>
-      </S.MobileMenu>
+      {isMobileMenuOpen && (
+        <S.MobileMenu>
+          <S.MobileMenuHeader>
+            <S.LogoArea>
+              <Link href="/">
+                <Image
+                  src="/logo.png"
+                  alt="SNU DESIGN WEEK 2025"
+                  fill
+                  style={{ objectFit: "contain" }}
+                  priority
+                />
+              </Link>
+            </S.LogoArea>
+            <S.CloseButton onClick={closeMobileMenu} aria-label="메뉴 닫기">
+              <S.CloseIcon>
+                <Image
+                  src="/common/close.svg"
+                  alt="close"
+                  width={32}
+                  height={32}
+                />
+              </S.CloseIcon>
+            </S.CloseButton>
+          </S.MobileMenuHeader>
+          <S.MobileNav>
+            {navItems.map((item) => (
+              <S.MobileNavLink
+                key={item.href}
+                href={item.href}
+                onClick={closeMobileMenu}
+              >
+                <Title level="title3" language="en">
+                  {item.label}
+                </Title>
+              </S.MobileNavLink>
+            ))}
+          </S.MobileNav>
+        </S.MobileMenu>
+      )}
     </S.StyledHeader>
   );
 };
