@@ -188,19 +188,11 @@ export const CloseIcon = styled.span({
 export const MobileNav = styled.nav({
   display: "flex",
   flexDirection: "column",
-  gap: "30px",
-  textAlign: "center",
-  "& a": {
-    color: "#ffffff",
-    textDecoration: "none",
-    fontSize: "24px",
-    fontWeight: 500,
-    transition: "opacity 0.2s ease",
-    "&:hover": {
-      color: colors.primaryGreen,
-      opacity: 0.8,
-    },
-  },
+  padding: "20px 0",
+  gap: "16px",
+  alignItems: "center",
+  justifyContent: "center",
+  flex: 1,
 });
 
 export const MobileNavLink = styled.a({
