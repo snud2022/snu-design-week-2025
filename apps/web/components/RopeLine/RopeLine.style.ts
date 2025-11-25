@@ -49,6 +49,7 @@ export const HorizontalLeftKnot = styled(BaseKnot)`
 export const HorizontalLineContainer = styled.div`
   position: absolute;
   transform: translateY(-50%);
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

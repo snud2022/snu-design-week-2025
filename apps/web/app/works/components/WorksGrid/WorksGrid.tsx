@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import * as S from "./WorksGrid.style";
 import { Title } from "@snud2025/ui";
@@ -27,7 +25,7 @@ export default function WorksGrid({ selectedFilterIndex }: WorksGridProps) {
           </S.DetailWrapper>
         )}
         <S.GridWrapper $hasDetail={hasDetail}>
-          <AllWorksGrid />
+          <AllWorksGrid selectedFilterIndex={selectedFilterIndex} />
         </S.GridWrapper>
       </S.ContentWrapper>
     </S.AllWorksGridSection>

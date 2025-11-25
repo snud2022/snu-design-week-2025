@@ -1,14 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import * as S from "./Header.style";
 import Link from "next/link";
 import { Title } from "../../typo";
+import logoWhite from "../../assets/logo_white.png";
+import logo from "../../assets/logo.png";
 
 export const Header = () => {
   const [isMounted, setIsMounted] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isWorksDetailPage =
+    pathname.startsWith("/works/") && pathname !== "/works";
   const navItems = [
     { label: "ABOUT", href: "/about" },
     { label: "WORKS", href: "/works" },
@@ -34,25 +40,39 @@ export const Header = () => {
   }
 
   return (
-    <S.StyledHeader>
+    <S.StyledHeader $isWorksDetail={isWorksDetailPage}>
       <S.HeaderContent>
         {/* 로고 영역 */}
         <S.LogoArea>
           <Link href="/">
-            <Image
-              src="/logo.png"
-              alt="SNU DESIGN WEEK 2025"
-              fill
-              style={{ objectFit: "contain" }}
-              priority
-            />
+            {isWorksDetailPage ? (
+              <Image
+                src={logoWhite}
+                alt="SNU DESIGN WEEK 2025"
+                fill
+                style={{ objectFit: "contain" }}
+                priority
+              />
+            ) : (
+              <Image
+                src={logo}
+                alt="SNU DESIGN WEEK 2025"
+                fill
+                style={{ objectFit: "contain" }}
+                priority
+              />
+            )}
           </Link>
         </S.LogoArea>
 
         {/* 데스크톱/태블릿 네비게이션 */}
-        <S.NavArea>
+        <S.NavArea $isWorksDetail={isWorksDetailPage}>
           {navItems.map((item) => (
-            <S.NavLink key={item.href} href={item.href}>
+            <S.NavLink
+              key={item.href}
+              href={item.href}
+              $isWorksDetail={isWorksDetailPage}
+            >
               {item.label}
             </S.NavLink>
           ))}
@@ -63,19 +83,21 @@ export const Header = () => {
           <S.ActiveMobileMenuButton
             onClick={toggleMobileMenu}
             aria-label="메뉴 열기/닫기"
+            $isWorksDetail={isWorksDetailPage}
           >
-            <S.HamburgerLine />
-            <S.HamburgerLine />
-            <S.HamburgerLine />
+            <S.HamburgerLine $isWorksDetail={isWorksDetailPage} />
+            <S.HamburgerLine $isWorksDetail={isWorksDetailPage} />
+            <S.HamburgerLine $isWorksDetail={isWorksDetailPage} />
           </S.ActiveMobileMenuButton>
         ) : (
           <S.MobileMenuButton
             onClick={toggleMobileMenu}
             aria-label="메뉴 열기/닫기"
+            $isWorksDetail={isWorksDetailPage}
           >
-            <S.HamburgerLine />
-            <S.HamburgerLine />
-            <S.HamburgerLine />
+            <S.HamburgerLine $isWorksDetail={isWorksDetailPage} />
+            <S.HamburgerLine $isWorksDetail={isWorksDetailPage} />
+            <S.HamburgerLine $isWorksDetail={isWorksDetailPage} />
           </S.MobileMenuButton>
         )}
       </S.HeaderContent>

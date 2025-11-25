@@ -3,15 +3,21 @@ import { colors } from "../../colors";
 import { mq } from "../../constants/breakpoints";
 import { fonts, fontSizes, fontWeights } from "../../typo/fonts";
 
-export const StyledHeader = styled.header({
-  width: "100%",
-  position: "sticky",
-  top: 0,
-  zIndex: 100,
-  boxSizing: "border-box",
-  alignItems: "center",
-  backgroundColor: "transparent",
-});
+export const StyledHeader = styled.header<{ $isWorksDetail?: boolean }>(
+  (props) => ({
+    width: "100%",
+    position: "sticky",
+    top: 0,
+    zIndex: 100,
+    boxSizing: "border-box",
+    alignItems: "center",
+    backgroundColor: "transparent",
+    ...(props.$isWorksDetail && {
+      background:
+        "linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, transparent 100%)",
+    }),
+  })
+);
 
 export const HeaderContent = styled.div({
   width: "100%",
@@ -47,10 +53,10 @@ export const LogoArea = styled.div({
   },
 });
 
-export const NavArea = styled.nav({
+export const NavArea = styled.nav<{ $isWorksDetail?: boolean }>((props) => ({
   display: "flex",
   gap: "auto",
-  color: colors.blackDefault,
+  color: props.$isWorksDetail ? "white" : colors.blackDefault,
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "space-between",
@@ -69,9 +75,9 @@ export const NavArea = styled.nav({
     width: "auto",
     gap: "40px",
   },
-});
+}));
 
-export const NavLink = styled.a({
+export const NavLink = styled.a<{ $isWorksDetail?: boolean }>((props) => ({
   fontFamily: fonts.english.title,
   fontSize: fontSizes["2xl"],
   fontWeight: 700,
@@ -79,7 +85,7 @@ export const NavLink = styled.a({
   letterSpacing: "-0.24px",
   textTransform: "uppercase",
   textDecoration: "none",
-  color: colors.blackDefault,
+  color: props.$isWorksDetail ? "white" : colors.blackDefault,
   transition: "opacity 0.2s ease, transform 0.2s ease",
   "&:hover": {
     opacity: 0.8,
@@ -92,16 +98,18 @@ export const NavLink = styled.a({
     gap: "15px",
     fontSize: fontSizes["2xl"],
   },
-});
+}));
 
-export const HamburgerLine = styled.div({
-  width: "20px",
-  height: "2px",
-  backgroundColor: colors.blackDefault,
-  transition: "all 0.3s ease",
-});
+export const HamburgerLine = styled.div<{ $isWorksDetail?: boolean }>(
+  (props) => ({
+    width: "20px",
+    height: "2px",
+    backgroundColor: props.$isWorksDetail ? "white" : colors.blackDefault,
+    transition: "all 0.3s ease",
+  })
+);
 
-export const MobileMenuButton = styled.button({
+export const MobileMenuButton = styled.button<{ $isWorksDetail?: boolean }>({
   display: "none",
   background: "none",
   border: "none",
@@ -180,11 +188,19 @@ export const CloseIcon = styled.span({
 export const MobileNav = styled.nav({
   display: "flex",
   flexDirection: "column",
-  padding: "20px 0",
-  gap: "16px",
-  alignItems: "center",
-  justifyContent: "center",
-  flex: 1,
+  gap: "30px",
+  textAlign: "center",
+  "& a": {
+    color: "#ffffff",
+    textDecoration: "none",
+    fontSize: "24px",
+    fontWeight: 500,
+    transition: "opacity 0.2s ease",
+    "&:hover": {
+      color: colors.primaryGreen,
+      opacity: 0.8,
+    },
+  },
 });
 
 export const MobileNavLink = styled.a({

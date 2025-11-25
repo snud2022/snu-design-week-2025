@@ -3,11 +3,12 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import {
-  CATEGORIES,
-  CATEGORY_TO_FILTER_INDEX,
-  FILTER_INDEX_TO_CATEGORY,
+  getCategoryByIndex,
+  getIndexByCategory,
   getCategoryGraphic,
-} from "../../constants/categories";
+} from "../../utils/categories";
+import { CATEGORIES } from "../../constants/categories";
+import type { Category } from "../../types/categories";
 import Arrow from "../../../../public/common/arrow_down.svg";
 import { Title } from "@snud2025/ui";
 import * as S from "./MobileFilter.style";
@@ -31,15 +32,12 @@ export default function MobileFilter({
   const selectedCategory =
     selectedFilterIndex === null
       ? "ALL"
-      : FILTER_INDEX_TO_CATEGORY[selectedFilterIndex] || "ALL";
+      : getCategoryByIndex(selectedFilterIndex) || "ALL";
 
   const graphic = getCategoryGraphic(selectedCategory);
 
   const handleCategoryClick = (category: string) => {
-    const index =
-      CATEGORY_TO_FILTER_INDEX[
-        category as keyof typeof CATEGORY_TO_FILTER_INDEX
-      ];
+    const index = getIndexByCategory(category as Category);
     onToggle(index);
     setIsOpen(false);
   };
@@ -69,7 +67,7 @@ export default function MobileFilter({
             {selectedCategory}
           </Title>
           <S.Chevron $isOpen={isOpen}>
-            <Arrow />
+            <Arrow width={36} height={36} />
           </S.Chevron>
         </S.SelectedCategoryButton>
         {isOpen && (
