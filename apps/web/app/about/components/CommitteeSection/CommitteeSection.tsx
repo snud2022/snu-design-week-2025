@@ -32,7 +32,7 @@ export default function CommitteeSection({
               </Body>
             </S.LeadershipRole>
             <S.LeadershipName>
-              <Body level="body2" weight="semibold">
+              <Body level="body2" weight="medium">
                 {item.name}
               </Body>
             </S.LeadershipName>
@@ -50,10 +50,10 @@ export default function CommitteeSection({
               </Body>
             </S.TeamName>
             <S.TeamInfo>
-              <Body level="body2" weight="semibold">
+              <Body level="body2" weight="medium">
                 팀장 | {team.leader}
               </Body>
-              <Body level="body2" weight="semibold">
+              <Body level="body2" weight="medium">
                 팀원 | {team.members.join(" ")}
               </Body>
             </S.TeamInfo>

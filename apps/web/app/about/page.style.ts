@@ -36,7 +36,7 @@ export const PosterContainer = styled.div({
   "& img": {
     width: "100%",
     height: "auto",
-    boxShadow: "-1px 1px 20px 0 rgba(0, 0, 0, 0.25)",
+    boxShadow: "2px 2px 12px 0 rgba(0, 0, 0, 0.25)",
   },
   [mq.tablet]: {
     position: "relative",

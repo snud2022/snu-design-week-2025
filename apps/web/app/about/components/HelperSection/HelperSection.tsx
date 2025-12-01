@@ -31,7 +31,7 @@ export default function HelperSection({ data }: HelperSectionProps) {
             )}
           </S.CategoryLabel>
           <S.CategoryContent>
-            <Body level="body2" weight="semibold">
+            <Body level="body2" weight="medium">
               {category.items.join(", ")}
             </Body>
           </S.CategoryContent>
