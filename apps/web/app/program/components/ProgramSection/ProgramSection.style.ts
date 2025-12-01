@@ -54,6 +54,7 @@ export const ProgramsGrid = styled.div({
   width: "100%",
   marginTop: "60px",
   justifyItems: "center",
+  justifyContent: "center",
   [mq.tablet]: {
     gridTemplateColumns: "1fr",
   },
