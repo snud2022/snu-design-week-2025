@@ -11,7 +11,7 @@ export const StyledHeader = styled.header<{ $isWorksDetail?: boolean }>(
     zIndex: 100,
     boxSizing: "border-box",
     alignItems: "center",
-    backgroundColor: "transparent",
+    backgroundColor: "#E5E5E5",
     ...(props.$isWorksDetail && {
       background:
         "linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, transparent 100%)",
@@ -23,7 +23,6 @@ export const HeaderContent = styled.div({
   width: "100%",
   margin: "0 auto",
   padding: "40px",
-
   boxSizing: "border-box",
   display: "flex",
   flexDirection: "row",
@@ -104,12 +103,20 @@ export const HamburgerLine = styled.div<{ $isWorksDetail?: boolean }>(
   (props) => ({
     width: "20px",
     height: "2px",
-    backgroundColor: props.$isWorksDetail ? "white" : colors.blackDefault,
+    backgroundColor: props.$isWorksDetail ? "#E5E5E5" : colors.blackDefault,
     transition: "all 0.3s ease",
   })
 );
 
-export const MobileMenuButton = styled.button<{ $isWorksDetail?: boolean }>({
+// 모바일 메뉴용 HamburgerLine (항상 검은색)
+export const MobileHamburgerLine = styled.div({
+  width: "20px",
+  height: "2px",
+  backgroundColor: colors.blackDefault,
+  transition: "all 0.3s ease",
+});
+
+export const MobileMenuButton = styled.button({
   display: "none",
   background: "none",
   border: "none",
@@ -124,13 +131,13 @@ export const MobileMenuButton = styled.button<{ $isWorksDetail?: boolean }>({
 });
 
 export const ActiveMobileMenuButton = styled(MobileMenuButton)({
-  [`& > ${HamburgerLine}:nth-of-type(1)`]: {
+  [`& > ${MobileHamburgerLine}:nth-of-type(1)`]: {
     transform: "rotate(45deg) translate(5px, 5px)",
   },
-  [`& > ${HamburgerLine}:nth-of-type(2)`]: {
+  [`& > ${MobileHamburgerLine}:nth-of-type(2)`]: {
     opacity: 0,
   },
-  [`& > ${HamburgerLine}:nth-of-type(3)`]: {
+  [`& > ${MobileHamburgerLine}:nth-of-type(3)`]: {
     transform: "rotate(-45deg) translate(7px, -6px)",
   },
 });
@@ -140,7 +147,7 @@ export const MobileMenu = styled.div({
   top: 0,
   left: 0,
   width: "100%",
-  backgroundColor: "white",
+  backgroundColor: "#E5E5E5",
   zIndex: 200,
   display: "flex",
   flexDirection: "column",
