@@ -147,7 +147,7 @@ const PhysicsScene = ({
         width: canvasWidth,
         height: canvasHeight,
         wireframes: false,
-        background: "#ffffff",
+        background: "#E5E5E5",
       },
     });
     Render.run(render);
