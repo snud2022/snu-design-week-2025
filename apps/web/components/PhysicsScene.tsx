@@ -147,7 +147,7 @@ const PhysicsScene = ({
         width: canvasWidth,
         height: canvasHeight,
         wireframes: false,
-        background: "#ffffff",
+        background: "#E5E5E5",
       },
     });
     Render.run(render);
@@ -236,7 +236,7 @@ const PhysicsScene = ({
       ref={sceneRef}
       suppressHydrationWarning
       style={{
-        marginTop: `-${headerHeight / 2}px`,
+        marginTop: `-${headerHeight / 4}px`,
         position: "relative",
         zIndex: 1,
         display: "flex",
