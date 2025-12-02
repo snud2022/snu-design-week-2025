@@ -18,9 +18,9 @@ export default function ProgramCard({ program }: ProgramCardProps) {
           edges={{ top: true, right: true, bottom: true, left: true }}
         >
           <S.CardHeader>
-            <Subtitle language="en">{program.date.split(" ")[0]}</Subtitle>
+            <Subtitle language="en">{program.month}</Subtitle>
             <Title level="title1" language="kr">
-              {program.date.split(" ")[1]}
+              {program.day}
             </Title>
           </S.CardHeader>
         </RopeFrame>

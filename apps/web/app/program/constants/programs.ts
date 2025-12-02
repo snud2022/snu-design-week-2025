@@ -8,7 +8,8 @@ export const PROGRAM_INTRO = {
 export const PROGRAMS: ProgramEvent[] = [
   {
     imageUrl: "/program/image.jpg",
-    date: "Dec 05",
+    month: "Dec",
+    day: "05",
     time: "18:00 - 21:00",
     title: {
       kr: "하이데이",
@@ -19,7 +20,8 @@ export const PROGRAMS: ProgramEvent[] = [
     },
   },
   {
-    date: "Dec 05",
+    month: "Dec",
+    day: "05",
     time: "15:00 - 19:30",
     title: {
       kr: "토크 콘서트: MOVING DESIGN VD TALK",
@@ -38,7 +40,8 @@ export const PROGRAMS: ProgramEvent[] = [
     },
   },
   {
-    date: "Dec 06",
+    month: "Dec",
+    day: "06",
     time: "14:00 - 17:00",
     title: {
       kr: "토크 콘서트: MOVING DESIGN ID TALK",
