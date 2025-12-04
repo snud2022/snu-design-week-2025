@@ -3,3 +3,5 @@ export * from "./colors";
 export * from "./typo";
 export * from "./constants";
 export * from "./animation";
+export * from "./notion";
+export * from "./utils";

@@ -14,11 +14,16 @@
     "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.13.5",
     "@emotion/styled": "^11.13.5",
+    "@notionhq/client": "^2.2.15",
+    "@snud2025/api": "workspace:*",
     "@snud2025/ui": "workspace:*",
     "lottie-react": "^2.4.1",
     "matter-js": "^0.20.0",
     "next": "^15.5.0",
+    "notion-client": "^7.7.1",
+    "notion-types": "^7.7.1",
     "poly-decomp": "^0.3.0",
+    "react-notion-x": "^7.7.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
@@ -30,6 +35,7 @@
     "@types/node": "^22.15.3",
     "@types/react": "19.1.0",
     "@types/react-dom": "19.1.1",
+    "dotenv": "^16.4.5",
     "eslint": "^9.34.0",
     "typescript": "5.9.2"
   }

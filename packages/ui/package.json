@@ -17,19 +17,22 @@
     "@types/node": "^22.15.3",
     "@types/react": "19.1.0",
     "@types/react-dom": "19.1.1",
-    "eslint": "^9.34.0",
-    "typescript": "5.9.2",
     "clsx": "^2.1.1",
-    "tailwind-merge": "^2.5.4",
+    "eslint": "^9.34.0",
+    "lottie-react": "^2.4.1",
     "next": "^15.0.0",
-    "lottie-react": "^2.4.1"
+    "tailwind-merge": "^2.5.4",
+    "typescript": "5.9.2"
   },
   "peerDependencies": {
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
     "@emotion/react": "^11.13.5",
     "@emotion/styled": "^11.13.5",
+    "lottie-react": "^2.4.1",
     "next": "^15.0.0",
-    "lottie-react": "^2.4.1"
+    "notion-client": "^7.7.1",
+    "notion-types": "^7.7.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-notion-x": "^7.7.1"
   }
 }
