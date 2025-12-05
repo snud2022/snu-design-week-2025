@@ -1,8 +1,10 @@
 import { Body, Subtitle, Title } from "@snud2025/ui";
+import Link from "next/link";
 import MailIcon from "../../../../public/common/mail.svg";
 import InstagramIcon from "../../../../public/common/instagram.svg";
 import * as S from "./WorksDetailHeader.style";
 import type { ProjectDetail } from "../../types/projects";
+import { getInstagramUrl } from "../../../../utils/getInstagramUrl";
 
 interface WorksDetailHeaderProps {
   project: ProjectDetail;
@@ -39,34 +41,36 @@ export default function WorksDetailHeader({ project }: WorksDetailHeaderProps) {
           </Body>
         </S.NameRow>
         <S.ContactInfo>
-          <S.ContactItem>
-            <MailIcon width={24} height={24} />
-            <Body level="body1" weight="medium" className="not-mobile">
-              {project.email}
-            </Body>
-            <Body level="body2" weight="medium" className="mobile">
-              {project.email}
-            </Body>
-          </S.ContactItem>
-          <S.ContactItem>
-            <InstagramIcon width={24} height={24} />
-            <Body level="body1" weight="medium" className="not-mobile">
-              {project.instagram}
-            </Body>
-            <Body level="body2" weight="medium" className="mobile">
-              {project.instagram}
-            </Body>
-          </S.ContactItem>
+          {project.email && (
+            <S.ContactItem>
+              <MailIcon width={24} height={24} />
+              <Body level="body1" weight="medium" className="not-mobile info">
+                {project.email}
+              </Body>
+              <Body level="body2" weight="medium" className="mobile info">
+                {project.email}
+              </Body>
+            </S.ContactItem>
+          )}
+          {project.instagram && (
+            <Link
+              href={getInstagramUrl(project.instagram)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <S.ContactItem style={{ cursor: "pointer" }}>
+                <InstagramIcon width={24} height={24} />
+                <Body level="body1" weight="medium" className="not-mobile info">
+                  {project.instagram}
+                </Body>
+                <Body level="body2" weight="medium" className="mobile info">
+                  {project.instagram}
+                </Body>
+              </S.ContactItem>
+            </Link>
+          )}
         </S.ContactInfo>
       </S.LeftColumn>
-      <S.RightColumn>
-        <Body level="body2" weight="medium">
-          {project.descriptionKo}
-        </Body>
-        <Body level="body2" weight="medium">
-          {project.descriptionEn}
-        </Body>
-      </S.RightColumn>
     </S.Container>
   );
 }

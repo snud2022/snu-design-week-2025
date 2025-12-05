@@ -2,25 +2,29 @@ import { Body, Subtitle, Title, colors } from "@snud2025/ui";
 import Link from "next/link";
 import RopeLine from "../../../../components/RopeLine/RopeLine";
 import ProjectCard from "../ProjectCard/ProjectCard";
-import { studentProjects } from "../../mocks/projects";
 import * as S from "./StudentCard.style";
 import type { ProjectDetail } from "../../types/projects";
 import MailIcon from "../../../../public/common/mail.svg";
 import InstagramIcon from "../../../../public/common/instagram.svg";
 import ArrowIcon from "../../../../public/common/arrow_back.svg";
+import { getInstagramUrl } from "../../../../utils/getInstagramUrl";
 
 interface StudentCardProps {
   project: ProjectDetail;
+  allProjects?: ProjectDetail[];
 }
 
-export default function StudentCard({ project }: StudentCardProps) {
-  // 현재 프로젝트가 아닌, 현재 프로젝트와 학생 이름이 같은 studentProject 찾기
-  const currentStudentProject = studentProjects.find(
+export default function StudentCard({
+  project,
+  allProjects = [],
+}: StudentCardProps) {
+  // 현재 프로젝트가 아닌, 현재 프로젝트와 학생 이름이 같은 프로젝트 찾기
+  const otherProjects = allProjects.filter(
     (sp) => sp.id !== project.id && sp.studentNameKo === project.studentNameKo
   );
 
-  // 표시할 프로젝트: 프로젝트가 있으면 그것을, 없으면 표시 X
-  const displayProject = currentStudentProject ? currentStudentProject : null;
+  // 표시할 프로젝트: 프로젝트가 없으면 null
+  const displayProject = otherProjects.length > 0 ? otherProjects[0] : null;
 
   return (
     <S.Container>
@@ -36,18 +40,28 @@ export default function StudentCard({ project }: StudentCardProps) {
           <Subtitle language="en">{project.studentNameEn}</Subtitle>
         </S.MainInfo>
         <S.ContactInfo>
-          <S.ContactItem>
-            <MailIcon width={20} height={20} />
-            <Body level="body2" weight="medium">
-              {project.email}
-            </Body>
-          </S.ContactItem>
-          <S.ContactItem>
-            <InstagramIcon width={20} height={20} />
-            <Body level="body2" weight="medium">
-              {project.instagram}
-            </Body>
-          </S.ContactItem>
+          {project.email && (
+            <S.ContactItem>
+              <MailIcon width={20} height={20} />
+              <Body level="body2" weight="medium">
+                {project.email}
+              </Body>
+            </S.ContactItem>
+          )}
+          {project.instagram && (
+            <Link
+              href={getInstagramUrl(project.instagram)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <S.ContactItem style={{ cursor: "pointer" }}>
+                <InstagramIcon width={20} height={20} />
+                <Body level="body2" weight="medium">
+                  {project.instagram}
+                </Body>
+              </S.ContactItem>
+            </Link>
+          )}
         </S.ContactInfo>
         {!project.isIntegratedProject && displayProject && (
           <Link href={`/works/${displayProject.id}`}>

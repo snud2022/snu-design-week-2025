@@ -1,10 +1,10 @@
-import { peopleGraphicConfigs } from "../../../constants/peopleGraphic";
+import { peopleGraphicConfigs } from "../constants/peopleGraphic";
 import { CATEGORY_CONFIGS } from "../constants/categories";
 import type {
   BaseCategory,
   Category,
   CategoryGraphic,
-} from "../../../types/categories";
+} from "../types/categories";
 
 // 인덱스로 카테고리 찾기
 export const getCategoryByIndex = (index: number): BaseCategory | undefined => {
@@ -46,4 +46,29 @@ export const getCategoryGraphic = (category: Category): CategoryGraphic => {
     width: config.width,
     height: config.height,
   };
+};
+
+/**
+ * Notion에서 가져온 클래스 이름을 인덱스로 변환
+ */
+export const getIndexFromClassName = (className: string): number => {
+  // Notion의 수업 이름 형식으로 매핑 (하이픈 포함)
+  const classToIndexMap: Record<string, number> = {
+    "product-interaction-design": 5, // PRODUCT INTERACTION
+    "brand-design": 0, // BRAND
+    "graphic-design": 1, // GRAPHIC
+    "media-design": 2, // MEDIA
+    "ux-ui-design": 3, // UI/UX
+    "living-design": 4, // LIVING
+    "space-design": 6, // SPACE
+    "mobility-design": 7, // MOBILITY
+  };
+
+  const lowerClassName = className.toLowerCase();
+
+  if (classToIndexMap[lowerClassName] !== undefined) {
+    return classToIndexMap[lowerClassName];
+  }
+
+  return 0; // 기본값
 };
