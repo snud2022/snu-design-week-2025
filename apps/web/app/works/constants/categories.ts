@@ -1,4 +1,4 @@
-import type { Category, CategoryInfo } from "../types/categories";
+import type { Category, CategoryInfo } from "../../../types/categories";
 
 // 모든 정보를 담은 마스터 설정
 export const CATEGORY_CONFIGS = [
