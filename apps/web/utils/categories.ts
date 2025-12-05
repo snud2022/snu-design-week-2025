@@ -62,6 +62,7 @@ export const getIndexFromClassName = (className: string): number => {
     "living-design": 4, // LIVING
     "space-design": 6, // SPACE
     "mobility-design": 7, // MOBILITY
+    "mobile-design": 7, // MOBILITY
   };
 
   const lowerClassName = className.toLowerCase();
