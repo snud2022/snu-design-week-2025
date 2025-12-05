@@ -1,4 +1,3 @@
-import React from "react";
 import { CATEGORY_CONFIGS } from "../constants/categories";
 
 // 카테고리 기본 타입

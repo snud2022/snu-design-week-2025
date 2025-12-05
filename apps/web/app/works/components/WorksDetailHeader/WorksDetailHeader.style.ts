@@ -1,3 +1,4 @@
+"use client";
 import styled from "@emotion/styled";
 import { mq } from "@snud2025/ui";
 
@@ -42,16 +43,6 @@ export const LeftColumn = styled.div`
   }
 `;
 
-export const RightColumn = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
-
-  ${mq.mobile} {
-    gap: 24px;
-  }
-`;
-
 export const NameRow = styled.div`
   display: flex;
   flex-direction: row;
@@ -74,4 +65,8 @@ export const ContactItem = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
+
+  .info {
+    opacity: 0.6;
+  }
 `;
