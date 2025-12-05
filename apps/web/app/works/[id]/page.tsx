@@ -8,13 +8,12 @@ import {
   ProjectPagination,
   WorksDetailHeader,
 } from "../components";
-import { getWorkRecordMap } from "../../../services/works";
+import { getWorkRecordMap, getWorks } from "../../../services/works";
 import {
   transformProjectDetail,
   transformWorks,
 } from "../utils/transformWorks";
 import { extractCoverUrl } from "../../../utils/notionExtract";
-import { getWorks } from "../../../services/works";
 import * as S from "./page.style";
 
 interface ProjectDetailPageProps {
@@ -28,20 +27,23 @@ export default async function ProjectDetailPage({
 }: ProjectDetailPageProps) {
   const { id } = await params;
 
-  // 모든 작품 목록 가져오기 (메타데이터 및 페이지네이션용)
-  const allNotionWorks = await getWorks();
-  const allProjects = transformWorks(allNotionWorks);
-  const allProjectIds = allProjects.map((p) => p.id);
+  // 병렬로 데이터 가져오기
+  const [allNotionWorks, recordMap] = await Promise.all([
+    getWorks(), // 페이지네이션을 위해 전체 목록 필요
+    getWorkRecordMap(id).catch(() => null), // 상세 내용
+  ]);
 
   // 현재 작품 찾기
   const notionWork = allNotionWorks.find((work) => work.id === id);
 
+  // 현재 작품이 없으면 404
   if (!notionWork) {
     notFound();
   }
 
-  // rrecordMap 가져오기
-  const recordMap = await getWorkRecordMap(id).catch(() => null);
+  // 페이지네이션용 데이터 변환
+  const allProjects = transformWorks(allNotionWorks);
+  const allProjectIds = allProjects.map((p) => p.id);
 
   // ProjectDetail로 변환
   const project = transformProjectDetail(notionWork);
