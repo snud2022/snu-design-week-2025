@@ -9,7 +9,7 @@ import {
 } from "../../../../utils/categories";
 import { CATEGORIES } from "../../../../constants/categories";
 import type { Category } from "../../../../types/categories";
-import Arrow from "../../../../public/common/arrow_down.svg";
+import Arrow from "../../../../assets/icons/arrow_down.svg";
 import { Title } from "@snud2025/ui";
 import * as S from "./MobileFilter.style";
 

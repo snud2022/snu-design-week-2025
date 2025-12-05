@@ -1,7 +1,7 @@
 import { Body, Subtitle, Title } from "@snud2025/ui";
 import Link from "next/link";
-import MailIcon from "../../../../public/common/mail.svg";
-import InstagramIcon from "../../../../public/common/instagram.svg";
+import MailIcon from "../../../../assets/icons/mail.svg";
+import InstagramIcon from "../../../../assets/icons/instagram.svg";
 import * as S from "./WorksDetailHeader.style";
 import type { ProjectDetail } from "../../types/projects";
 import { getInstagramUrl } from "../../../../utils/getInstagramUrl";

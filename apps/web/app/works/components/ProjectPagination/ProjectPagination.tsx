@@ -4,7 +4,7 @@ import { Subtitle, Title } from "@snud2025/ui";
 import * as S from "./ProjectPagination.style";
 import ProjectCard from "../ProjectCard/ProjectCard";
 import type { ProjectDetail } from "../../types/projects";
-import ArrowBack from "../../../../public/common/arrow_back.svg";
+import ArrowBack from "../../../../assets/icons/arrow_back.svg";
 
 interface ProjectPaginationProps {
   currentProjectId: string;
