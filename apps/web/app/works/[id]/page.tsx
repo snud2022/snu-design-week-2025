@@ -52,7 +52,7 @@ export default async function ProjectDetailPage({
   const thumbnailUrl = extractCoverUrl(notionWork);
 
   return (
-    <S.Wrapper>
+    <S.Wrapper data-page="works-detail">
       <S.DesktopVisible>
         <GoBackButton />
       </S.DesktopVisible>

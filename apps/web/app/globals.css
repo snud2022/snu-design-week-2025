@@ -20,6 +20,11 @@ body {
     sans-serif;
 }
 
+/* works detail 페이지에서만 배경색을 검은색으로 */
+body:has([data-page="works-detail"]) {
+  background-color: #000000;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
