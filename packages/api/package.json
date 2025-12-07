@@ -9,15 +9,15 @@
     "build": "turbo run build"
   },
   "peerDependencies": {
-    "@notionhq/client": "^2.2.15",
-    "notion-client": "^7.7.1",
-    "notion-types": "^7.7.1"
+    "@notionhq/client": "catalog:",
+    "notion-client": "catalog:",
+    "notion-types": "catalog:"
   },
   "devDependencies": {
     "@snud2025/eslint-config": "workspace:*",
     "@snud2025/typescript-config": "workspace:*",
-    "@types/node": "^22.15.3",
-    "eslint": "^9.34.0",
-    "typescript": "5.9.2"
+    "@types/node": "catalog:",
+    "eslint": "catalog:",
+    "typescript": "catalog:"
   }
 }

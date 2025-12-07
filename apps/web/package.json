@@ -12,31 +12,31 @@
   },
   "dependencies": {
     "@emotion/cache": "^11.14.0",
-    "@emotion/react": "^11.13.5",
-    "@emotion/styled": "^11.13.5",
-    "@notionhq/client": "^2.2.15",
+    "@emotion/react": "catalog:",
+    "@emotion/styled": "catalog:",
+    "@notionhq/client": "catalog:",
     "@snud2025/api": "workspace:*",
     "@snud2025/ui": "workspace:*",
-    "lottie-react": "^2.4.1",
+    "lottie-react": "catalog:",
     "matter-js": "^0.20.0",
     "next": "catalog:",
-    "notion-client": "^7.7.1",
-    "notion-types": "^7.7.1",
+    "notion-client": "catalog:",
+    "notion-types": "catalog:",
     "poly-decomp": "^0.3.0",
-    "react-notion-x": "^7.7.1",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-notion-x": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:"
   },
   "devDependencies": {
     "@snud2025/eslint-config": "workspace:*",
     "@snud2025/typescript-config": "workspace:*",
     "@svgr/webpack": "^8.1.0",
     "@types/matter-js": "^0.20.2",
-    "@types/node": "^22.15.3",
-    "@types/react": "19.1.0",
-    "@types/react-dom": "19.1.1",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
     "dotenv": "^16.4.5",
-    "eslint": "^9.34.0",
-    "typescript": "5.9.2"
+    "eslint": "catalog:",
+    "typescript": "catalog:"
   }
 }

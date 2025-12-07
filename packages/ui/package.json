@@ -14,25 +14,25 @@
   "devDependencies": {
     "@snud2025/eslint-config": "workspace:*",
     "@snud2025/typescript-config": "workspace:*",
-    "@types/node": "^22.15.3",
-    "@types/react": "19.1.0",
-    "@types/react-dom": "19.1.1",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
     "clsx": "^2.1.1",
-    "eslint": "^9.34.0",
-    "lottie-react": "^2.4.1",
-    "next": "^15.0.0",
+    "eslint": "catalog:",
+    "lottie-react": "catalog:",
+    "next": "catalog:",
     "tailwind-merge": "^2.5.4",
-    "typescript": "5.9.2"
+    "typescript": "catalog:"
   },
   "peerDependencies": {
-    "@emotion/react": "^11.13.5",
-    "@emotion/styled": "^11.13.5",
-    "lottie-react": "^2.4.1",
+    "@emotion/react": "catalog:",
+    "@emotion/styled": "catalog:",
+    "lottie-react": "catalog:",
     "next": "catalog:",
-    "notion-client": "^7.7.1",
-    "notion-types": "^7.7.1",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-notion-x": "^7.7.1"
+    "notion-client": "catalog:",
+    "notion-types": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-notion-x": "catalog:"
   }
 }
