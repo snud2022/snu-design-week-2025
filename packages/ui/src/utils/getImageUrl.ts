@@ -1,6 +1,8 @@
 /**
  * Notion Image url을 웹 게시 링크로 변환
  */
+const NOTION_SITE_DOMAIN = process.env.NOTION_SITE_DOMAIN;
+
 export function getImageUrl(imageUrl: string, pageId: string): string {
-  return `https://hhhyejaaa.notion.site/image/${encodeURIComponent(imageUrl)}?table=block&id=${pageId}&cache=v2`;
+  return `https://${NOTION_SITE_DOMAIN}/image/${encodeURIComponent(imageUrl)}?table=block&id=${pageId}&cache=v2`;
 }
