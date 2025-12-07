@@ -1,17 +1,20 @@
 "use client";
 
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useMemo, useState } from "react";
 import RopeFrame from "../../../../components/RopeFrame/RopeFrame";
 import { Subtitle } from "@snud2025/ui";
 import { formatNameEn } from "../../utils/formatNameEn";
 import PhysicsCell from "../PhysicsCell/PhysicsCell";
 import * as S from "./RopePeopleGrid.style";
 import { peopleGraphicConfigs } from "../../../../constants/peopleGraphic";
+import type { PeopleGraphicConfig } from "../../../../constants/peopleGraphic";
+import type { PersonClass } from "../../types/people";
 
 interface RopeGridProps {
   className?: string;
   nameKo: string;
   nameEn: string;
+  classes?: PersonClass[];
 }
 
 /**
@@ -22,6 +25,7 @@ export default function RopePeopleGrid({
   className,
   nameKo,
   nameEn,
+  classes,
 }: RopeGridProps) {
   const [cell, setCell] = useState(0); // 셀 한 변 크기(px)
   const ref = useRef<HTMLDivElement>(null);
@@ -32,11 +36,27 @@ export default function RopePeopleGrid({
   const totalCells = rows * cols; // 총 4개 셀
   const emptyCellsCount = totalCells - 1; // 첫 번째 셀 제외한 빈 셀 개수
 
-  // 전체 파츠에서 랜덤으로 2개 선택
-  const poolForPhysics = React.useMemo(() => {
-    const shuffled = [...peopleGraphicConfigs].sort(() => Math.random() - 0.5);
-    return shuffled.slice(0, 2);
-  }, []);
+  // index를 PeopleGraphicConfig[]로 변환하고 workId 매핑
+  const { poolForPhysics, workIds } = useMemo<{
+    poolForPhysics: PeopleGraphicConfig[];
+    workIds: string[];
+  }>(() => {
+    if (!classes || classes.length === 0) {
+      return { poolForPhysics: [], workIds: [] };
+    }
+
+    const pool: PeopleGraphicConfig[] = [];
+    const ids: string[] = [];
+
+    classes.forEach(({ index, workId }) => {
+      if (peopleGraphicConfigs[index]) {
+        pool.push(peopleGraphicConfigs[index]);
+        ids.push(workId);
+      }
+    });
+
+    return { poolForPhysics: pool, workIds: ids };
+  }, [classes]);
 
   useLayoutEffect(() => {
     const el = ref.current;
@@ -71,6 +91,7 @@ export default function RopePeopleGrid({
         <PhysicsCell
           cellSize={cell * 2}
           pool={poolForPhysics}
+          workIds={workIds}
           onReady={() => setPhysicsReady(true)}
         />
         <S.GridContainer

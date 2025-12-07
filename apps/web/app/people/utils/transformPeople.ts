@@ -1,5 +1,5 @@
 import type { NotionPerson } from "../../../types/notion";
-import type { Person } from "../types/people";
+import type { Person, PersonClass } from "../types/people";
 import { extractText } from "../../../utils/notionExtract";
 
 /**
@@ -16,11 +16,16 @@ export function transformPerson(notionPerson: NotionPerson): Person {
         ? properties.type.select.name
         : "visual";
 
+    const classes: PersonClass[] = Array.isArray(properties.classes)
+      ? (properties.classes as PersonClass[])
+      : [];
+
     return {
       id: notionPerson.id,
       nameKo,
       nameEn,
       type,
+      classes,
     };
   } catch (error) {
     console.error("[transformPerson] 변환 실패:", error, {
@@ -32,6 +37,7 @@ export function transformPerson(notionPerson: NotionPerson): Person {
       nameKo: "",
       nameEn: "",
       type: "visual",
+      classes: [],
     };
   }
 }

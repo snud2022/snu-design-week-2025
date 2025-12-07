@@ -7,6 +7,7 @@ import HoverStone from "../../../../components/HoverStone/HoverStone";
 import Matter from "matter-js";
 import { createRoot, Root } from "react-dom/client";
 import { breakpoints } from "@snud2025/ui";
+import Link from "next/link";
 import * as S from "./PhysicsCell.style";
 
 export type SpriteInput = {
@@ -19,6 +20,7 @@ export type SpriteInput = {
 interface PhysicsCellProps {
   cellSize: number;
   pool: PeopleGraphicConfig[];
+  workIds?: string[];
   zIndex?: number;
   debugCanvas?: boolean;
   onReady?: () => void;
@@ -27,11 +29,15 @@ interface PhysicsCellProps {
 export default function PhysicsCell({
   cellSize,
   pool,
+  workIds = [],
   zIndex = 0,
   debugCanvas = false,
   onReady,
 }: PhysicsCellProps) {
   const domLayerRef = useRef<HTMLDivElement | null>(null);
+  // workIds를 ref로 저장하여 effect 내부에서 최신 값 사용
+  const workIdsRef = useRef(workIds);
+  workIdsRef.current = workIds;
 
   useEffect(() => {
     const domLayer = domLayerRef.current;
@@ -159,11 +165,22 @@ export default function PhysicsCell({
     // HoverStone들을 한 번에 렌더
     root.render(
       <S.MountContainer>
-        {pool.map((p, i) => (
-          <S.StoneWrapper key={i} data-stone={String(i)}>
-            <HoverStone asset={p} />
-          </S.StoneWrapper>
-        ))}
+        {pool.map((p, i) => {
+          const workId = workIdsRef.current[i];
+          const stoneContent = <HoverStone asset={p} />;
+
+          return (
+            <S.StoneWrapper key={i} data-stone={String(i)}>
+              {workId ? (
+                <Link href={`/works/${workId}`} style={{ display: "block" }}>
+                  {stoneContent}
+                </Link>
+              ) : (
+                stoneContent
+              )}
+            </S.StoneWrapper>
+          );
+        })}
       </S.MountContainer>
     );
 

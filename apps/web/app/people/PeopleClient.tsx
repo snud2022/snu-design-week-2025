@@ -33,7 +33,12 @@ export default function PeopleClient({ people }: PeopleClientProps) {
       </S.TabsContainer>
       <S.GridWrapper>
         {filteredPeople.map((p) => (
-          <RopePeopleGrid key={p.id} nameKo={p.nameKo} nameEn={p.nameEn} />
+          <RopePeopleGrid
+            key={p.id}
+            nameKo={p.nameKo}
+            nameEn={p.nameEn}
+            classes={p.classes}
+          />
         ))}
       </S.GridWrapper>
     </S.Wrapper>

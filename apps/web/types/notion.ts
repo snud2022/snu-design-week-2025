@@ -104,8 +104,10 @@ export type NotionPerson = {
       type: "select";
       select: { name: "visual" | "industrial" } | null;
     };
-    classes?: any;
-    works?: any;
+    classes?: Array<{
+      index: number;
+      workId: string;
+    }>;
     [key: string]: unknown;
   };
   url?: string;
