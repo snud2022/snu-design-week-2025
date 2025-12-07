@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@snud2025/ui": "workspace:*",
-    "next": "^15.5.0",
+    "next": "catalog:",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
