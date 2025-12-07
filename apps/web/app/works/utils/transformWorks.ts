@@ -1,4 +1,4 @@
-import type { NotionWork, NotionWorkWithBlocks } from "../../../types/notion";
+import type { NotionWork, NotionWorkWithBlocks } from "../../../services/works";
 import type { ProjectDetail } from "../types/projects";
 import {
   getCategoryByIndex,

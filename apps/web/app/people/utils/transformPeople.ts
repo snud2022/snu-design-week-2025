@@ -1,4 +1,4 @@
-import type { NotionPerson } from "../../../types/notion";
+import type { NotionPerson } from "../../../services/people";
 import type { Person, PersonClass } from "../types/people";
 import { extractText } from "../../../utils/notionExtract";
 

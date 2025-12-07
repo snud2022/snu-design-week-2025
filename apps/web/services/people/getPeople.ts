@@ -3,7 +3,7 @@ import { getNotionDatabase } from "../common";
 import { getWorks } from "../works";
 import { getIndexFromClassName } from "../../utils/categories";
 import { extractText } from "../../utils/notionExtract";
-import type { NotionPerson } from "../../types/notion";
+import type { NotionPerson } from "./types";
 
 /**
  * Works의 학생이름 문자열에 Person의 이름이 포함되어 있는지 문자열 포함 여부로 확인

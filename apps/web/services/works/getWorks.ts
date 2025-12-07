@@ -1,6 +1,6 @@
 import { worksClient, WORKS_DATABASE_ID } from "../instance";
 import { getNotionDatabase } from "../common";
-import type { NotionWork } from "../../types/notion";
+import type { NotionWork } from "./types";
 
 /**
  * Notion에서 Works 데이터를 가져오는 함수

@@ -1,5 +1,5 @@
 import { getImageUrl } from "@snud2025/ui";
-import type { NotionWork } from "../types/notion";
+import type { NotionWork } from "../services/works";
 
 /**
  * Notion의 properties에서 텍스트 추출 헬퍼
