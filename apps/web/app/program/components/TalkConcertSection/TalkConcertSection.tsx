@@ -29,12 +29,12 @@ export default function TalkConcertSection({ data }: TalkConcertSectionProps) {
                 </Title>
               </S.TitleSection>
               <S.InfoItem>
-                <Body level="body2" weight="semibold">
-                  일정 | {data.dateRange}
-                </Body>
-                <Body level="body2" weight="semibold">
-                  장소 | {data.location.kr}
-                </Body>
+                <Subtitle language="kr">
+                  일정|{data.dateRange}
+                </Subtitle>
+                <Subtitle language="kr">
+                  장소|{data.location.kr}
+                </Subtitle>
               </S.InfoItem>
             </S.InfoContainer>
           </RopeFrame>
@@ -46,30 +46,24 @@ export default function TalkConcertSection({ data }: TalkConcertSectionProps) {
             heightSizePixel={303}
             edges={{ top: true, right: false, bottom: false, left: false }}
           >
-            <S.InfoContainer>
+             <S.InfoContainer>
               <S.TitleSection>
-                <Body level="body2" weight="medium">
-                  {data.title}
-                </Body>
+                <Title level="title3">
+                  {data.title.split("\n").map((line, lineIndex) => (
+                    <span key={lineIndex}>
+                      {line}
+                      {lineIndex < data.title.split("\n").length - 1 && <br />}
+                    </span>
+                  ))}
+                </Title>
               </S.TitleSection>
               <S.InfoItem>
-                <Body level="body2" weight="semibold">
-                  일정
-                </Body>
-                <Subtitle language="en">{data.dateRange}</Subtitle>
-              </S.InfoItem>
-              <S.InfoItem>
-                <Body level="body2" weight="semibold">
-                  장소
-                </Body>
-                <Body level="body2" weight="medium">
-                  {data.location.kr}
-                </Body>
-                {data.location.en && (
-                  <Body level="body2" weight="medium">
-                    {data.location.en}
-                  </Body>
-                )}
+                <Subtitle language="kr">
+                  일정 | {data.dateRange}
+                </Subtitle>
+                <Subtitle language="kr">
+                  장소 | {data.location.kr}
+                </Subtitle>
               </S.InfoItem>
             </S.InfoContainer>
           </RopeFrame>
@@ -81,30 +75,24 @@ export default function TalkConcertSection({ data }: TalkConcertSectionProps) {
             heightSizePixel={303}
             edges={{ top: true, right: false, bottom: false, left: false }}
           >
-            <S.InfoContainer>
+             <S.InfoContainer>
               <S.TitleSection>
-                <Body level="body2" weight="medium">
-                  {data.title}
-                </Body>
+                <Title level="title3">
+                  {data.title.split("\n").map((line, lineIndex) => (
+                    <span key={lineIndex}>
+                      {line}
+                      {lineIndex < data.title.split("\n").length - 1 && <br />}
+                    </span>
+                  ))}
+                </Title>
               </S.TitleSection>
               <S.InfoItem>
-                <Body level="body2" weight="semibold">
-                  일정
-                </Body>
-                <Subtitle language="en">{data.dateRange}</Subtitle>
-              </S.InfoItem>
-              <S.InfoItem>
-                <Body level="body2" weight="semibold">
-                  장소
-                </Body>
-                <Body level="body2" weight="medium">
-                  {data.location.kr}
-                </Body>
-                {data.location.en && (
-                  <Body level="body2" weight="medium">
-                    {data.location.en}
-                  </Body>
-                )}
+                <Subtitle language="kr">
+                  일정 | {data.dateRange}
+                </Subtitle>
+                <Subtitle language="kr">
+                  장소 | {data.location.kr}
+                </Subtitle>
               </S.InfoItem>
             </S.InfoContainer>
           </RopeFrame>

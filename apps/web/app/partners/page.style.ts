@@ -10,7 +10,7 @@ export const Wrapper = styled.div({
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  gap: "40px",
+  gap: "60px",
   width: "100%",
   [mq.tablet]: {
     padding: "40px 20px",
@@ -25,7 +25,7 @@ export const Wrapper = styled.div({
 export const IntroSection = styled.div({
   display: "flex",
   flexDirection: "column",
-  gap: "20px",
+  gap: "40px",
   justifyContent: "center",
   alignItems: "center",
   padding: "24px",

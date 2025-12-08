@@ -33,7 +33,10 @@ export const ProgramCard = styled.div({
 export const CardHeader = styled.div({
   display: "flex",
   flexDirection: "column",
-  padding: "30px",
+  padding: "20px",
+  "& h1": {
+    fontSize: "44px",
+  },
 });
 
 export const CardContentWrapper = styled.div({
@@ -74,4 +77,7 @@ export const DescriptionSection = styled.div({
   flexDirection: "column",
   gap: "16px",
   lineHeight: "1.6",
+  "& p": {
+    fontWeight: "400",
+  },
 });

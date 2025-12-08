@@ -31,6 +31,7 @@ export const PosterContainer = styled.div({
   top: "0",
   alignSelf: "flex-start",
   flexShrink: "0",
+  width: "580px",
   height: "fit-content",
 
   "& img": {
@@ -43,19 +44,22 @@ export const PosterContainer = styled.div({
     alignSelf: "center",
     display: "flex",
     justifyContent: "center",
+    width: "100%",
+    maxWidth: "580px",
   },
   [mq.mobile]: {
     position: "relative",
     alignSelf: "center",
     display: "flex",
     justifyContent: "center",
+    width: "100%",
+    maxWidth: "100%",
 
     "& img": {
       width: "100%",
       height: "auto",
       objectFit: "contain",
       margin: "0 auto",
-      padding: "0 20px",
     },
   },
 });

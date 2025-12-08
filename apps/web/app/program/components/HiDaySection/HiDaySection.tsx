@@ -1,4 +1,4 @@
-import { Body, Title } from "@snud2025/ui";
+import { Body, Subtitle, Title } from "@snud2025/ui";
 import type { HiDaySection as HiDaySectionType } from "../../types/detailSection";
 import RopeFrame from "../../../../components/RopeFrame/RopeFrame";
 import * as S from "./HiDaySection.style";
@@ -25,15 +25,17 @@ export default function HiDaySection({ data }: HiDaySectionProps) {
                   )}
                   <Title level="title3">{data.title.kr}</Title>
                 </S.TitleSection>
-                <Body level="body2" weight="semibold">
-                  일정 | {data.date}
-                </Body>
-                <Body level="body2" weight="semibold">
-                  시간 | {data.time}
-                </Body>
-                <Body level="body2" weight="medium">
-                  장소 | {data.location.kr}
-                </Body>
+                <S.InfoDetailSection>
+                  <Subtitle language="kr">
+                    일정 | {data.date}
+                  </Subtitle>
+                  <Subtitle language="kr">
+                    시간 | {data.time}
+                  </Subtitle>
+                  <Subtitle language="kr">
+                   장소 | {data.location.kr}
+                  </Subtitle>
+                </S.InfoDetailSection>
               </S.InfoItem>
             </S.InfoContainer>
           </RopeFrame>
@@ -45,27 +47,25 @@ export default function HiDaySection({ data }: HiDaySectionProps) {
             heightSizePixel={200}
             edges={{ top: true, right: false, bottom: false, left: false }}
           >
-            <S.InfoContainer>
+             <S.InfoContainer>
               <S.InfoItem>
                 <S.TitleSection>
                   {data.subtitle && (
-                    <Body level="body2" weight="medium">
-                      {data.subtitle}
-                    </Body>
+                    <Title level="title3">{data.subtitle}</Title>
                   )}
-                  <Body level="body2" weight="medium">
-                    {data.title.kr}
-                  </Body>
+                  <Title level="title3">{data.title.kr}</Title>
                 </S.TitleSection>
-                <Body level="body2" weight="semibold">
-                  일정 | {data.date}
-                </Body>
-                <Body level="body2" weight="semibold">
-                  시간 | {data.time}
-                </Body>
-                <Body level="body2" weight="medium">
-                  장소 | {data.location.kr}
-                </Body>
+                <S.InfoDetailSection>
+                  <Subtitle language="kr">
+                    일정 | {data.date}
+                  </Subtitle>
+                  <Subtitle language="kr">
+                    시간 | {data.time}
+                  </Subtitle>
+                  <Subtitle language="kr">
+                   장소 | {data.location.kr}
+                  </Subtitle>
+                </S.InfoDetailSection>
               </S.InfoItem>
             </S.InfoContainer>
           </RopeFrame>
@@ -74,30 +74,28 @@ export default function HiDaySection({ data }: HiDaySectionProps) {
         <S.MobileRopeWrapper>
           <RopeFrame
             widthSizePixel={342}
-            heightSizePixel={200}
+            heightSizePixel={250}
             edges={{ top: true, right: false, bottom: false, left: false }}
           >
-            <S.InfoContainer>
+          <S.InfoContainer>
               <S.InfoItem>
                 <S.TitleSection>
                   {data.subtitle && (
-                    <Body level="body2" weight="medium">
-                      {data.subtitle}
-                    </Body>
+                    <Title level="title3">{data.subtitle}</Title>
                   )}
-                  <Body level="body2" weight="medium">
-                    {data.title.kr}
-                  </Body>
+                  <Title level="title3">{data.title.kr}</Title>
                 </S.TitleSection>
-                <Body level="body2" weight="semibold">
-                  일정 | {data.date}
-                </Body>
-                <Body level="body2" weight="semibold">
-                  시간 | {data.time}
-                </Body>
-                <Body level="body2" weight="medium">
-                  장소 | {data.location.kr}
-                </Body>
+                <S.InfoDetailSection>
+                  <Subtitle language="kr">
+                    일정 | {data.date}
+                  </Subtitle>
+                  <Subtitle language="kr">
+                    시간 | {data.time}
+                  </Subtitle>
+                  <Subtitle language="kr">
+                   장소 | {data.location.kr}
+                  </Subtitle>
+                </S.InfoDetailSection>
               </S.InfoItem>
             </S.InfoContainer>
           </RopeFrame>

@@ -68,7 +68,7 @@ export const RightColumn = styled.div({
   flex: 1,
   display: "flex",
   flexDirection: "column",
-  padding: "24px",
+  padding: "12px",
   [mq.tablet]: {
     width: "100%",
   },
@@ -81,16 +81,22 @@ export const InfoContainer = styled.div({
   display: "flex",
   flexDirection: "column",
   gap: "20px",
-  padding: "24px",
+  padding: "12px",
 });
 
 export const InfoItem = styled.div({
   display: "flex",
   flexDirection: "column",
-  gap: "8px",
+  gap: "24px",
 });
 
 export const TitleSection = styled.div({
+  display: "flex",
+  flexDirection: "column",
+  gap: "8px",
+});
+
+export const InfoDetailSection = styled.div({
   display: "flex",
   flexDirection: "column",
   gap: "8px",
