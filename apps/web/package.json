@@ -11,18 +11,18 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@emotion/cache": "^11.14.0",
+    "@emotion/cache": "catalog:",
     "@emotion/react": "catalog:",
     "@emotion/styled": "catalog:",
     "@notionhq/client": "catalog:",
     "@snud2025/api": "workspace:*",
     "@snud2025/ui": "workspace:*",
     "lottie-react": "catalog:",
-    "matter-js": "^0.20.0",
+    "matter-js": "catalog:",
     "next": "catalog:",
     "notion-client": "catalog:",
     "notion-types": "catalog:",
-    "poly-decomp": "^0.3.0",
+    "poly-decomp": "catalog:",
     "react-notion-x": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:"
@@ -30,12 +30,12 @@
   "devDependencies": {
     "@snud2025/eslint-config": "workspace:*",
     "@snud2025/typescript-config": "workspace:*",
-    "@svgr/webpack": "^8.1.0",
-    "@types/matter-js": "^0.20.2",
+    "@svgr/webpack": "catalog:",
+    "@types/matter-js": "catalog:",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "dotenv": "^16.4.5",
+    "dotenv": "catalog:",
     "eslint": "catalog:",
     "typescript": "catalog:"
   }

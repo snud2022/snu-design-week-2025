@@ -17,11 +17,11 @@
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "clsx": "^2.1.1",
+    "clsx": "catalog:",
     "eslint": "catalog:",
     "lottie-react": "catalog:",
     "next": "catalog:",
-    "tailwind-merge": "^2.5.4",
+    "tailwind-merge": "catalog:",
     "typescript": "catalog:"
   },
   "peerDependencies": {
