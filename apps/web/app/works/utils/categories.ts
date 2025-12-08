@@ -4,7 +4,7 @@ import type {
   BaseCategory,
   Category,
   CategoryGraphic,
-} from "../types/categories";
+} from "../../../types/categories";
 
 // 인덱스로 카테고리 찾기
 export const getCategoryByIndex = (index: number): BaseCategory | undefined => {

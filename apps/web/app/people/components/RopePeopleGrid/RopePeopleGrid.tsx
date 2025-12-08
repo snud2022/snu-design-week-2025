@@ -1,19 +1,20 @@
 "use client";
 
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useMemo, useState } from "react";
 import RopeFrame from "../../../../components/RopeFrame/RopeFrame";
 import { Subtitle } from "@snud2025/ui";
 import { formatNameEn } from "../../utils/formatNameEn";
 import PhysicsCell from "../PhysicsCell/PhysicsCell";
-import Link from "next/link";
 import * as S from "./RopePeopleGrid.style";
 import { peopleGraphicConfigs } from "../../../../constants/peopleGraphic";
+import type { PeopleGraphicConfig } from "../../../../constants/peopleGraphic";
+import type { PersonClass } from "../../types/people";
 
 interface RopeGridProps {
   className?: string;
   nameKo: string;
   nameEn: string;
-  href: string;
+  classes?: PersonClass[];
 }
 
 /**
@@ -24,7 +25,7 @@ export default function RopePeopleGrid({
   className,
   nameKo,
   nameEn,
-  href,
+  classes,
 }: RopeGridProps) {
   const [cell, setCell] = useState(0); // 셀 한 변 크기(px)
   const ref = useRef<HTMLDivElement>(null);
@@ -34,6 +35,28 @@ export default function RopePeopleGrid({
   const cols = 2;
   const totalCells = rows * cols; // 총 4개 셀
   const emptyCellsCount = totalCells - 1; // 첫 번째 셀 제외한 빈 셀 개수
+
+  // index를 PeopleGraphicConfig[]로 변환하고 workId 매핑
+  const { poolForPhysics, workIds } = useMemo<{
+    poolForPhysics: PeopleGraphicConfig[];
+    workIds: string[];
+  }>(() => {
+    if (!classes || classes.length === 0) {
+      return { poolForPhysics: [], workIds: [] };
+    }
+
+    const pool: PeopleGraphicConfig[] = [];
+    const ids: string[] = [];
+
+    classes.forEach(({ index, workId }) => {
+      if (peopleGraphicConfigs[index]) {
+        pool.push(peopleGraphicConfigs[index]);
+        ids.push(workId);
+      }
+    });
+
+    return { poolForPhysics: pool, workIds: ids };
+  }, [classes]);
 
   useLayoutEffect(() => {
     const el = ref.current;
@@ -63,41 +86,40 @@ export default function RopePeopleGrid({
   const ready = cell > 0 && physicsReady;
 
   return (
-    <Link href={href}>
-      <S.LinkContainer>
-        <S.MainContainer>
-          <PhysicsCell
-            cellSize={cell * 2}
-            pool={peopleGraphicConfigs}
-            onReady={() => setPhysicsReady(true)}
-          />
-          <S.GridContainer
-            ref={ref}
-            className={className}
-            cols={cols}
-            rows={rows}
-            ready={ready}
-          >
-            {/* 이름이 들어있는 프레임 */}
-            <RopeFrame widthSizePixel={cell} heightSizePixel={cell}>
-              <S.VeilBackground src="/Veil.svg" alt="veil" $cell={cell} />
-              <S.ContentContainer>
-                <Subtitle language="kr">{nameKo}</Subtitle>
-                <Subtitle language="en">{formatNameEn(nameEn)}</Subtitle>
-              </S.ContentContainer>
-            </RopeFrame>
+    <S.LinkContainer>
+      <S.MainContainer>
+        <PhysicsCell
+          cellSize={cell * 2}
+          pool={poolForPhysics}
+          workIds={workIds}
+          onReady={() => setPhysicsReady(true)}
+        />
+        <S.GridContainer
+          ref={ref}
+          className={className}
+          cols={cols}
+          rows={rows}
+          ready={ready}
+        >
+          {/* 이름이 들어있는 프레임 */}
+          <RopeFrame widthSizePixel={cell} heightSizePixel={cell}>
+            <S.VeilBackground src="/Veil.svg" alt="veil" $cell={cell} />
+            <S.ContentContainer>
+              <Subtitle language="kr">{nameKo}</Subtitle>
+              <Subtitle language="en">{formatNameEn(nameEn)}</Subtitle>
+            </S.ContentContainer>
+          </RopeFrame>
 
-            {/* 나머지 빈 셀들 */}
-            {Array.from({ length: emptyCellsCount }, (_, index) => (
-              <RopeFrame
-                key={index}
-                widthSizePixel={cell}
-                heightSizePixel={cell}
-              />
-            ))}
-          </S.GridContainer>
-        </S.MainContainer>
-      </S.LinkContainer>
-    </Link>
+          {/* 나머지 빈 셀들 */}
+          {Array.from({ length: emptyCellsCount }, (_, index) => (
+            <RopeFrame
+              key={index}
+              widthSizePixel={cell}
+              heightSizePixel={cell}
+            />
+          ))}
+        </S.GridContainer>
+      </S.MainContainer>
+    </S.LinkContainer>
   );
 }

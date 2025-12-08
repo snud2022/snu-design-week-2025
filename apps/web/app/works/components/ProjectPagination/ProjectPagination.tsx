@@ -3,12 +3,13 @@ import Link from "next/link";
 import { Subtitle, Title } from "@snud2025/ui";
 import * as S from "./ProjectPagination.style";
 import ProjectCard from "../ProjectCard/ProjectCard";
-import { studentProjects } from "../../mocks/projects";
-import ArrowBack from "../../../../public/common/arrow_back.svg";
+import type { ProjectDetail } from "../../types/projects";
+import ArrowBack from "../../../../assets/icons/arrow_back.svg";
 
 interface ProjectPaginationProps {
   currentProjectId: string;
   allProjectIds: string[];
+  allProjects: ProjectDetail[];
 }
 
 /**
@@ -17,6 +18,7 @@ interface ProjectPaginationProps {
 export default function ProjectPagination({
   currentProjectId,
   allProjectIds,
+  allProjects,
 }: ProjectPaginationProps) {
   // 현재 프로젝트의 인덱스 찾기
   const currentIndex = allProjectIds.indexOf(currentProjectId);
@@ -31,18 +33,18 @@ export default function ProjectPagination({
     : null;
   const nextProjectId = hasNext ? allProjectIds[currentIndex + 1] : null;
 
-  const previousStudentProject = previousProjectId
-    ? studentProjects.find((sp) => sp.id === previousProjectId)
+  const previousProject = previousProjectId
+    ? allProjects.find((p) => p.id === previousProjectId)
     : null;
-  const nextStudentProject = nextProjectId
-    ? studentProjects.find((sp) => sp.id === nextProjectId)
+  const nextProject = nextProjectId
+    ? allProjects.find((p) => p.id === nextProjectId)
     : null;
 
   return (
     <S.Container>
       {/* 이전 프로젝트 네비게이션 섹션 */}
       <S.NavSection $isLeft>
-        {hasPrevious && previousStudentProject && (
+        {hasPrevious && previousProject && (
           <>
             <Link href={`/works/${previousProjectId}`}>
               <S.NavButton $isLeft>
@@ -58,7 +60,7 @@ export default function ProjectPagination({
               </S.NavButton>
             </Link>
             <S.ProjectCardWrapper>
-              <ProjectCard project={previousStudentProject} />
+              <ProjectCard project={previousProject} />
             </S.ProjectCardWrapper>
           </>
         )}
@@ -66,7 +68,7 @@ export default function ProjectPagination({
 
       {/* 다음 프로젝트 네비게이션 섹션 */}
       <S.NavSection $isLeft={false}>
-        {hasNext && nextStudentProject && (
+        {hasNext && nextProject && (
           <>
             <Link href={`/works/${nextProjectId}`}>
               <S.NavButton $isLeft={false}>
@@ -82,7 +84,7 @@ export default function ProjectPagination({
               </S.NavButton>
             </Link>
             <S.ProjectCardWrapper>
-              <ProjectCard project={nextStudentProject} />
+              <ProjectCard project={nextProject} />
             </S.ProjectCardWrapper>
           </>
         )}

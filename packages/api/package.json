@@ -1,0 +1,23 @@
+{
+  "name": "@snud2025/api",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "turbo run build"
+  },
+  "peerDependencies": {
+    "@notionhq/client": "catalog:",
+    "notion-client": "catalog:",
+    "notion-types": "catalog:"
+  },
+  "devDependencies": {
+    "@snud2025/eslint-config": "workspace:*",
+    "@snud2025/typescript-config": "workspace:*",
+    "@types/node": "catalog:",
+    "eslint": "catalog:",
+    "typescript": "catalog:"
+  }
+}

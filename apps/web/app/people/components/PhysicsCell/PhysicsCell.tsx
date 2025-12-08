@@ -2,11 +2,12 @@
 
 import type { PeopleGraphicConfig } from "../../../../constants/peopleGraphic";
 import { PEOPLE_RESPONSIVE_SCALES } from "../../../../constants/peopleGraphic";
-import React, { useEffect, useMemo, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import HoverStone from "../../../../components/HoverStone/HoverStone";
 import Matter from "matter-js";
 import { createRoot, Root } from "react-dom/client";
 import { breakpoints } from "@snud2025/ui";
+import Link from "next/link";
 import * as S from "./PhysicsCell.style";
 
 export type SpriteInput = {
@@ -19,6 +20,7 @@ export type SpriteInput = {
 interface PhysicsCellProps {
   cellSize: number;
   pool: PeopleGraphicConfig[];
+  workIds?: string[];
   zIndex?: number;
   debugCanvas?: boolean;
   onReady?: () => void;
@@ -27,32 +29,19 @@ interface PhysicsCellProps {
 export default function PhysicsCell({
   cellSize,
   pool,
+  workIds = [],
   zIndex = 0,
   debugCanvas = false,
   onReady,
 }: PhysicsCellProps) {
   const domLayerRef = useRef<HTMLDivElement | null>(null);
-
-  // 후보에서 2개의 파츠 랜덤 선택
-  const picks = useMemo(() => {
-    if (!pool?.length) return [] as const;
-
-    // 배열에서 중복되지 않는 2개 요소를 랜덤하게 선택하는 헬퍼 함수
-    const pickTwo = <T,>(arr: T[]): [T, T] => {
-      if (arr.length < 2) throw new Error("need >= 2 items");
-      const a = Math.floor(Math.random() * arr.length);
-      let b = Math.floor(Math.random() * (arr.length - 1));
-      if (b >= a) b += 1; // 중복 방지
-      return [arr[a]!, arr[b]!] as [T, T];
-    };
-
-    const [c1, c2] = pickTwo(pool);
-    return [c1, c2] as const;
-  }, [pool]);
+  // workIds를 ref로 저장하여 effect 내부에서 최신 값 사용
+  const workIdsRef = useRef(workIds);
+  workIdsRef.current = workIds;
 
   useEffect(() => {
     const domLayer = domLayerRef.current;
-    if (!domLayer || !cellSize || picks.length === 0) return;
+    if (!domLayer || !cellSize || pool.length === 0) return;
 
     const { Engine, Composite, Bodies, Body } = Matter;
 
@@ -124,8 +113,8 @@ export default function PhysicsCell({
       return !(ax2 <= bx1 || ax1 >= bx2 || ay2 <= by1 || ay1 >= by2);
     };
 
-    for (let i = 0; i < picks.length; i++) {
-      const pick = picks[i];
+    for (let i = 0; i < pool.length; i++) {
+      const pick = pool[i];
       if (!pick) continue;
       const w = pick.width;
       const h = pick.height;
@@ -137,7 +126,7 @@ export default function PhysicsCell({
         x = Math.random() * (physicsCellSize - w) + w / 2;
         y = Math.random() * (physicsCellSize - h) + h / 2;
         ok = bodies.every((b, bi) => {
-          const pick = picks[bi];
+          const pick = pool[bi];
           if (!pick) return true;
           return !overlap(
             { x, y, w, h },
@@ -176,11 +165,22 @@ export default function PhysicsCell({
     // HoverStone들을 한 번에 렌더
     root.render(
       <S.MountContainer>
-        {picks.map((p, i) => (
-          <S.StoneWrapper key={i} data-stone={String(i)}>
-            <HoverStone asset={p} />
-          </S.StoneWrapper>
-        ))}
+        {pool.map((p, i) => {
+          const workId = workIdsRef.current[i];
+          const stoneContent = <HoverStone asset={p} />;
+
+          return (
+            <S.StoneWrapper key={i} data-stone={String(i)}>
+              {workId ? (
+                <Link href={`/works/${workId}`} style={{ display: "block" }}>
+                  {stoneContent}
+                </Link>
+              ) : (
+                stoneContent
+              )}
+            </S.StoneWrapper>
+          );
+        })}
       </S.MountContainer>
     );
 
@@ -196,7 +196,7 @@ export default function PhysicsCell({
       if (container) {
         for (let i = 0; i < bodies.length; i++) {
           const b = bodies[i];
-          const pick = picks[i];
+          const pick = pool[i];
           if (!b || !pick) continue;
 
           const w = pick.width;
@@ -233,7 +233,7 @@ export default function PhysicsCell({
         }
       });
     };
-  }, [cellSize, picks, debugCanvas, onReady]);
+  }, [cellSize, pool, debugCanvas, onReady]);
 
   return (
     <S.PhysicsContainer cellSize={cellSize} zIndex={zIndex}>
