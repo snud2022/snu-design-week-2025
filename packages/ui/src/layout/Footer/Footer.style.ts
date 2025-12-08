@@ -45,4 +45,16 @@ export const FooterImages = styled.div({
       transform: "scale(1.05)",
     },
   },
+
+  [mq.mobile]: {
+    display: "grid",
+    gridTemplateColumns: "repeat(4, 1fr)",
+    gap: "12px 16px",
+    justifyItems: "center",
+    "& a": {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+  },
 });
