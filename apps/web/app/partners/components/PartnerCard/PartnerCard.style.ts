@@ -65,4 +65,8 @@ export const CardDescription = styled.div({
   width: "100%",
   flex: 1,
   overflow: "auto",
+  "& p": {
+    fontWeight: "400",
+    fontSize: "18px",
+  },
 });

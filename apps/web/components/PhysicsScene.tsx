@@ -9,6 +9,7 @@ import {
 } from "../utils/matter-helpers";
 import {
   BREAKPOINTS,
+  calculateDynamicScale,
   getResponsiveConfigs,
   MOUSE_CONFIG,
   PHYSICS_CONFIG,
@@ -102,14 +103,19 @@ const PhysicsScene = ({
   const sceneRef = useRef<HTMLDivElement>(null);
   const [isClient, setIsClient] = useState(false);
   const [breakpointKey, setBreakpointKey] = useState(0); // 브레이크포인트 변경 시 재초기화를 위한 키
+  const [currentBreakpoint, setCurrentBreakpoint] =
+    useState<Breakpoint>("desktop");
 
   useEffect(() => {
     setIsClient(true);
+    // 초기 브레이크포인트 설정
+    setCurrentBreakpoint(getBreakpoint(window.innerWidth));
   }, []);
 
   // 브레이크포인트 변경 시 재초기화를 트리거하는 콜백
   const handleBreakpointChange = useCallback(() => {
     setBreakpointKey((prev) => prev + 1);
+    setCurrentBreakpoint(getBreakpoint(window.innerWidth));
   }, []);
 
   // 브레이크포인트 변경 감지
@@ -131,15 +137,17 @@ const PhysicsScene = ({
     engine.world.gravity.scale = PHYSICS_CONFIG.gravityScale;
 
     // 2. 캔버스 크기 계산
-    const {
-      width: canvasWidth,
-      height: canvasHeight,
-      scale,
-    } = getCanvasSize(headerHeight, footerHeight);
+    const { width: canvasWidth, height: canvasHeight } = getCanvasSize(
+      headerHeight,
+      footerHeight
+    );
     const centerX = canvasWidth / 2;
-    const centerY = canvasHeight / 2;
 
-    // 3. 렌더러 생성 및 시작
+    // 3. 현재 브레이크포인트에 따른 동적 스케일 계산
+    const breakpoint = getBreakpoint(window.innerWidth);
+    const scale = calculateDynamicScale(canvasWidth, canvasHeight, breakpoint);
+
+    // 4. 렌더러 생성 및 시작
     const render = Render.create({
       element: sceneRef.current,
       engine,
@@ -152,26 +160,29 @@ const PhysicsScene = ({
     });
     Render.run(render);
 
-    // 4. 러너 생성 및 시작
+    // 5. 러너 생성 및 시작
     const runner = Runner.create({
       isFixed: true,
       fps: PHYSICS_CONFIG.fps,
     });
     Runner.run(runner, engine);
 
-    // 5. 스프라이트 생성 및 배치
+    // 6. 스프라이트 생성 및 배치 (상단에서 시작)
     const responsiveConfigs = getResponsiveConfigs(scale);
+    // 스프라이트 중 가장 큰 높이의 절반을 상단 시작 위치로 사용
+    const maxHeight = Math.max(...responsiveConfigs.map((c) => c.height));
+    const startY = maxHeight / 2 + 20; // 상단에서 약간의 여유를 두고 시작
     const centeredConfigs = centerizeConfigs(
       responsiveConfigs,
       centerX,
-      centerY
+      startY
     );
     addSprites(centeredConfigs, world);
 
-    // 6. 경계 벽 생성
+    // 7. 경계 벽 생성
     createWalls(world, canvasWidth, canvasHeight);
 
-    // 7. 마우스 인터랙션 설정
+    // 8. 마우스 인터랙션 설정
     const mouse = Mouse.create(render.canvas);
     const mouseConstraint = MouseConstraint.create(engine, {
       mouse,
@@ -183,7 +194,7 @@ const PhysicsScene = ({
     const { Composite } = Matter;
     Composite.add(world, mouseConstraint);
 
-    // 8. 전역 마우스 이벤트 핸들러
+    // 9. 전역 마우스 이벤트 핸들러
     const handleMouseMove = (event: MouseEvent) => {
       if (mouseConstraint.body) {
         const rect = render.canvas.getBoundingClientRect();
@@ -201,7 +212,7 @@ const PhysicsScene = ({
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseUp);
 
-    // 9. 클린업
+    // 10. 클린업
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
@@ -231,6 +242,9 @@ const PhysicsScene = ({
     );
   }
 
+  // 모바일에서는 헤더가 위에 오도록 zIndex를 낮게 설정
+  const zIndex = currentBreakpoint === "mobile" ? 1 : 101;
+
   return (
     <div
       ref={sceneRef}
@@ -238,7 +252,7 @@ const PhysicsScene = ({
       style={{
         marginTop: `-${headerHeight / 4}px`,
         position: "relative",
-        zIndex: 1,
+        zIndex,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",

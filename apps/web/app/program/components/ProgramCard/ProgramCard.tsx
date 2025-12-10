@@ -19,7 +19,7 @@ export default function ProgramCard({ program }: ProgramCardProps) {
         >
           <S.CardHeader>
             <Subtitle language="en">{program.month}</Subtitle>
-            <Title level="title1" language="kr">
+            <Title level="title1" language="en" >
               {program.day}
             </Title>
           </S.CardHeader>
@@ -31,15 +31,16 @@ export default function ProgramCard({ program }: ProgramCardProps) {
         >
           <S.CardContentWrapper>
             <S.CardContent>
+              {program.imageUrl && (
+                    <Image
+                      src={program.imageUrl}
+                      alt={program.title.kr}
+                      width={286}
+                      height={170}
+                    />
+                  )}
               <S.TitleSection>
-                {program.imageUrl && (
-                  <Image
-                    src={program.imageUrl}
-                    alt={program.title.kr}
-                    width={286}
-                    height={170}
-                  />
-                )}
+                
                 <Subtitle language="en">{program.time}</Subtitle>
                 <Subtitle language="kr">{program.title.kr}</Subtitle>
               </S.TitleSection>

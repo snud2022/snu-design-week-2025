@@ -1,9 +1,7 @@
 import Matter from "matter-js";
 import {
-  BREAKPOINTS,
   MainGraphicConfig,
   PHYSICS_CONFIG,
-  RESPONSIVE_SCALES,
   getResponsiveConfigs,
 } from "../constants/mainGraphic";
 
@@ -14,7 +12,6 @@ const { Bodies, Composite, World } = Matter;
 export interface CanvasSize {
   width: number;
   height: number;
-  scale: number;
 }
 
 /**
@@ -123,23 +120,16 @@ export const addSprites = async (
  * 캔버스 크기 계산 함수
  * @param headerHeight - 헤더 높이
  * @param footerHeight - 푸터 높이
- * @returns 캔버스 크기 및 스케일 정보
+ * @returns 캔버스 크기 정보
  */
 export const getCanvasSize = (
   headerHeight: number,
   footerHeight: number
 ): CanvasSize => {
   const width = window.innerWidth;
-  const height = window.innerHeight - headerHeight / 2 - footerHeight;
+  const height = window.innerHeight - headerHeight / 2 - footerHeight - 36;
 
-  const scale =
-    width < BREAKPOINTS.tablet
-      ? RESPONSIVE_SCALES.mobile
-      : width < BREAKPOINTS.desktop
-        ? RESPONSIVE_SCALES.tablet
-        : RESPONSIVE_SCALES.desktop;
-
-  return { width, height, scale };
+  return { width, height };
 };
 
 /**

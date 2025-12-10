@@ -72,7 +72,7 @@ export const NavArea = styled.nav<{ $isWorksDetail?: boolean }>((props) => ({
   },
   [mq.desktop]: {
     width: "auto",
-    gap: "40px",
+    gap: "48px",
   },
 }));
 

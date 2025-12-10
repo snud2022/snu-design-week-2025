@@ -67,7 +67,7 @@ export const MobileRopeWrapper = styled.div({
 export const RightColumn = styled.div({
   flex: 1,
   display: "flex",
-  padding: "24px",
+  padding: "12px",
   flexDirection: "column",
   gap: "40px",
   [mq.tablet]: {
@@ -82,7 +82,7 @@ export const InfoContainer = styled.div({
   display: "flex",
   flexDirection: "column",
   gap: "24px",
-  padding: "24px",
+  padding: "12px",
 });
 
 export const InfoItem = styled.div({
@@ -99,7 +99,7 @@ export const TitleSection = styled.div({
 export const SessionsContainer = styled.div({
   display: "flex",
   flexDirection: "column",
-  gap: "32px",
+  gap: "40px",
 
   width: "100%",
   [mq.tablet]: {
