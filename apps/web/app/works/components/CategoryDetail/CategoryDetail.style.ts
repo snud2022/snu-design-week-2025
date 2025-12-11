@@ -9,7 +9,7 @@ export const DetailSection = styled.div`
 
   ${mq.mobile} {
     width: 100%;
-    max-width: 384px;
+    max-width: 342px;
   }
 `;
 

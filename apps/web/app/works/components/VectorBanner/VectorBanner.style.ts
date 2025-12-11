@@ -6,13 +6,13 @@ import { mq } from "@snud2025/ui";
 export const VectorBannerSection = styled.div`
   position: relative;
   width: 1200px;
-  height: 386px;
+  height: 396px;
   margin: 0 auto;
   overflow: visible;
 
   ${mq.tablet} {
     width: 540px;
-    height: 400px;
+    height: 410px;
   }
   ${mq.mobile} {
     display: none;

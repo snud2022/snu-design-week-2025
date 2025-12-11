@@ -3,21 +3,19 @@ import { colors } from "../../colors";
 import { mq } from "../../constants/breakpoints";
 import { fonts, fontSizes, fontWeights } from "../../typo/fonts";
 
-export const StyledHeader = styled.header<{ $isWorksDetail?: boolean }>(
-  (props) => ({
-    width: "100%",
-    position: "sticky",
-    top: 0,
-    zIndex: 100,
-    boxSizing: "border-box",
-    alignItems: "center",
-    backgroundColor: "#E5E5E5",
-    ...(props.$isWorksDetail && {
-      background:
-        "linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, transparent 100%)",
-    }),
-  })
-);
+export const StyledHeader = styled.header<{ $dark?: boolean }>((props) => ({
+  width: "100%",
+  position: "sticky",
+  top: 0,
+  zIndex: 100,
+  boxSizing: "border-box",
+  alignItems: "center",
+  backgroundColor: colors.secondaryGray,
+  ...(props.$dark && {
+    background:
+      "linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, transparent 100%)",
+  }),
+}));
 
 export const HeaderContent = styled.div({
   width: "100%",
@@ -52,10 +50,10 @@ export const LogoArea = styled.div({
   },
 });
 
-export const NavArea = styled.nav<{ $isWorksDetail?: boolean }>((props) => ({
+export const NavArea = styled.nav<{ $dark?: boolean }>((props) => ({
   display: "flex",
   gap: "auto",
-  color: props.$isWorksDetail ? "white" : colors.blackDefault,
+  color: props.$dark ? "white" : colors.blackDefault,
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "space-between",
@@ -76,7 +74,7 @@ export const NavArea = styled.nav<{ $isWorksDetail?: boolean }>((props) => ({
   },
 }));
 
-export const NavLink = styled.a<{ $isWorksDetail?: boolean }>((props) => ({
+export const NavLink = styled.a<{ $dark?: boolean }>((props) => ({
   fontFamily: fonts.english.title,
   fontSize: fontSizes["2xl"],
   fontWeight: 700,
@@ -84,7 +82,7 @@ export const NavLink = styled.a<{ $isWorksDetail?: boolean }>((props) => ({
   letterSpacing: "-0.24px",
   textTransform: "uppercase",
   textDecoration: "none",
-  color: props.$isWorksDetail ? "white" : colors.blackDefault,
+  color: props.$dark ? "white" : colors.blackDefault,
   transition: "opacity 0.2s ease, transform 0.2s ease",
   "&:hover": {
     opacity: 0.8,
@@ -99,22 +97,20 @@ export const NavLink = styled.a<{ $isWorksDetail?: boolean }>((props) => ({
   },
 }));
 
-export const HamburgerLine = styled.div<{ $isWorksDetail?: boolean }>(
-  (props) => ({
-    width: "20px",
-    height: "2px",
-    backgroundColor: props.$isWorksDetail ? "#E5E5E5" : colors.blackDefault,
-    transition: "all 0.3s ease",
-  })
-);
-
-// 모바일 메뉴용 HamburgerLine (항상 검은색)
-export const MobileHamburgerLine = styled.div({
+export const HamburgerLine = styled.div<{ $dark?: boolean }>((props) => ({
   width: "20px",
   height: "2px",
-  backgroundColor: colors.blackDefault,
+  backgroundColor: props.$dark ? colors.secondaryGray : colors.blackDefault,
   transition: "all 0.3s ease",
-});
+}));
+
+// 모바일 메뉴용 HamburgerLine
+export const MobileHamburgerLine = styled.div<{ $dark: boolean }>((props) => ({
+  width: "20px",
+  height: "2px",
+  backgroundColor: props.$dark ? "white" : colors.blackDefault,
+  transition: "all 0.3s ease",
+}));
 
 export const MobileMenuButton = styled.button({
   display: "none",
@@ -142,12 +138,12 @@ export const ActiveMobileMenuButton = styled(MobileMenuButton)({
   },
 });
 
-export const MobileMenu = styled.div({
+export const MobileMenu = styled.div<{ $dark: boolean }>((props) => ({
   position: "fixed",
   top: 0,
   left: 0,
   width: "100%",
-  backgroundColor: "#E5E5E5",
+  backgroundColor: props.$dark ? colors.blackWorksDetail : colors.secondaryGray,
   zIndex: 200,
   display: "flex",
   flexDirection: "column",
@@ -160,7 +156,7 @@ export const MobileMenu = styled.div({
   [mq.tablet]: {
     display: "none",
   },
-});
+}));
 
 export const MobileMenuHeader = styled.div({
   display: "flex",
@@ -184,14 +180,6 @@ export const CloseButton = styled.button({
   },
 });
 
-export const CloseIcon = styled.span({
-  fontFamily: fonts.english.title,
-  fontSize: fontSizes["4xl"],
-  fontWeight: fontWeights.regular,
-  color: colors.blackDefault,
-  lineHeight: 1,
-});
-
 export const MobileNav = styled.nav({
   display: "flex",
   flexDirection: "column",
@@ -202,15 +190,15 @@ export const MobileNav = styled.nav({
   flex: 1,
 });
 
-export const MobileNavLink = styled.a({
+export const MobileNavLink = styled.a<{ $dark: boolean }>((props) => ({
   fontFamily: fonts.english.title,
   fontSize: fontSizes["2xl"],
   fontWeight: fontWeights.regular,
-  color: colors.blackDefault,
+  color: props.$dark ? "white" : colors.blackDefault,
   textDecoration: "none",
   textTransform: "uppercase",
   transition: "opacity 0.2s ease",
   "&:hover": {
     opacity: 0.6,
   },
-});
+}));

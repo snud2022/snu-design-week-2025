@@ -10,8 +10,25 @@ export const AllWorksGridSection = styled.div`
 
   .titleLabel {
     color: white;
-    text-align: center;
     margin-bottom: 80px;
+  }
+
+  .mobile {
+    display: none;
+    ${mq.mobile} {
+      width: 342px;
+      display: block;
+      text-align: left;
+      margin: 0 auto;
+    }
+  }
+
+  .notMobile {
+    display: block;
+    text-align: center;
+    ${mq.mobile} {
+      display: none;
+    }
   }
 
   ${mq.tablet} {
@@ -23,10 +40,10 @@ export const AllWorksGridSection = styled.div`
   }
 
   ${mq.mobile} {
-    padding: 40px 24px 180px 24px;
+    padding: 40px 0px 180px 0px;
 
     .titleLabel {
-      margin-bottom: 40px;
+      margin-bottom: 20px;
     }
   }
 `;
@@ -66,5 +83,9 @@ export const GridWrapper = styled.div<{ $hasDetail: boolean }>`
       $hasDetail ? "repeat(2, 384px)" : "repeat(3, 384px)"};
     width: fit-content;
     margin: 0 auto;
+  }
+
+  ${mq.mobile} {
+    grid-template-columns: 342px;
   }
 `;

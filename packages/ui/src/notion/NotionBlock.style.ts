@@ -35,19 +35,19 @@ export const Container = styled.div`
 
   /* 제목 스타일 */
   .notion-h1 {
-    font: ${typography.title1.en};
+    font: ${typography.title2.kr};
     margin: 2rem 0 1rem 0;
     color: ${colors.secondaryGray};
   }
 
   .notion-h2 {
-    font: ${typography.title2.en};
+    font: ${typography.title3.kr};
     margin: 1.5rem 0 0.75rem 0;
     color: ${colors.secondaryGray};
   }
 
   .notion-h3 {
-    font: ${typography.title3.en};
+    font: ${typography.subtitle.kr};
     margin: 1.25rem 0 0.5rem 0;
     color: ${colors.secondaryGray};
   }
@@ -95,7 +95,7 @@ export const Container = styled.div`
   }
 
   .notion-collection-header-title {
-    font: ${typography.title3.en};
+    font: ${typography.title3.kr};
     color: ${colors.secondaryGray};
   }
 `;

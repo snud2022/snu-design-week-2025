@@ -7,5 +7,4 @@ export { default as GoBackButton } from "./GoBackButton/GoBackButton";
 export { default as StudentCard } from "./StudentCard/StudentCard";
 export { default as ProjectPagination } from "./ProjectPagination/ProjectPagination";
 export { default as WorksDetailHeader } from "./WorksDetailHeader/WorksDetailHeader";
-export { default as ProjectImages } from "./ProjectImages/ProjectImages";
 export * from "./FilterStone/FilterStone";
