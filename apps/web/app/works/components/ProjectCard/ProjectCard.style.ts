@@ -1,7 +1,7 @@
 "use client";
 
 import styled from "@emotion/styled";
-import { colors } from "@snud2025/ui";
+import { colors, mq } from "@snud2025/ui";
 
 export const ProjectCard = styled.button<{ $thumbnailUrl?: string }>`
   position: relative;
@@ -18,6 +18,11 @@ export const ProjectCard = styled.button<{ $thumbnailUrl?: string }>`
   color: white;
   overflow: hidden;
   background-color: lightgray;
+
+  ${mq.mobile} {
+    width: 342px;
+    height: 191px;
+  }
 
   /* 배경 이미지 - 이미지가 있을 때만 표시 */
   ${({ $thumbnailUrl }) =>

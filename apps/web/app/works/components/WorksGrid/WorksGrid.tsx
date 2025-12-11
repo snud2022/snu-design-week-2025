@@ -19,9 +19,14 @@ export default function WorksGrid({
   return (
     <S.AllWorksGridSection>
       {!hasDetail && (
-        <Title language="en" level="title1" className="titleLabel">
-          ALL WORKS
-        </Title>
+        <>
+          <Title language="en" level="title1" className="titleLabel notMobile">
+            ALL WORKS
+          </Title>
+          <Title language="en" level="title3" className="titleLabel mobile">
+            ALL WORKS
+          </Title>
+        </>
       )}
       <S.ContentWrapper>
         {hasDetail && (
