@@ -2,12 +2,10 @@
 
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import { Title } from "../../typo";
 import CloseIcon from "../../assets/common/close.svg";
 import Logo from "../../assets/logo.svg";
-import logo from "../../assets/logo.png";
 import * as S from "./Header.style";
 
 interface MobileMenuProps {
