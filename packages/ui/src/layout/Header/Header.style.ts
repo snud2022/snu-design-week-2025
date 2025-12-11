@@ -10,7 +10,7 @@ export const StyledHeader = styled.header<{ $dark?: boolean }>((props) => ({
   zIndex: 100,
   boxSizing: "border-box",
   alignItems: "center",
-  backgroundColor: "#E5E5E5",
+  backgroundColor: colors.secondaryGray,
   ...(props.$dark && {
     background:
       "linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, transparent 100%)",
@@ -50,10 +50,10 @@ export const LogoArea = styled.div({
   },
 });
 
-export const NavArea = styled.nav<{ $isWorksDetail?: boolean }>((props) => ({
+export const NavArea = styled.nav<{ $dark?: boolean }>((props) => ({
   display: "flex",
   gap: "auto",
-  color: props.$isWorksDetail ? "white" : colors.blackDefault,
+  color: props.$dark ? "white" : colors.blackDefault,
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "space-between",
@@ -74,7 +74,7 @@ export const NavArea = styled.nav<{ $isWorksDetail?: boolean }>((props) => ({
   },
 }));
 
-export const NavLink = styled.a<{ $isWorksDetail?: boolean }>((props) => ({
+export const NavLink = styled.a<{ $dark?: boolean }>((props) => ({
   fontFamily: fonts.english.title,
   fontSize: fontSizes["2xl"],
   fontWeight: 700,
@@ -82,7 +82,7 @@ export const NavLink = styled.a<{ $isWorksDetail?: boolean }>((props) => ({
   letterSpacing: "-0.24px",
   textTransform: "uppercase",
   textDecoration: "none",
-  color: props.$isWorksDetail ? "white" : colors.blackDefault,
+  color: props.$dark ? "white" : colors.blackDefault,
   transition: "opacity 0.2s ease, transform 0.2s ease",
   "&:hover": {
     opacity: 0.8,
@@ -97,16 +97,14 @@ export const NavLink = styled.a<{ $isWorksDetail?: boolean }>((props) => ({
   },
 }));
 
-export const HamburgerLine = styled.div<{ $isWorksDetail?: boolean }>(
-  (props) => ({
-    width: "20px",
-    height: "2px",
-    backgroundColor: props.$isWorksDetail ? "#E5E5E5" : colors.blackDefault,
-    transition: "all 0.3s ease",
-  })
-);
+export const HamburgerLine = styled.div<{ $dark?: boolean }>((props) => ({
+  width: "20px",
+  height: "2px",
+  backgroundColor: props.$dark ? colors.secondaryGray : colors.blackDefault,
+  transition: "all 0.3s ease",
+}));
 
-// 모바일 메뉴용 HamburgerLine (항상 검은색)
+// 모바일 메뉴용 HamburgerLine
 export const MobileHamburgerLine = styled.div<{ $dark: boolean }>((props) => ({
   width: "20px",
   height: "2px",
@@ -145,7 +143,7 @@ export const MobileMenu = styled.div<{ $dark: boolean }>((props) => ({
   top: 0,
   left: 0,
   width: "100%",
-  backgroundColor: props.$dark ? "black" : "#E5E5E5",
+  backgroundColor: props.$dark ? colors.blackWorksDetail : colors.secondaryGray,
   zIndex: 200,
   display: "flex",
   flexDirection: "column",

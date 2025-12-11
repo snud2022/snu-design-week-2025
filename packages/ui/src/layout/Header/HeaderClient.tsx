@@ -5,6 +5,7 @@ import Link from "next/link";
 import * as S from "./Header.style";
 import Logo from "../../assets/logo.svg";
 import { MobileMenu } from "./MobileMenu";
+import { colors } from "../../colors";
 
 interface HeaderClientProps {
   navItems: { label: string; href: string }[];
@@ -23,18 +24,18 @@ export const HeaderClient = ({ navItems }: HeaderClientProps) => {
           <Link href="/">
             <Logo
               style={{ width: "100%", height: "100%" }}
-              color={isWorksDetailPage ? "#fff" : "#000"}
+              color={isWorksDetailPage ? "white" : colors.blackDefault}
             />
           </Link>
         </S.LogoArea>
 
         {/* 데스크톱/태블릿 네비게이션 */}
-        <S.NavArea $isWorksDetail={isWorksDetailPage}>
+        <S.NavArea $dark={isWorksDetailPage}>
           {navItems.map((item) => (
             <S.NavLink
               key={item.href}
               href={item.href}
-              $isWorksDetail={isWorksDetailPage}
+              $dark={isWorksDetailPage}
             >
               {item.label}
             </S.NavLink>
@@ -42,7 +43,7 @@ export const HeaderClient = ({ navItems }: HeaderClientProps) => {
         </S.NavArea>
 
         {/* 모바일 메뉴 */}
-        <MobileMenu navItems={navItems} />
+        <MobileMenu navItems={navItems} isDark={isWorksDetailPage} />
       </S.HeaderContent>
     </S.StyledHeader>
   );
