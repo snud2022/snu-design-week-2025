@@ -49,7 +49,10 @@ export default function ProjectPagination({
             <Link href={`/works/${previousProjectId}`}>
               <S.NavButton $isLeft>
                 <S.ArrowWrapper>
-                  <ArrowBack fill="#fff" />
+                  <ArrowBack
+                    style={{ width: "100%", height: "100%" }}
+                    fill="#fff"
+                  />
                 </S.ArrowWrapper>
                 <Title language="en" level="title3" className="not-mobile">
                   PREVIOUS
@@ -73,7 +76,10 @@ export default function ProjectPagination({
             <Link href={`/works/${nextProjectId}`}>
               <S.NavButton $isLeft={false}>
                 <S.ArrowWrapper style={{ transform: "rotate(180deg)" }}>
-                  <ArrowBack fill="#fff" />
+                  <ArrowBack
+                    style={{ width: "100%", height: "100%" }}
+                    fill="#fff"
+                  />
                 </S.ArrowWrapper>
                 <Title language="en" level="title3" className="not-mobile">
                   NEXT

@@ -1,16 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Title } from "../../typo";
+import CloseIcon from "../../assets/common/close.svg";
+import Logo from "../../assets/logo.svg";
+import { colors } from "../../colors";
 import * as S from "./Header.style";
 
 interface MobileMenuProps {
   navItems: { label: string; href: string }[];
+  isDark: boolean;
 }
 
-export const MobileMenu = ({ navItems }: MobileMenuProps) => {
+export const MobileMenu = ({ navItems, isDark }: MobileMenuProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -29,45 +32,39 @@ export const MobileMenu = ({ navItems }: MobileMenuProps) => {
           onClick={toggleMobileMenu}
           aria-label="메뉴 열기/닫기"
         >
-          <S.MobileHamburgerLine />
-          <S.MobileHamburgerLine />
-          <S.MobileHamburgerLine />
+          <S.MobileHamburgerLine $dark={isDark} />
+          <S.MobileHamburgerLine $dark={isDark} />
+          <S.MobileHamburgerLine $dark={isDark} />
         </S.ActiveMobileMenuButton>
       ) : (
         <S.MobileMenuButton
           onClick={toggleMobileMenu}
           aria-label="메뉴 열기/닫기"
         >
-          <S.MobileHamburgerLine />
-          <S.MobileHamburgerLine />
-          <S.MobileHamburgerLine />
+          <S.MobileHamburgerLine $dark={isDark} />
+          <S.MobileHamburgerLine $dark={isDark} />
+          <S.MobileHamburgerLine $dark={isDark} />
         </S.MobileMenuButton>
       )}
 
       {/* 모바일 오버레이 메뉴 */}
       {isMobileMenuOpen && (
-        <S.MobileMenu>
+        <S.MobileMenu $dark={isDark}>
           <S.MobileMenuHeader>
             <S.LogoArea>
               <Link href="/">
-                <Image
-                  src="/logo.png"
-                  alt="SNU DESIGN WEEK 2025"
-                  fill
-                  style={{ objectFit: "contain" }}
-                  priority
+                <Logo
+                  style={{ width: "100%", height: "100%" }}
+                  color={isDark ? "white" : colors.blackDefault}
                 />
               </Link>
             </S.LogoArea>
             <S.CloseButton onClick={closeMobileMenu} aria-label="메뉴 닫기">
-              <S.CloseIcon>
-                <Image
-                  src="/common/close.svg"
-                  alt="close"
-                  width={32}
-                  height={32}
-                />
-              </S.CloseIcon>
+              <CloseIcon
+                width={32}
+                height={32}
+                color={isDark ? "white" : colors.blackDefault}
+              />
             </S.CloseButton>
           </S.MobileMenuHeader>
           <S.MobileNav>
@@ -76,6 +73,7 @@ export const MobileMenu = ({ navItems }: MobileMenuProps) => {
                 key={item.href}
                 href={item.href}
                 onClick={closeMobileMenu}
+                $dark={isDark}
               >
                 <Title level="title3" language="en">
                   {item.label}

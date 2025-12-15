@@ -27,6 +27,7 @@ export const Wrapper = styled.button<{ active: boolean; side: string }>`
 
   /* 텍스트 상태 */
   .krLabel {
+    color: ${colors.blackDefault};
     opacity: ${({ active }) => (active ? 1 : 0.5)};
   }
   .enLabel {
