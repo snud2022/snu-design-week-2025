@@ -4,8 +4,10 @@
   "globalEnv": [
     "NODE_ENV",
     "NEXT_PUBLIC_SITE_URL",
-    "NOTION_API_KEY",
-    "NOTION_DATABASE_ID"
+    "NEXT_PUBLIC_NOTION_SITE_DOMAIN",
+    "NOTION_DB_API_KEY",
+    "NOTION_SNU_WORKS_DB",
+    "NOTION_SNU_PEOPLE_DB"
   ],
   "tasks": {
     "build": {
