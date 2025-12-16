@@ -5,7 +5,7 @@ import { getNotionRecordMap } from "../common";
  */
 export const getWorkRecordMap = async (
   workId: string,
-  revalidateSeconds: number = 3600
+  revalidateSeconds: number = 600
 ) => {
   return getNotionRecordMap(
     workId,

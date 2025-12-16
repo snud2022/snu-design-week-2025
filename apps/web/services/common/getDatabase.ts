@@ -12,7 +12,7 @@ export const getNotionDatabase = cache(
     client: Client,
     databaseId: string,
     cacheKey?: string,
-    revalidateSeconds: number = 1800,
+    revalidateSeconds: number = 3600,
     sorts?: Array<{
       property: string;
       direction: "ascending" | "descending";

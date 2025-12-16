@@ -7,7 +7,7 @@ import type { NotionWork } from "./types";
  * 학생이름 기준 가나다 순으로 정렬됩니다.
  */
 export const getWorks = async (
-  revalidateSeconds: number = 1800
+  revalidateSeconds: number = 600
 ): Promise<NotionWork[]> => {
   if (!WORKS_DATABASE_ID) {
     return [];
