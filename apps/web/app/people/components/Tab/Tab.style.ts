@@ -17,11 +17,11 @@ export const Wrapper = styled.button<{ active: boolean; side: string }>`
   ${({ side }) =>
     side === "left"
       ? css`
-          justify-items: start;
+          align-items: flex-start;
           text-align: left;
         `
       : css`
-          justify-items: end;
+          align-items: flex-end;
           text-align: right;
         `}
 
@@ -57,13 +57,14 @@ export const Underline = styled.div`
 `;
 
 export const SideMove = styled.div<{ side: string }>`
+  display: flex;
   /* 좌/우 정렬 */
   ${({ side }) =>
     side === "left"
       ? css`
-          justify-items: start;
+          justify-content: flex-start;
         `
       : css`
-          justify-items: end;
+          justify-content: flex-end;
         `}
 `;
