@@ -52,7 +52,7 @@ export const metadata: Metadata = {
       "서울대학교 디자인학부 졸업전시 2025. 2025년 12월 4일부터 9일까지 서울대학교 49동 & 파워플랜트에서 개최됩니다.",
     images: [
       {
-        url: "/og-image.png",
+        url: "/meta/og-image.png",
         width: 1200,
         height: 630,
         alt: "SNU DESIGN WEEK 2025 | WRAP UP",
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     title: "SNU DESIGN WEEK 2025 | WRAP UP",
     description:
       "서울대학교 디자인학부 졸업전시 2025. 2025년 12월 4일부터 9일까지 서울대학교 49동 & 파워플랜트에서 개최됩니다.",
-    images: ["/og-image.png"],
+    images: ["/meta/og-image.png"],
   },
   robots: {
     index: true,
@@ -78,8 +78,32 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: [
+      { url: "/meta/favicon.ico", sizes: "any" },
+      { url: "/meta/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/meta/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [
+      {
+        url: "/meta/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
+    other: [
+      {
+        rel: "icon",
+        url: "/meta/android-chrome-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+      {
+        rel: "icon",
+        url: "/meta/android-chrome-512x512.png",
+        sizes: "512x512",
+        type: "image/png",
+      },
+    ],
   },
 };
 

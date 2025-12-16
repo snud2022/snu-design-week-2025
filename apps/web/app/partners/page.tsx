@@ -1,8 +1,27 @@
+import type { Metadata } from "next";
 import { Body, Subtitle, Title } from "@snud2025/ui";
 import { PartnerLogos, PartnerCards } from "./components";
 import { PARTNERS } from "./constants";
 import * as S from "./page.style";
 import RopeFrame from "../../components/RopeFrame/RopeFrame";
+
+export const metadata: Metadata = {
+  title: "PARTNERS",
+  description:
+    "SNU DESIGN WEEK 2025 파트너 및 후원사. 전시를 함께하는 파트너사와 동문 후원 현황입니다.",
+  openGraph: {
+    title: "PARTNERS | SNU DESIGN WEEK 2025",
+    description:
+      "SNU DESIGN WEEK 2025 파트너 및 후원사. 전시를 함께하는 파트너사와 동문 후원 현황입니다.",
+    images: ["/meta/og-image.png"],
+  },
+  twitter: {
+    title: "PARTNERS | SNU DESIGN WEEK 2025",
+    description:
+      "SNU DESIGN WEEK 2025 파트너 및 후원사. 전시를 함께하는 파트너사와 동문 후원 현황입니다.",
+    images: ["/meta/og-image.png"],
+  },
+};
 
 export default function Partners() {
   return (

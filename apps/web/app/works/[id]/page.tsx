@@ -15,7 +15,10 @@ import {
   transformWorks,
   transformWork,
 } from "../utils/transformWorks";
-import { extractCoverUrl } from "../../../utils/notionExtract";
+import {
+  extractCoverUrl,
+  extractOgImageUrl,
+} from "../../../utils/notionExtract";
 import * as S from "./page.style";
 
 interface ProjectDetailPageProps {
@@ -47,7 +50,8 @@ export async function generateMetadata({
   }
 
   const project = transformWork(notionWork);
-  const thumbnailUrl = extractCoverUrl(notionWork);
+  // OG 이미지는 크롤러가 접근 가능한 URL 사용
+  const ogImageUrl = extractOgImageUrl(notionWork);
 
   // 동적 값 검증 및 안전한 조합
   const hasStudentName = project.studentNameKo && project.studentNameKo.trim();
@@ -80,22 +84,29 @@ export async function generateMetadata({
       title: `${title} | SNU DESIGN WEEK 2025`,
       description,
       type: "article",
-      images: thumbnailUrl
+      images: ogImageUrl
         ? [
             {
-              url: thumbnailUrl,
+              url: ogImageUrl,
               width: 1200,
               height: 630,
               alt: project.nameKo,
             },
           ]
-        : undefined,
+        : [
+            {
+              url: "/meta/og-image.png",
+              width: 1200,
+              height: 630,
+              alt: "SNU DESIGN WEEK 2025",
+            },
+          ],
     },
     twitter: {
       card: "summary_large_image",
       title: `${title} | SNU DESIGN WEEK 2025`,
       description,
-      images: thumbnailUrl ? [thumbnailUrl] : undefined,
+      images: ogImageUrl ? [ogImageUrl] : ["/meta/og-image.png"],
     },
   };
 }

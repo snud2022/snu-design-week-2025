@@ -46,3 +46,34 @@ export function extractCoverUrl(notionWork: NotionWork): string | undefined {
     return undefined;
   }
 }
+
+/**
+ * OG 이미지용 원본 URL 추출
+ * Notion 프록시를 거치지 않고 원본 URL을 반환합니다.
+ * 외부 URL(external)의 경우에만 사용 가능합니다.
+ * file 타입은 S3 signed URL이라 만료되므로 undefined 반환.
+ */
+export function extractOgImageUrl(notionWork: NotionWork): string | undefined {
+  try {
+    if (!notionWork.cover) return undefined;
+
+    // external URL은 만료되지 않으므로 OG 이미지로 사용 가능
+    if (
+      notionWork.cover.type === "external" &&
+      notionWork.cover.external?.url
+    ) {
+      return notionWork.cover.external.url;
+    }
+
+    // file 타입(S3 signed URL)은 만료되므로 OG용으로 부적합
+    // Notion 프록시를 통해 접근 시도
+    if (notionWork.cover.type === "file" && notionWork.cover.file?.url) {
+      return getImageUrl(notionWork.cover.file.url, notionWork.id);
+    }
+
+    return undefined;
+  } catch (error) {
+    console.error("Error extracting OG image URL:", error);
+    return undefined;
+  }
+}

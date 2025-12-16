@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import * as S from "./page.style";
 import Image from "next/image";
 import {
@@ -15,6 +16,24 @@ import {
   EVENT_TITLE,
   ROPE_FRAME_CONFIG,
 } from "./constants";
+
+export const metadata: Metadata = {
+  title: "ABOUT",
+  description:
+    "SNU DESIGN WEEK 2025 전시 소개. 2025년 12월 4일부터 9일까지 서울대학교 49동 & 파워플랜트에서 개최됩니다.",
+  openGraph: {
+    title: "ABOUT | SNU DESIGN WEEK 2025",
+    description:
+      "SNU DESIGN WEEK 2025 전시 소개. 2025년 12월 4일부터 9일까지 서울대학교 49동 & 파워플랜트에서 개최됩니다.",
+    images: ["/meta/og-image.png"],
+  },
+  twitter: {
+    title: "ABOUT | SNU DESIGN WEEK 2025",
+    description:
+      "SNU DESIGN WEEK 2025 전시 소개. 2025년 12월 4일부터 9일까지 서울대학교 49동 & 파워플랜트에서 개최됩니다.",
+    images: ["/meta/og-image.png"],
+  },
+};
 
 export default function About() {
   return (
