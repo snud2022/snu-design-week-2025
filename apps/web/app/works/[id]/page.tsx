@@ -15,7 +15,10 @@ import {
   transformWorks,
   transformWork,
 } from "../utils/transformWorks";
-import { extractCoverUrl } from "../../../utils/notionExtract";
+import {
+  extractCoverUrl,
+  extractOgImageUrl,
+} from "../../../utils/notionExtract";
 import * as S from "./page.style";
 
 interface ProjectDetailPageProps {
@@ -47,9 +50,9 @@ export async function generateMetadata({
   }
 
   const project = transformWork(notionWork);
-  // OG 이미지는 크롤러가 접근 가능한 URL 사용
-  const ogImageUrl = extractCoverUrl(notionWork);
-
+  // OG 이미지는 크롤러가 접근 가능한 external URL만 사용
+  // file 타입(S3 signed URL)은 만료되므로 기본 OG 이미지로 폴백
+  const ogImageUrl = extractOgImageUrl(notionWork);
   // 동적 값 검증 및 안전한 조합
   const hasStudentName = project.studentNameKo && project.studentNameKo.trim();
   const hasStudentNameEn =
