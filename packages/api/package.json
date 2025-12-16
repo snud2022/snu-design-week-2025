@@ -6,7 +6,7 @@
     ".": "./src/index.ts"
   },
   "scripts": {
-    "build": "turbo run build"
+    "check-types": "tsc --noEmit"
   },
   "peerDependencies": {
     "@notionhq/client": "catalog:",

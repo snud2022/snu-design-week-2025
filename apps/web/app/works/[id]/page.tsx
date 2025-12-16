@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { NotionBlock } from "@snud2025/ui";
 import {
   GoBackButton,
@@ -12,14 +13,102 @@ import { getWorkRecordMap, getWorks } from "../../../services/works";
 import {
   transformProjectDetail,
   transformWorks,
+  transformWork,
 } from "../utils/transformWorks";
-import { extractCoverUrl } from "../../../utils/notionExtract";
+import {
+  extractCoverUrl,
+  extractOgImageUrl,
+} from "../../../utils/notionExtract";
 import * as S from "./page.style";
 
 interface ProjectDetailPageProps {
   params: Promise<{
     id: string;
   }>;
+}
+
+// 빌드 시 모든 작품 페이지를 정적으로 생성
+export async function generateStaticParams() {
+  const works = await getWorks();
+  return works.map((work) => ({
+    id: work.id,
+  }));
+}
+
+// 동적 메타데이터 생성
+export async function generateMetadata({
+  params,
+}: ProjectDetailPageProps): Promise<Metadata> {
+  const { id } = await params;
+  const allNotionWorks = await getWorks();
+  const notionWork = allNotionWorks.find((work) => work.id === id);
+
+  if (!notionWork) {
+    return {
+      title: "작품을 찾을 수 없습니다",
+    };
+  }
+
+  const project = transformWork(notionWork);
+  // OG 이미지는 크롤러가 접근 가능한 URL 사용
+  const ogImageUrl = extractOgImageUrl(notionWork);
+
+  // 동적 값 검증 및 안전한 조합
+  const hasStudentName = project.studentNameKo && project.studentNameKo.trim();
+  const hasStudentNameEn =
+    project.studentNameEn && project.studentNameEn.trim();
+  const hasProjectNameEn = project.nameEn && project.nameEn !== "Untitled";
+
+  // title: "작품이름 - 학생이름" 또는 "작품이름"
+  const title = hasStudentName
+    ? `${project.nameKo} - ${project.studentNameKo}`
+    : project.nameKo;
+
+  // description 구성
+  const studentInfo = hasStudentName
+    ? hasStudentNameEn
+      ? `${project.studentNameKo} (${project.studentNameEn})의 `
+      : `${project.studentNameKo}의 `
+    : "";
+
+  const projectInfo = hasProjectNameEn
+    ? `"${project.nameKo}" (${project.nameEn})`
+    : `"${project.nameKo}"`;
+
+  const description = `${studentInfo}졸업 작품 ${projectInfo}. SNU DESIGN WEEK 2025 | ${project.projectType}`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title: `${title} | SNU DESIGN WEEK 2025`,
+      description,
+      type: "article",
+      images: ogImageUrl
+        ? [
+            {
+              url: ogImageUrl,
+              width: 1200,
+              height: 630,
+              alt: project.nameKo,
+            },
+          ]
+        : [
+            {
+              url: "/meta/og-image.png",
+              width: 1200,
+              height: 630,
+              alt: "SNU DESIGN WEEK 2025",
+            },
+          ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} | SNU DESIGN WEEK 2025`,
+      description,
+      images: ogImageUrl ? [ogImageUrl] : ["/meta/og-image.png"],
+    },
+  };
 }
 
 export default async function ProjectDetailPage({
