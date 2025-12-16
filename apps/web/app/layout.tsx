@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import EmotionRegistry from "./emotion-registry";
 import { Header } from "@snud2025/ui";
@@ -137,6 +138,7 @@ export default function RootLayout({
           <Header />
           {children}
         </EmotionRegistry>
+        <Analytics />
       </body>
     </html>
   );

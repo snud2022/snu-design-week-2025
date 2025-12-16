@@ -17,15 +17,16 @@
     "@notionhq/client": "catalog:",
     "@snud2025/api": "workspace:*",
     "@snud2025/ui": "workspace:*",
+    "@vercel/analytics": "catalog:",
     "lottie-react": "catalog:",
     "matter-js": "catalog:",
     "next": "catalog:",
     "notion-client": "catalog:",
     "notion-types": "catalog:",
     "poly-decomp": "catalog:",
-    "react-notion-x": "catalog:",
     "react": "catalog:",
-    "react-dom": "catalog:"
+    "react-dom": "catalog:",
+    "react-notion-x": "catalog:"
   },
   "devDependencies": {
     "@snud2025/eslint-config": "workspace:*",
