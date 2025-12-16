@@ -1,28 +1,5 @@
 import type { Category, CategoryInfo } from "../../../types/categories";
 
-// 모든 정보를 담은 마스터 설정
-export const CATEGORY_CONFIGS = [
-  { id: "BRAND", index: 0, nameKo: "브랜드", nameEn: "Brand" },
-  { id: "GRAPHIC", index: 1, nameKo: "그래픽", nameEn: "Graphic" },
-  { id: "MEDIA", index: 2, nameKo: "미디어", nameEn: "Media" },
-  { id: "UI/UX", index: 3, nameKo: "UI/UX", nameEn: "UI/UX" },
-  { id: "LIVING", index: 4, nameKo: "리빙", nameEn: "Living" },
-  {
-    id: "PRODUCT INTERACTION",
-    index: 5,
-    nameKo: "제품 인터랙션",
-    nameEn: "Product Interaction",
-  },
-  { id: "SPACE", index: 6, nameKo: "공간", nameEn: "Space" },
-  { id: "MOBILITY", index: 7, nameKo: "모빌리티", nameEn: "Mobility" },
-] as const;
-
-// 카테고리 목록
-export const CATEGORIES: Category[] = [
-  "ALL",
-  ...CATEGORY_CONFIGS.map((c) => c.id),
-];
-
 // 카테고리별 상수 정보
 export const CATEGORY_INFO: Record<Category, CategoryInfo> = {
   ALL: {
@@ -75,9 +52,9 @@ export const CATEGORY_INFO: Record<Category, CategoryInfo> = {
     advisorKo: "이성용",
     advisorEn: "LEE SEONGYONG",
     descriptionKo:
-      "( 먼저 졸업을 앞둔 학생들에게 미리 축하 인사를 전합니다.) \n리빙디자인프로젝트 수업은 일상 공간 요소들의 다양한 영향을 통합하여 사고할 수 있도록 진행되어 왔습니다. 사용 환경이 반영된 기획과 조형 개발 뿐만이 아니라 구조설계, 소재선택 및 가공이라는 산업디자인 본연의 역할에도 많은 고민을 할 수 있도록 하였습니다. 이러한 과정을 통해 각자의 개성이 어떻게 객관적으로 적용되었는지 많은 관심으로 살펴봐 주시길 바랍니다. 학생들에게 많은 격려 부탁드립니다.",
+      "리빙디자인프로젝트 수업은 일상 공간 요소들의 다양한 영향을 통합하여 사고할 수 있도록 진행되어 왔습니다. 사용 환경이 반영된 기획과 조형 개발 뿐만이 아니라 구조설계, 소재선택 및 가공이라는 산업디자인 본연의 역할에도 많은 고민을 할 수 있도록 하였습니다. 이러한 과정을 통해 각자의 개성이 어떻게 객관적으로 적용되었는지 많은 관심으로 살펴봐 주시길 바랍니다.",
     descriptionEn:
-      "( First of all, I would like to extend my warmest congratulations to the students who are graduating.) The Living Design Project course has been conducted with the goal of encouraging students to think integratively about the diverse influences of everyday spatial elements. Beyond planning and formative development that reflect the user environment, the course also allowed students a deep exploration of the essential roles of industrial design such as structural design, material selection, and processing. Through this process, we hope you observe with interest in how each student's individuality has been objectively applied and expressed. We kindly encourage the audience to show their generous support for the students.",
+      "The Living Design Project course has been conducted with the goal of encouraging students to think integratively about the diverse influences of everyday spatial elements. Beyond planning and formative development that reflect the user environment, the course also allowed students a deep exploration of the essential roles of industrial design such as structural design, material selection, and processing. \nThrough this process, we hope you observe with interest in how each student’s individuality has been objectively applied and expressed.",
   },
   "PRODUCT INTERACTION": {
     categoryNameKo: "제품 디자인 프로젝트",
@@ -105,8 +82,8 @@ export const CATEGORY_INFO: Record<Category, CategoryInfo> = {
     advisorKo: "임승빈",
     advisorEn: "YIM SEUNGBIN",
     descriptionKo:
-      '이번 전시 컨셉인 \'이사\'에도 어떠한 형태로든 모빌리티가 필요할 것입니다. 모빌리티디자인프로젝트는 현재와 미래의 모빌리티 패러다임 속에서 여러 가지 \'이동\'과 이에 동반되는 다양한 인간적, 사회적 문제들에 대한 솔루션과 새로운 테크놀로지와 환경에 대한 사유를 통해 창의와 혁신으로 새로운 영감을 주는 모빌리티를 지향합니다. "MOVEMENT THAT INSPIRES" "MOBILITY THAT INSPIRES" "MOVING THAT INSPIRES"~',
+      '이번 전시 컨셉인 \'이사\'에도 어떠한 형태로든 모빌리티가 필요할 것입니다. 모빌리티디자인프로젝트는 현재와 미래의 모빌리티 패러다임 속에서 여러 가지 \'이동\'과 이에 동반되는 다양한 인간적, 사회적 문제들에 대한 솔루션과 새로운 테크놀로지와 환경에 대한 사유를 통해 창의와 혁신으로 새로운 영감을 주는 모빌리티를 지향합니다. \n"MOVEMENT THAT INSPIRES" "MOBILITY THAT INSPIRES" "MOVING THAT INSPIRES"',
     descriptionEn:
-      'The theme of this exhibition, "WRAP UP" inherently involves some form of mobility. \n\nThe Mobility Design Project explores diverse modes of movement within the present and the future paradigm of mobility. Such movements aims to propose creative and innovative mobility ideas that inspire new possibilities by addressing the human and social issues that accompany mobility and by reflecting on new emerging technologies and environmental shifts. \n\n"MOVEMENT THAT INSPIRES" "MOBILITY THAT INSPIRES" "MOVING THAT INSPIRES"**',
+      'The theme of this exhibition, "WRAP UP" inherently involves some form of mobility. \nThe Mobility Design Project explores diverse modes of movement within the present and the future paradigm of mobility. Such movements aims to propose creative and innovative mobility ideas that inspire new possibilities by addressing the human and social issues that accompany mobility and by reflecting on new emerging technologies and environmental shifts. \n"MOVEMENT THAT INSPIRES" "MOBILITY THAT INSPIRES" "MOVING THAT INSPIRES"',
   },
 };

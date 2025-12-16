@@ -60,6 +60,7 @@ export const Description = styled.div`
   .koDescription,
   .enDescription {
     color: ${colors.secondaryGray};
+    white-space: pre-line;
   }
 
   .enDescription {
