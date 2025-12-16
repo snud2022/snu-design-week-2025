@@ -18,7 +18,7 @@ function isNameInWorks(personName: string, worksStudentNames: string): boolean {
  * Works 데이터를 조회하여 각 사람의 classes를 학생 이름으로 매칭합니다
  */
 export const getPeople = async (
-  revalidateSeconds: number = 3600
+  revalidateSeconds: number = 1800
 ): Promise<NotionPerson[]> => {
   if (!PEOPLE_DATABASE_ID) {
     return [];
@@ -30,7 +30,13 @@ export const getPeople = async (
       peopleClient,
       PEOPLE_DATABASE_ID,
       "notion-people",
-      revalidateSeconds
+      revalidateSeconds,
+      [
+        {
+          property: "name",
+          direction: "ascending",
+        },
+      ]
     ),
     getWorks(revalidateSeconds),
   ]);

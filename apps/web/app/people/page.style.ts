@@ -43,13 +43,16 @@ export const GridWrapper = styled.div`
   grid-template-columns: repeat(1, calc(${ROPE_SIZE.mobile} * 2px));
   grid-auto-rows: calc(${ROPE_SIZE.mobile} * 2px);
   justify-content: center;
+  margin-bottom: 140px;
 
   ${mq.tablet} {
     grid-template-columns: repeat(2, calc(${ROPE_SIZE.tablet} * 2px));
     grid-auto-rows: calc(${ROPE_SIZE.tablet} * 2px);
+    margin-bottom: 140px;
   }
   ${mq.desktop} {
     grid-template-columns: repeat(4, calc(${ROPE_SIZE.desktop} * 2px));
     grid-auto-rows: calc(${ROPE_SIZE.desktop} * 2px);
+    margin-bottom: 240px;
   }
 `;
