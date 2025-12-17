@@ -39,7 +39,7 @@ export default function About() {
   return (
     <S.Wrapper>
       <S.PosterContainer>
-        <Image src="/about/poster.jpg" alt="about" width={580} height={896} />
+        <Image src="/about/poster.png" alt="about" width={580} height={896} />
       </S.PosterContainer>
       <S.ContentContainer>
         <EventHeader

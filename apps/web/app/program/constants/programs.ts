@@ -10,7 +10,7 @@ export const PROGRAMS: ProgramEvent[] = [
     imageUrl: "/program/image.jpg",
     month: "Dec",
     day: "05",
-    time: "18:00 - 21:00",
+    time: "18:30 - 21:00",
     title: {
       kr: "하이데이",
       en: "Hi-Day",

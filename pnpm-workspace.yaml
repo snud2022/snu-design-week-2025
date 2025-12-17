@@ -27,3 +27,4 @@ catalog:
   tailwind-merge: "^2.5.4"
   prettier: "^3.7.4"
   turbo: "^2.6.3"
+  "@vercel/analytics": "^1.6.1"

@@ -188,7 +188,7 @@ const PhysicsScene = ({
       mouse,
       constraint: {
         stiffness: MOUSE_CONFIG.stiffness,
-        render: { visible: true },
+        render: { visible: false },
       },
     });
     const { Composite } = Matter;

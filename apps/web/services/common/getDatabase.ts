@@ -12,7 +12,11 @@ export const getNotionDatabase = cache(
     client: Client,
     databaseId: string,
     cacheKey?: string,
-    revalidateSeconds: number = 3600
+    revalidateSeconds: number = 3600,
+    sorts?: Array<{
+      property: string;
+      direction: "ascending" | "descending";
+    }>
   ): Promise<T[] | []> => {
     if (!databaseId) {
       return [];
@@ -21,7 +25,7 @@ export const getNotionDatabase = cache(
     return unstable_cache(
       async () => {
         try {
-          return await queryNotionDatabase<T>(client, databaseId);
+          return await queryNotionDatabase<T>(client, databaseId, sorts);
         } catch (error) {
           handleError(error);
           return [];

@@ -40,12 +40,20 @@ export const TEAMS: Team[] = [
   {
     name: "프로그램팀",
     leader: "박수민",
-    members: ["두소진", "정다인", "서효리"],
+    members: ["두소진", "서효리"],
   },
   {
     name: "공간팀",
     leader: "한의헌",
-    members: ["탁로현", "김정민", "조수민", "박진아", "심은비"],
+    members: [
+      "탁로현",
+      "김정민",
+      "조수민",
+      "박진아",
+      "심은비",
+      "남지강",
+      "신주민",
+    ],
   },
   {
     name: "홍보팀",
@@ -53,8 +61,8 @@ export const TEAMS: Team[] = [
     members: ["김수은"],
   },
   {
-    name: "회계팀",
-    leader: "유용준",
-    members: ["정영준"],
+    name: "텀블벅팀",
+    leader: "정예원",
+    members: ["윤희경", "정선영"],
   },
 ];

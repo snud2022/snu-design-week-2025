@@ -1,5 +1,5 @@
 import { peopleGraphicConfigs } from "../../../constants/peopleGraphic";
-import { CATEGORY_CONFIGS } from "../constants/categories";
+import { CATEGORY_CONFIGS } from "../../../constants/categories";
 import type {
   BaseCategory,
   Category,

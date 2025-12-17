@@ -9,11 +9,16 @@ import { parseError } from "./error";
  */
 export async function queryNotionDatabase<T>(
   client: Client,
-  databaseId: string
+  databaseId: string,
+  sorts?: Array<{
+    property: string;
+    direction: "ascending" | "descending";
+  }>
 ): Promise<T[]> {
   try {
     const response = await client.databases.query({
       database_id: databaseId,
+      ...(sorts && sorts.length > 0 ? { sorts } : {}),
     });
 
     // Notion API 응답의 results 배열을 반환

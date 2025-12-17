@@ -1,7 +1,7 @@
 import React from "react";
 import { Title, Body } from "@snud2025/ui";
 import { getCategoryByIndex } from "../../../../utils/categories";
-import { CATEGORY_INFO } from "../../../../constants/categories";
+import { CATEGORY_INFO } from "../../constants/categories";
 import * as S from "./CategoryDetail.style";
 
 interface CategoryDetailProps {
@@ -51,16 +51,18 @@ export default function CategoryDetail({ filterIndex }: CategoryDetailProps) {
           </Body>
         </S.MobileContainer>
 
-        {categoryInfo.descriptionKo && (
-          <S.Description>
+        <S.Description>
+          {categoryInfo.descriptionKo && (
             <Body level="body2" weight="medium" className="koDescription">
               {categoryInfo.descriptionKo}
             </Body>
+          )}
+          {categoryInfo.descriptionEn && (
             <Body level="body2" weight="medium" className="enDescription">
               {categoryInfo.descriptionEn}
             </Body>
-          </S.Description>
-        )}
+          )}
+        </S.Description>
       </S.LeftSection>
     </S.DetailSection>
   );

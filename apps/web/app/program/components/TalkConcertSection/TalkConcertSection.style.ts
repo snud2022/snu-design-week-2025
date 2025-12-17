@@ -10,15 +10,18 @@ export const Wrapper = styled.div({
   maxWidth: "1200px",
   margin: "0 auto",
   marginTop: "60px",
+  marginBottom: "240px",
   [mq.tablet]: {
     flexDirection: "column",
     gap: "24px",
     maxWidth: "430px",
+    marginBottom: "140px",
   },
   [mq.mobile]: {
     flexDirection: "column",
     gap: "20px",
     maxWidth: "342px",
+    marginBottom: "140px",
   },
 });
 
