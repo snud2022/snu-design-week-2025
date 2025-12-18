@@ -65,4 +65,9 @@ export const TEAMS: Team[] = [
     leader: "정예원",
     members: ["윤희경", "정선영"],
   },
+  {
+    name: "회계팀",
+    leader: "유용준",
+    members: ["정영준"],
+  },
 ];
