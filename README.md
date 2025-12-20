@@ -1,9 +1,15 @@
-# SNU Design Week 2025 - WRAP UP
+# [SNU DESIGN WEEK 2025 - WRAP UP](https://2025.snudesignweek.com/)
+<p align="center"><img width="562" height="150" alt="logo" src="https://github.com/user-attachments/assets/e45c4ce3-0ae0-4bdb-a4e8-b595c401bd26" /></p>
+<br/>
+<p align="center"><img width="1200" height="630" alt="OG Image" src="https://github.com/user-attachments/assets/364dacc0-6576-49f2-8745-bafddc73713a" /></p>
 
-2025 서울대학교 디자인과 졸업 전시 **WRAP UP** 온라인 전시 프로젝트입니다.
-![바로가기](https://2025.snudesignweek.com/)
+<p align="center">
+  <a href="https://2025.snudesignweek.com/"><strong>🔗 웹사이트 바로가기 🔗</strong></a>
+</p>
 
-📋 목차
+> 2025 서울대학교 디자인과 졸업 전시 **WRAP UP** 온라인 전시 프로젝트입니다.
+
+# 📋 목차
 
 - [프로젝트 소개](#프로젝트-소개)
 - [페이지 소개](#페이지-소개)
@@ -11,77 +17,67 @@
 - [주요 기능](#주요-기능)
 - [개발 환경 설정](#개발-환경-설정)
 
-## 프로젝트 소개
+## 📦 프로젝트 소개
+<p align="center">
+<strong>SNU DESIGN WEEK 2025 - WRAP UP</strong>
+  <br/>
+  <br/>
+WRAP UP은 4년간 모아온 짐을 꾸리는 이사의 현장을 테마로 한 서울대학교 디자인과 졸업 전시 웹사이트입니다.   <br/>
+물리 엔진 기반 그래픽을 통해 독특한 사용자 경험을 제공합니다.
+</p>
 
-WRAP UP은 4년간 모아온 짐을 꾸리는 이사의 현장을 테마로 한 졸업 전시 웹사이트입니다. 물리 엔진 기반 그래픽을 통해 독특한 사용자 경험을 제공합니다.
-
-## 페이지 소개
+## 📄 페이지 소개
 
 총 6개의 주요 페이지로 구성되어 있으며, 모든 페이지는 반응형 디자인을 지원합니다.
 
 ### Main Page
 
-![메인 페이지](링크)
-
-| desktop | tablet | mobile |
-| ------- | ------ | ------ |
-| 이미지  | 이미지 | 이미지 |
+https://github.com/user-attachments/assets/bf5b504d-20d5-475c-a381-18eed2c5df71
 
 Matter.js 기반 인터랙티브 물리 시뮬레이션을 제공합니다. 전시 명을 딴 WRAP UP 알파벳 형태의 물리 객체들이 중력에 따라 움직입니다.
+<br/><br/>
 
 ### About Page
 
-![소개 페이지](링크)
-
-| desktop | tablet | mobile |
-| ------- | ------ | ------ |
-| 이미지  | 이미지 | 이미지 |
+https://github.com/user-attachments/assets/13d3a376-9cb2-4f9f-8b64-37368fb709cb
 
 전시 소개 및 조직 정보를 제공하는 페이지입니다.
+<br/><br/>
 
 ### Works Page
 
-![작품 페이지](링크)
-
-| desktop | tablet | mobile |
-| ------- | ------ | ------ |
-| 이미지  | 이미지 | 이미지 |
+https://github.com/user-attachments/assets/b93e8736-6d67-4c6d-b7c4-af68c0ee627e
 
 Notion Database에서 가져온 졸업 작품 목록을 갤러리로 표시합니다. 상단 필터로 class별 작품을 필터링할 수 있으며, 작품 클릭 시 상세 페이지로 이동합니다.
+<br/><br/>
 
 ### People Page
 
-![사람 페이지](링크)
-
-| desktop | tablet | mobile |
-| ------- | ------ | ------ |
-| 이미지  | 이미지 | 이미지 |
+https://github.com/user-attachments/assets/543e5b81-81d3-45ba-a726-ff50be50c60f
 
 학생 정보를 물리 엔진 기반 그리드로 표시합니다. 각 셀마다 독립적인 물리 엔진 인스턴스를 생성하며, 셀 내 class 파츠를 선택하면 상세 페이지로 이동합니다.
+<br/><br/>
 
 ### Works Detail Page
 
-![작품 상세 페이지](링크)
+https://github.com/user-attachments/assets/ae8cfa03-6f64-473e-94b2-e0bdfb4a544b
 
-| desktop | tablet | mobile |
-| ------- | ------ | ------ |
-| 이미지  | 이미지 | 이미지 |
+작품 클릭 시 이동하는 상세 페이지입니다. Notion 페이지를 직접 렌더링하여 작품의 상세 정보를 제공합니다.
+<br/><br/>
 
 ### Program Page
 
-![프로그램 페이지](링크)
+https://github.com/user-attachments/assets/1b4b2e2a-829a-4069-94d7-55bc05580503
 
 전시 기간 동안 진행되는 프로그램 일정을 안내합니다.
+<br/><br/>
 
 ### Partners Page
 
-![파트너 페이지](링크)
-
-| desktop | tablet | mobile |
-| ------- | ------ | ------ |
-| 이미지  | 이미지 | 이미지 |
+https://github.com/user-attachments/assets/dad2a04e-bb4b-439e-b277-83311fd0b9b1
 
 전시를 함께하는 파트너사와 동문 후원 현황을 소개합니다. 파트너 로고 및 후원 정보를 카드 형태로 표시합니다.
+<br/><br/>
 
 ### 반응형 디자인
 
@@ -92,8 +88,9 @@ Notion Database에서 가져온 졸업 작품 목록을 갤러리로 표시합�
 - **데스크톱 (Desktop)**: 1280px 이상
 
 `@snud2025/ui` 패키지의 `breakpoints` 상수를 사용하여 일관된 반응형 디자인을 구현했습니다.
+<br/><br/>
 
-## 프로젝트 구조
+## 📁 프로젝트 구조
 
 이 프로젝트는 **Turborepo 모노레포** 구조로 구성되어 있습니다.
 
@@ -113,30 +110,6 @@ snu-design-week-2025/
 ```
 
 **의존성 방향**: packages → apps 순서로 단방향 의존성을 유지합니다.
-
-### 모노레포 워크플로우
-
-**개발 시**:
-
-```bash
-# 모든 패키지 동시 개발
-pnpm dev
-
-# 특정 앱만 개발 (의존성 패키지는 자동 빌드)
-pnpm dev --filter=web
-```
-
-**빌드 시**:
-
-```bash
-# Turborepo가 의존성 순서에 따라 자동 빌드
-# 1. @snud2025/typescript-config 빌드
-# 2. @snud2025/eslint-config 빌드
-# 3. @snud2025/api 빌드
-# 4. @snud2025/ui 빌드
-# 5. apps/web 빌드
-pnpm build
-```
 
 ### pnpm Workspace 및 Catalog
 
@@ -161,7 +134,7 @@ catalog:
 }
 ```
 
-## 주요 기능
+## ⚡ 주요 기능
 
 ### 1. Notion Database 연동 및 Notion 페이지 렌더링
 
@@ -173,14 +146,6 @@ catalog:
 - **People DB** (`NOTION_SNU_PEOPLE_DB`): 학생 정보
 
 Next.js App Router의 서버 컴포넌트에서 데이터를 페칭합니다.
-
-```typescript
-// apps/web/app/works/[id]/page.tsx
-const [allNotionWorks, recordMap] = await Promise.all([
-  getWorks(), // 전체 작품 목록
-  getWorkRecordMap(id).catch(() => null), // 상세 내용
-]);
-```
 
 #### Notion 페이지 렌더링
 
@@ -295,29 +260,29 @@ export const getNotionDatabase = cache(
 
 ### 3. Matter.js 물리 엔진
 
-#### 메인 그래픽 (`PhysicsScene`)
+Matter.js 물리 엔진은 두 곳에서 사용됩니다:
 
-홈페이지의 인터랙티브 물리 시뮬레이션입니다.
+#### 1. 메인 페이지 (`PhysicsScene`)
 
-#### People 페이지 (`PhysicsCell`)
+홈페이지의 인터랙티브 물리 시뮬레이션입니다. <br/>
+전시명 "WRAP UP" 알파벳 형태의 물리 객체들이 중력에 따라 움직이며, 사용자의 마우스 상호작용을 지원합니다.
 
-각 셀마다 독립적인 물리 엔진 인스턴스를 생성하여 DOM 요소와 동기화합니다:
+**구성 요소**:
+- Matter.js Engine, Render, Runner를 사용한 물리 시뮬레이션
+- Canvas 기반 렌더링
+- 반응형 브레이크포인트에 따른 동적 스케일 조정
+- 마우스 상호작용을 위한 MouseConstraint
+- 벽(Walls)을 통한 경계 처리
 
-```typescript
-// apps/web/app/people/components/PhysicsCell/PhysicsCell.tsx
-const tick = () => {
-  Engine.update(engine, 1000 / 60); // 물리 시뮬레이션 실행
+#### 2. People 페이지 (`PhysicsCell`)
 
-  // DOM 요소에 위치와 회전 반영
-  for (let i = 0; i < bodies.length; i++) {
-    const b = bodies[i];
-    wrapper.style.left = `${b.position.x - w / 2}px`;
-    wrapper.style.top = `${b.position.y - h / 2}px`;
-    wrapper.style.transform = `rotate(${b.angle}rad)`;
-  }
-  raf = requestAnimationFrame(tick);
-};
-```
+People 페이지의 각 학생 셀마다 독립적인 물리 엔진 인스턴스를 생성합니다. <br/>
+학생이 수강한 class를 상징하는 파츠들이 물리 객체로 표시되며, DOM 요소와 동기화됩니다.
+
+**구성 요소**:
+- 각 셀마다 독립적인 Matter.js Engine 인스턴스
+- DOM 요소를 물리 객체와 동기화 (Canvas 렌더러 미사용)
+- 벽을 통한 셀 경계 처리
 
 ### 4. API 에러 핸들러
 
@@ -401,7 +366,7 @@ export async function queryNotionDatabase<T>(
 
 이를 통해 클라이언트 에러, 서버 에러, 네트워크 에러를 명확히 구분하여 각각에 맞는 에러 핸들링이 가능합니다.
 
-## 개발 환경 설정
+## ⚙️ 개발 환경 설정
 
 ### 환경 변수
 
@@ -439,6 +404,10 @@ pnpm lint
 pnpm format
 ```
 
-## 라이선스
+---
 
-이 프로젝트는 서울대학교 디자인과 졸업 전시를 위한 프로젝트입니다.
+<div align="center">
+
+**이 프로젝트는 서울대학교 디자인과 졸업 전시를 위한 프로젝트입니다.**
+
+</div>
