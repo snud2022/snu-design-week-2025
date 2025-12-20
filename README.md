@@ -96,6 +96,19 @@ https://github.com/user-attachments/assets/dad2a04e-bb4b-439e-b277-83311fd0b9b1
 snu-design-week-2025/
 ├── apps/
 │   ├── web/                # 온라인 전시 웹사이트 (Next.js)
+│   │   ├── app/            # Next.js App Router
+│   │   │   ├── about/      # About 페이지
+│   │   │   ├── people/     # People 페이지
+│   │   │   ├── works/      # Works 페이지 및 상세 페이지
+│   │   │   ├── program/    # Program 페이지
+│   │   │   ├── partners/   # Partners 페이지
+│   │   │   └── page.tsx    # 메인 페이지
+│   │   ├── components/     # 공통 컴포넌트
+│   │   ├── services/       # API 호출 로직
+│   │   ├── utils/          # 유틸리티 함수
+│   │   ├── constants/      # 상수 정의
+│   │   ├── types/          # 타입 정의
+│   │   └── public/         # 정적 파일
 │   └── docs/               # 문서 사이트 (Next.js)
 ├── packages/
 │   ├── api/                # Notion API 호출 로직 및 에러 처리
