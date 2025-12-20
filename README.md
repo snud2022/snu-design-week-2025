@@ -1,4 +1,4 @@
-# [SNU DESIGN WEEK 2025 - WRAP UP](https://2025.snudesignweek.com/)
+# SNU DESIGN WEEK 2025 - WRAP UP
 <p align="center"><img width="562" height="150" alt="logo" src="https://github.com/user-attachments/assets/e45c4ce3-0ae0-4bdb-a4e8-b595c401bd26" /></p>
 <br/>
 <p align="center"><img width="1200" height="630" alt="OG Image" src="https://github.com/user-attachments/assets/364dacc0-6576-49f2-8745-bafddc73713a" /></p>
