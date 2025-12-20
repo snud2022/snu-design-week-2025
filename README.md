@@ -1,135 +1,424 @@
-# Turborepo starter
+# SNU DESIGN WEEK 2025 - WRAP UP
+<p align="center"><img width="562" height="150" alt="logo" src="https://github.com/user-attachments/assets/e45c4ce3-0ae0-4bdb-a4e8-b595c401bd26" /></p>
+<br/>
+<p align="center"><img width="1200" height="630" alt="OG Image" src="https://github.com/user-attachments/assets/364dacc0-6576-49f2-8745-bafddc73713a" /></p>
 
-This Turborepo starter is maintained by the Turborepo core team.
+<p align="center">
+  <a href="https://2025.snudesignweek.com/"><strong>🔗 웹사이트 바로가기 🔗</strong></a>
+</p>
 
-## Using this example
+# 📋 목차
 
-Run the following command:
+- [프로젝트 소개](#프로젝트-소개)
+- [페이지 소개](#페이지-소개)
+- [프로젝트 구조](#프로젝트-구조)
+- [주요 기능](#주요-기능)
+- [개발 환경 설정](#개발-환경-설정)
 
-```sh
-npx create-turbo@latest
-```
+## 📦 프로젝트 소개
+<p align="center">
+<strong>SNU DESIGN WEEK 2025 - WRAP UP</strong>
+  <br/>
+  <br/>
+WRAP UP은 4년간 모아온 짐을 꾸리는 이사의 현장을 테마로 한 서울대학교 디자인과 졸업 전시 웹사이트입니다.   <br/>
+물리 엔진 기반 그래픽을 통해 독특한 사용자 경험을 제공합니다.
+</p>
 
-## What's inside?
+## 📄 페이지 소개
 
-This Turborepo includes the following packages/apps:
+총 6개의 주요 페이지로 구성되어 있으며, 모든 페이지는 반응형 디자인을 지원합니다.
 
-### Apps and Packages
+### Main Page
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@snud2025/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@snud2025/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@snud2025/typescript-config`: `tsconfig.json`s used throughout the monorepo
+https://github.com/user-attachments/assets/bf5b504d-20d5-475c-a381-18eed2c5df71
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+Matter.js 기반 인터랙티브 물리 시뮬레이션을 제공합니다. 전시 명을 딴 WRAP UP 알파벳 형태의 물리 객체들이 중력에 따라 움직입니다.
+<br/><br/>
 
-### Utilities
+### About Page
 
-This Turborepo has some additional tools already setup for you:
+https://github.com/user-attachments/assets/13d3a376-9cb2-4f9f-8b64-37368fb709cb
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+전시 소개 및 조직 정보를 제공하는 페이지입니다.
+<br/><br/>
 
-### Build
+### Works Page
 
-To build all apps and packages, run the following command:
+https://github.com/user-attachments/assets/b93e8736-6d67-4c6d-b7c4-af68c0ee627e
 
-```
-cd my-turborepo
+Notion Database에서 가져온 졸업 작품 목록을 갤러리로 표시합니다. 상단 필터로 class별 작품을 필터링할 수 있으며, 작품 클릭 시 상세 페이지로 이동합니다.
+<br/><br/>
 
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build
+### People Page
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
-```
+https://github.com/user-attachments/assets/543e5b81-81d3-45ba-a726-ff50be50c60f
 
-You can build a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+학생 정보를 물리 엔진 기반 그리드로 표시합니다. 각 셀마다 독립적인 물리 엔진 인스턴스를 생성하며, 셀 내 class 파츠를 선택하면 상세 페이지로 이동합니다.
+<br/><br/>
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build --filter=docs
+### Works Detail Page
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-```
+https://github.com/user-attachments/assets/ae8cfa03-6f64-473e-94b2-e0bdfb4a544b
 
-### Develop
+작품 클릭 시 이동하는 상세 페이지입니다. Notion 페이지를 직접 렌더링하여 작품의 상세 정보를 제공합니다.
+<br/><br/>
 
-To develop all apps and packages, run the following command:
+### Program Page
 
-```
-cd my-turborepo
+https://github.com/user-attachments/assets/1b4b2e2a-829a-4069-94d7-55bc05580503
 
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev
+전시 기간 동안 진행되는 프로그램 일정을 안내합니다.
+<br/><br/>
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev
-yarn exec turbo dev
-pnpm exec turbo dev
-```
+### Partners Page
 
-You can develop a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+https://github.com/user-attachments/assets/dad2a04e-bb4b-439e-b277-83311fd0b9b1
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev --filter=web
+전시를 함께하는 파트너사와 동문 후원 현황을 소개합니다. 파트너 로고 및 후원 정보를 카드 형태로 표시합니다.
+<br/><br/>
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-```
+### 반응형 디자인
 
-### Remote Caching
+모든 페이지는 다양한 화면 크기에 최적화되어 있습니다:
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+- **모바일 (Mobile)**: 0px ~ 599px
+- **태블릿 (Tablet)**: 600px ~ 1279px
+- **데스크톱 (Desktop)**: 1280px 이상
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+`@snud2025/ui` 패키지의 `breakpoints` 상수를 사용하여 일관된 반응형 디자인을 구현했습니다.
+<br/><br/>
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+## 📁 프로젝트 구조
+
+이 프로젝트는 **Turborepo 모노레포** 구조로 구성되어 있습니다.
 
 ```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo login
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo login
-yarn exec turbo login
-pnpm exec turbo login
+snu-design-week-2025/
+├── apps/
+│   ├── web/                # 온라인 전시 웹사이트 (Next.js)
+│   │   ├── app/            # Next.js App Router
+│   │   │   ├── about/      # About 페이지
+│   │   │   ├── people/     # People 페이지
+│   │   │   ├── works/      # Works 페이지 및 상세 페이지
+│   │   │   ├── program/    # Program 페이지
+│   │   │   ├── partners/   # Partners 페이지
+│   │   │   └── page.tsx    # 메인 페이지
+│   │   ├── components/     # 공통 컴포넌트
+│   │   ├── services/       # API 호출 로직
+│   │   ├── utils/          # 유틸리티 함수
+│   │   ├── constants/      # 상수 정의
+│   │   ├── types/          # 타입 정의
+│   │   └── public/         # 정적 파일
+│   └── docs/               # 문서 사이트 (Next.js)
+├── packages/
+│   ├── api/                # Notion API 호출 로직 및 에러 처리
+│   ├── ui/                 # 공유 React 컴포넌트 라이브러리
+│   ├── eslint-config/      # ESLint 설정
+│   └── typescript-config/  # TypeScript 설정
+├── pnpm-workspace.yaml     # pnpm 워크스페이스 설정
+├── turbo.json              # Turborepo 설정
+└── vercel.json             # Vercel 설정
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+**의존성 방향**: packages → apps 순서로 단방향 의존성을 유지합니다.
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+### pnpm Workspace 및 Catalog
 
+pnpm workspace를 사용하여 모노레포를 관리합니다. `catalog` 기능으로 의존성 버전을 중앙에서 관리합니다.
+
+```yaml
+# pnpm-workspace.yaml
+packages:
+  - "apps/*"
+  - "packages/*"
+catalog:
+  next: "15.5.7"
+  react: "^19.1.0"
 ```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo link
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo link
-yarn exec turbo link
-pnpm exec turbo link
+```json
+{
+  "dependencies": {
+    "next": "catalog:",
+    "@snud2025/ui": "workspace:*"
+  }
+}
 ```
 
-## Useful Links
+## ⚡ 주요 기능
 
-Learn more about the power of Turborepo:
+### 1. Notion Database 연동 및 Notion 페이지 렌더링
 
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+#### Notion Database 연동
+
+작품과 학생 정보는 Notion Database에서 관리되며, 웹사이트에서 실시간으로 가져옵니다.
+
+- **Works DB** (`NOTION_SNU_WORKS_DB`): 작품 정보
+- **People DB** (`NOTION_SNU_PEOPLE_DB`): 학생 정보
+
+Next.js App Router의 서버 컴포넌트에서 데이터를 페칭합니다.
+
+#### Notion 페이지 렌더링
+
+`react-notion-x`를 사용하여 Notion 페이지를 React 컴포넌트로 렌더링합니다.
+
+#### Notion 이미지 처리
+
+Notion API에서 받아온 이미지 URL은 만료 시간(약 1시간)이 있어 직접 사용 시 이미지가 깨질 수 있습니다. 이를 방지하기 위해 Notion 웹 게시 링크로 변환하여 사용합니다.
+
+```typescript
+// packages/ui/src/utils/getImageUrl.ts
+export function getImageUrl(imageUrl: string, pageId: string): string {
+  return `https://${NOTION_SITE_DOMAIN}/image/${encodeURIComponent(imageUrl)}?table=block&id=${pageId}&cache=v2`;
+}
+```
+
+#### Notion 데이터 변환
+
+Notion API의 동적 타입 데이터를 안전하게 변환하는 유틸리티 함수를 사용합니다:
+
+```typescript
+// apps/web/app/works/utils/transformWorks.ts
+export function transformWork(notionWork: NotionWork): ProjectDetail {
+  try {
+    const properties = notionWork.properties;
+
+    // 기본 정보 추출
+    const nameKo = extractText(properties.작품이름) || "제목 없음";
+    const nameEn = extractText(properties.작품이름_영문) || "Untitled";
+    const studentNameKo = extractText(properties.학생이름) || "";
+    const studentNameEn = extractText(properties.학생이름_영문) || "";
+    const email = properties.Email?.email || "";
+    const instagram = extractText(properties["인스타 아이디"]) || "";
+
+    // filterIndex: 수업 정보에서 추출
+    let filterIndex = 0;
+    if (
+      typeof properties.filterIndex === "object" &&
+      "number" in properties.filterIndex &&
+      properties.filterIndex.number !== null
+    ) {
+      filterIndex = properties.filterIndex.number;
+    } else if (properties.수업) {
+      filterIndex = getFilterIndexFromClass(properties.수업);
+    }
+
+    const projectType = getCategoryByIndex(filterIndex) || "BRAND";
+    const thumbnailUrl = extractCoverUrl(notionWork);
+
+    // 통합 프로젝트 여부 판단
+    const isIntegratedProject =
+      properties.다른작품?.relation && properties.다른작품.relation.length > 0
+        ? false
+        : undefined;
+
+    return {
+      id: notionWork.id,
+      projectType,
+      filterIndex,
+      nameKo,
+      nameEn,
+      studentNameKo,
+      studentNameEn,
+      thumbnailUrl,
+      email,
+      instagram,
+      isIntegratedProject,
+    };
+  } catch {
+    // 기본값 반환으로 안정성 보장
+    return {
+      /* 기본값 */
+    };
+  }
+}
+```
+
+### 2. 캐싱 전략
+
+Next.js의 `unstable_cache`를 활용하여 데이터를 캐싱하고, 개발 환경에서는 캐시를 비활성화하여 실시간 업데이트를 확인할 수 있습니다:
+
+```typescript
+// apps/web/services/common/getDatabase.ts
+export const getNotionDatabase = cache(
+  async <T>(
+    client: Client,
+    databaseId: string,
+    cacheKey?: string,
+    revalidateSeconds
+  ): Promise<T[] | []> => {
+    return unstable_cache(
+      async () => {
+        return await queryNotionDatabase<T>(client, databaseId, sorts);
+      },
+      [
+        cacheKey || `notion-database-${databaseId}`,
+        ...(process.env.NODE_ENV === "development"
+          ? [Date.now().toString()]
+          : []),
+      ],
+      {
+        revalidate:
+          process.env.NODE_ENV === "development" ? false : revalidateSeconds,
+        tags: ["notion-database", `notion-database-${databaseId}`],
+      }
+    )();
+  }
+);
+```
+
+프로덕션에서는 10분(600초) 캐시를 유지하고, 개발 환경에서는 캐시를 비활성화합니다.
+
+### 3. Matter.js 물리 엔진
+
+Matter.js 물리 엔진은 두 곳에서 사용됩니다:
+
+#### 1. 메인 페이지 (`PhysicsScene`)
+
+홈페이지의 인터랙티브 물리 시뮬레이션입니다. <br/>
+전시명 "WRAP UP" 알파벳 형태의 물리 객체들이 중력에 따라 움직이며, 사용자의 마우스 상호작용을 지원합니다.
+
+**구성 요소**:
+- Matter.js Engine, Render, Runner를 사용한 물리 시뮬레이션
+- Canvas 기반 렌더링
+- 반응형 브레이크포인트에 따른 동적 스케일 조정
+- 마우스 상호작용을 위한 MouseConstraint
+- 벽(Walls)을 통한 경계 처리
+
+#### 2. People 페이지 (`PhysicsCell`)
+
+People 페이지의 각 학생 셀마다 독립적인 물리 엔진 인스턴스를 생성합니다. <br/>
+학생이 수강한 class를 상징하는 파츠들이 물리 객체로 표시되며, DOM 요소와 동기화됩니다.
+
+**구성 요소**:
+- 각 셀마다 독립적인 Matter.js Engine 인스턴스
+- DOM 요소를 물리 객체와 동기화 (Canvas 렌더러 미사용)
+- 벽을 통한 셀 경계 처리
+
+### 4. API 에러 핸들러
+
+Notion API 호출 시 발생하는 에러를 타입별로 구분하여 처리합니다.
+
+#### 1단계: 에러 타입 정의
+
+```typescript
+// packages/api/src/error.ts
+export class ClientError extends Error {
+  constructor(
+    public status: number,
+    message: string
+  ) {
+    super(message);
+    this.name = "ClientError";
+  }
+}
+
+export class ServerError extends Error {
+  constructor(
+    public status: number,
+    message: string
+  ) {
+    super(message);
+    this.name = "ServerError";
+  }
+}
+
+export class NetworkError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "NetworkError";
+  }
+}
+```
+
+#### 2단계: 에러 파싱 함수 구현
+
+```typescript
+// packages/api/src/error.ts
+export function parseError(err: unknown): never {
+  if (isNotionClientError(err)) {
+    if (err instanceof APIResponseError) {
+      const status = err.status;
+      // 클라이언트 에러 (4xx)
+      if (status >= 400 && status < 500) {
+        throw new ClientError(status, message);
+      }
+      // 서버 에러 (5xx)
+      if (status >= 500) {
+        throw new ServerError(status, message);
+      }
+    }
+    // 네트워크 에러
+    throw new NetworkError(err.message);
+  }
+  // 알 수 없는 에러
+  throw new Error("Unknown error occurred");
+}
+```
+
+#### 3단계: API 호출 시 에러 처리 적용
+
+```typescript
+// packages/api/src/request.ts
+export async function queryNotionDatabase<T>(
+  client: Client,
+  databaseId: string
+): Promise<T[]> {
+  try {
+    const response = await client.databases.query({
+      database_id: databaseId,
+    });
+    return response.results as T[];
+  } catch (error) {
+    parseError(error); // 에러 타입에 따라 적절히 처리
+  }
+}
+```
+
+이를 통해 클라이언트 에러, 서버 에러, 네트워크 에러를 명확히 구분하여 각각에 맞는 에러 핸들링이 가능합니다.
+
+## ⚙️ 개발 환경 설정
+
+### 환경 변수
+
+프로젝트 루트에 `.env.local` 파일을 생성하고 다음 변수를 설정합니다:
+
+```env
+# Notion API
+NOTION_DB_API_KEY=your_notion_api_key
+NOTION_SNU_WORKS_DB=your_works_database_id
+NOTION_SNU_PEOPLE_DB=your_people_database_id
+
+NEXT_PUBLIC_NOTION_SITE_DOMAIN=your_notion_site_domain
+```
+
+### 설치 및 실행
+
+```bash
+# 의존성 설치
+pnpm install
+
+# 개발 서버 실행 (모든 앱)
+pnpm dev
+
+# 특정 앱만 실행
+pnpm dev --filter=web
+pnpm dev --filter=docs
+
+# 빌드
+pnpm build
+
+# 린트
+pnpm lint
+
+# 포맷팅
+pnpm format
+```
+
+---
+
+<div align="center">
+
+**이 프로젝트는 서울대학교 디자인과 졸업 전시를 위한 프로젝트입니다.**
+
+</div>
