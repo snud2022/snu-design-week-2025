@@ -1,4 +1,4 @@
-import type { BaseCategory } from "../../../types/categories";
+import type { BaseCategory } from "@app-types/categories";
 
 export type ProjectDetail = {
   id: string;

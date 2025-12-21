@@ -1,14 +1,14 @@
 "use client";
 
 import React, { useLayoutEffect, useRef, useMemo, useState } from "react";
-import RopeFrame from "../../../../components/RopeFrame/RopeFrame";
+import RopeFrame from "@components/RopeFrame/RopeFrame";
 import { Subtitle } from "@snud2025/ui";
-import { formatNameEn } from "../../utils/formatNameEn";
-import PhysicsCell from "../PhysicsCell/PhysicsCell";
+import { formatNameEn } from "@/people/utils/formatNameEn";
+import PhysicsCell from "@/people/components/PhysicsCell/PhysicsCell";
 import * as S from "./RopePeopleGrid.style";
-import { peopleGraphicConfigs } from "../../../../constants/peopleGraphic";
-import type { PeopleGraphicConfig } from "../../../../constants/peopleGraphic";
-import type { PersonClass } from "../../types/people";
+import { peopleGraphicConfigs } from "@constants/peopleGraphic";
+import type { PeopleGraphicConfig } from "@constants/peopleGraphic";
+import type { PersonClass } from "@/people/types/people";
 
 interface RopeGridProps {
   className?: string;

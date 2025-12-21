@@ -8,17 +8,14 @@ import {
   StudentCard,
   ProjectPagination,
   WorksDetailHeader,
-} from "../components";
-import { getWorkRecordMap, getWorks } from "../../../services/works";
+} from "@/works/components";
+import { getWorkRecordMap, getWorks } from "@services/works";
 import {
   transformProjectDetail,
   transformWorks,
   transformWork,
-} from "../utils/transformWorks";
-import {
-  extractCoverUrl,
-  extractOgImageUrl,
-} from "../../../utils/notionExtract";
+} from "@/works/utils/transformWorks";
+import { extractCoverUrl, extractOgImageUrl } from "@utils/notionExtract";
 import * as S from "./page.style";
 
 interface ProjectDetailPageProps {

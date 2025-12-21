@@ -1,6 +1,6 @@
 import * as S from "./Tab.style";
 import { Title } from "@snud2025/ui";
-import RopeLine from "../../../../components/RopeLine/RopeLine";
+import RopeLine from "@components/RopeLine/RopeLine";
 
 export type Side = "left" | "right";
 

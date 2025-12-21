@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { Title } from "@snud2025/ui";
 import * as S from "./GoBackButton.style";
-import ArrowBack from "../../../../assets/icons/arrow_back.svg";
+import ArrowBack from "@assets/icons/arrow_back.svg";
 
 export default function GoBackButton() {
   const router = useRouter();

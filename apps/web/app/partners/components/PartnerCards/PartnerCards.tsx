@@ -1,5 +1,5 @@
-import type { Partner } from "../../types/partner";
-import { PartnerCard } from "../PartnerCard";
+import type { Partner } from "@/partners/types/partner";
+import { PartnerCard } from "@/partners/components/PartnerCard";
 import * as S from "./PartnerCards.style";
 
 interface PartnerCardsProps {

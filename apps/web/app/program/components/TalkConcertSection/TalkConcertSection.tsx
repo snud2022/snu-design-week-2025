@@ -1,6 +1,6 @@
 import { Body, Subtitle, Title } from "@snud2025/ui";
-import type { TalkConcertSection as TalkConcertSectionType } from "../../types/detailSection";
-import RopeFrame from "../../../../components/RopeFrame/RopeFrame";
+import type { TalkConcertSection as TalkConcertSectionType } from "@/program/types/detailSection";
+import RopeFrame from "@components/RopeFrame/RopeFrame";
 import * as S from "./TalkConcertSection.style";
 
 interface TalkConcertSectionProps {
@@ -29,12 +29,8 @@ export default function TalkConcertSection({ data }: TalkConcertSectionProps) {
                 </Title>
               </S.TitleSection>
               <S.InfoItem>
-                <Subtitle language="kr">
-                  일정|{data.dateRange}
-                </Subtitle>
-                <Subtitle language="kr">
-                  장소|{data.location.kr}
-                </Subtitle>
+                <Subtitle language="kr">일정|{data.dateRange}</Subtitle>
+                <Subtitle language="kr">장소|{data.location.kr}</Subtitle>
               </S.InfoItem>
             </S.InfoContainer>
           </RopeFrame>
@@ -46,7 +42,7 @@ export default function TalkConcertSection({ data }: TalkConcertSectionProps) {
             heightSizePixel={303}
             edges={{ top: true, right: false, bottom: false, left: false }}
           >
-             <S.InfoContainer>
+            <S.InfoContainer>
               <S.TitleSection>
                 <Title level="title3">
                   {data.title.split("\n").map((line, lineIndex) => (
@@ -58,12 +54,8 @@ export default function TalkConcertSection({ data }: TalkConcertSectionProps) {
                 </Title>
               </S.TitleSection>
               <S.InfoItem>
-                <Subtitle language="kr">
-                  일정 | {data.dateRange}
-                </Subtitle>
-                <Subtitle language="kr">
-                  장소 | {data.location.kr}
-                </Subtitle>
+                <Subtitle language="kr">일정 | {data.dateRange}</Subtitle>
+                <Subtitle language="kr">장소 | {data.location.kr}</Subtitle>
               </S.InfoItem>
             </S.InfoContainer>
           </RopeFrame>
@@ -75,7 +67,7 @@ export default function TalkConcertSection({ data }: TalkConcertSectionProps) {
             heightSizePixel={303}
             edges={{ top: true, right: false, bottom: false, left: false }}
           >
-             <S.InfoContainer>
+            <S.InfoContainer>
               <S.TitleSection>
                 <Title level="title3">
                   {data.title.split("\n").map((line, lineIndex) => (
@@ -87,12 +79,8 @@ export default function TalkConcertSection({ data }: TalkConcertSectionProps) {
                 </Title>
               </S.TitleSection>
               <S.InfoItem>
-                <Subtitle language="kr">
-                  일정 | {data.dateRange}
-                </Subtitle>
-                <Subtitle language="kr">
-                  장소 | {data.location.kr}
-                </Subtitle>
+                <Subtitle language="kr">일정 | {data.dateRange}</Subtitle>
+                <Subtitle language="kr">장소 | {data.location.kr}</Subtitle>
               </S.InfoItem>
             </S.InfoContainer>
           </RopeFrame>

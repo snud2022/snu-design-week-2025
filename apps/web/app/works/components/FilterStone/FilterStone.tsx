@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import HoverStone from "../../../../components/HoverStone/HoverStone";
-import type { PeopleGraphicConfig } from "../../../../constants/peopleGraphic";
+import HoverStone from "@components/HoverStone/HoverStone";
+import type { PeopleGraphicConfig } from "@constants/peopleGraphic";
 import * as S from "./FilterStone.style";
 
 type FilterStoneProps = {

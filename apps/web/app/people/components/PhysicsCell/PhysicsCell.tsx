@@ -1,9 +1,9 @@
 "use client";
 
-import type { PeopleGraphicConfig } from "../../../../constants/peopleGraphic";
-import { PEOPLE_RESPONSIVE_SCALES } from "../../../../constants/peopleGraphic";
+import type { PeopleGraphicConfig } from "@constants/peopleGraphic";
+import { PEOPLE_RESPONSIVE_SCALES } from "@constants/peopleGraphic";
 import React, { useEffect, useRef } from "react";
-import HoverStone from "../../../../components/HoverStone/HoverStone";
+import HoverStone from "@components/HoverStone/HoverStone";
 import Matter from "matter-js";
 import { createRoot, Root } from "react-dom/client";
 import { breakpoints } from "@snud2025/ui";

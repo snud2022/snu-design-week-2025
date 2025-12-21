@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import type { ProjectDetail } from "../../types/projects";
+import type { ProjectDetail } from "@/works/types/projects";
 import * as S from "./ProjectCard.style";
 import { Title, Body } from "@snud2025/ui";
 

@@ -1,5 +1,5 @@
 import { Subtitle } from "@snud2025/ui";
-import type { EventInfo } from "../../types/eventInfo";
+import type { EventInfo } from "@/about/types/eventInfo";
 import * as S from "./EventInfo.style";
 
 interface EventInfoProps {

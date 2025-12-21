@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { Title } from "@snud2025/ui";
-import EventInfo from "../EventInfo/EventInfo";
-import type { EventTitle, RopeFrameConfig } from "../../types/eventHeader";
-import type { EventInfo as EventInfoType } from "../../types/eventInfo";
+import EventInfo from "@/about/components/EventInfo/EventInfo";
+import type { EventTitle, RopeFrameConfig } from "@/about/types/eventHeader";
+import type { EventInfo as EventInfoType } from "@/about/types/eventInfo";
 import * as S from "./EventHeader.style";
-import RopeFrame from "../../../../components/RopeFrame/RopeFrame";
+import RopeFrame from "@components/RopeFrame/RopeFrame";
 
 interface EventHeaderProps {
   title: EventTitle;

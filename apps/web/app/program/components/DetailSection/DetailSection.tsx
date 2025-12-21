@@ -1,9 +1,9 @@
-import HiDaySection from "../HiDaySection";
-import TalkConcertSection from "../TalkConcertSection";
+import HiDaySection from "@/program/components/HiDaySection";
+import TalkConcertSection from "@/program/components/TalkConcertSection";
 import type {
   HiDaySection as HiDaySectionType,
   TalkConcertSection as TalkConcertSectionType,
-} from "../../types/detailSection";
+} from "@/program/types/detailSection";
 import * as S from "./DetailSection.style";
 
 interface DetailSectionProps {

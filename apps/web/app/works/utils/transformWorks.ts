@@ -1,10 +1,7 @@
-import type { NotionWork, NotionWorkWithBlocks } from "../../../services/works";
-import type { ProjectDetail } from "../types/projects";
-import {
-  getCategoryByIndex,
-  getIndexFromClassName,
-} from "../../../utils/categories";
-import { extractText, extractCoverUrl } from "../../../utils/notionExtract";
+import type { NotionWork, NotionWorkWithBlocks } from "@services/works";
+import type { ProjectDetail } from "@/works/types/projects";
+import { getCategoryByIndex, getIndexFromClassName } from "@utils/categories";
+import { extractText, extractCoverUrl } from "@utils/notionExtract";
 
 /**
  * 수업 이름을 filterIndex로 변환하는 헬퍼

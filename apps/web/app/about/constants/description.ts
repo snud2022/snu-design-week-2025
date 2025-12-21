@@ -1,4 +1,4 @@
-import type { AboutContent } from "../types/description";
+import type { AboutContent } from "@/about/types/description";
 
 export const ABOUT_CONTENT: AboutContent = {
   descriptionKr: `2025 서울대학교 디자인과 졸업 전시 WRAP UP은 4년간 모아온 짐을 꾸리는 이사의 현장입니다. 

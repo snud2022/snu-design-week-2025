@@ -2,7 +2,7 @@
 
 import styled from "@emotion/styled";
 import { mq } from "@snud2025/ui";
-import { WORKS_RESPONSIVE_SCALES } from "../../../../constants/peopleGraphic";
+import { WORKS_RESPONSIVE_SCALES } from "@constants/peopleGraphic";
 
 export const FilterButton = styled.button<{
   $tabletRotate: number;

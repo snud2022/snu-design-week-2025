@@ -1,6 +1,6 @@
 import { Body, Subtitle, Title } from "@snud2025/ui";
-import type { ProgramEvent } from "../../types/program";
-import RopeFrame from "../../../../components/RopeFrame/RopeFrame";
+import type { ProgramEvent } from "@/program/types/program";
+import RopeFrame from "@components/RopeFrame/RopeFrame";
 import * as S from "./ProgramCard.style";
 import Image from "next/image";
 

@@ -1,9 +1,9 @@
 import React from "react";
 import * as S from "./WorksGrid.style";
 import { Title } from "@snud2025/ui";
-import AllWorksGrid from "../AllWorksGrid/AllWorksGrid";
-import CategoryDetail from "../CategoryDetail/CategoryDetail";
-import type { ProjectDetail } from "../../types/projects";
+import AllWorksGrid from "@/works/components/AllWorksGrid/AllWorksGrid";
+import CategoryDetail from "@/works/components/CategoryDetail/CategoryDetail";
+import type { ProjectDetail } from "@/works/types/projects";
 
 interface WorksGridProps {
   selectedFilterIndex: number | null;

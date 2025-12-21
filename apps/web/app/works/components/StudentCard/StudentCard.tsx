@@ -1,13 +1,13 @@
 import { Body, Subtitle, Title, colors } from "@snud2025/ui";
 import Link from "next/link";
-import RopeLine from "../../../../components/RopeLine/RopeLine";
-import ProjectCard from "../ProjectCard/ProjectCard";
+import RopeLine from "@components/RopeLine/RopeLine";
+import ProjectCard from "@/works/components/ProjectCard/ProjectCard";
 import * as S from "./StudentCard.style";
-import type { ProjectDetail } from "../../types/projects";
-import MailIcon from "../../../../assets/icons/mail.svg";
-import InstagramIcon from "../../../../assets/icons/instagram.svg";
-import ArrowIcon from "../../../../assets/icons/arrow_back.svg";
-import { getInstagramUrl } from "../../../../utils/getInstagramUrl";
+import type { ProjectDetail } from "@/works/types/projects";
+import MailIcon from "@assets/icons/mail.svg";
+import InstagramIcon from "@assets/icons/instagram.svg";
+import ArrowIcon from "@assets/icons/arrow_back.svg";
+import { getInstagramUrl } from "@utils/getInstagramUrl";
 
 interface StudentCardProps {
   project: ProjectDetail;

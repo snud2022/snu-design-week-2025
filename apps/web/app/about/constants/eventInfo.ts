@@ -1,4 +1,4 @@
-import type { EventInfo } from "../types/eventInfo";
+import type { EventInfo } from "@/about/types/eventInfo";
 
 export const EVENT_INFO: EventInfo = {
   date: "2025.12.04. - 2025.12.09.",

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Body } from "@snud2025/ui";
-import type { Partner } from "../../types/partner";
+import type { Partner } from "@/partners/types/partner";
 import * as S from "./PartnerCard.style";
 
 interface PartnerCardProps {

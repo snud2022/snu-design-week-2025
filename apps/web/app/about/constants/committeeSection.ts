@@ -1,4 +1,4 @@
-import type { Leadership, Team } from "../types/committeeSection";
+import type { Leadership, Team } from "@/about/types/committeeSection";
 
 export const LEADERSHIP: Leadership[] = [
   { role: "졸업주간 준비위원장", name: "정예원" },

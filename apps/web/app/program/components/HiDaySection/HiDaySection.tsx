@@ -1,6 +1,6 @@
 import { Body, Subtitle, Title } from "@snud2025/ui";
-import type { HiDaySection as HiDaySectionType } from "../../types/detailSection";
-import RopeFrame from "../../../../components/RopeFrame/RopeFrame";
+import type { HiDaySection as HiDaySectionType } from "@/program/types/detailSection";
+import RopeFrame from "@components/RopeFrame/RopeFrame";
 import * as S from "./HiDaySection.style";
 
 interface HiDaySectionProps {
