@@ -1,7 +1,6 @@
 import { Body, Subtitle, Title } from "@snud2025/ui";
 import Link from "next/link";
-import MailIcon from "@assets/icons/mail.svg";
-import InstagramIcon from "@assets/icons/instagram.svg";
+import Image from "next/image";
 import * as S from "./WorksDetailHeader.style";
 import type { ProjectDetail } from "@/works/types/projects";
 import { getInstagramUrl } from "@utils/getInstagramUrl";
@@ -43,7 +42,7 @@ export default function WorksDetailHeader({ project }: WorksDetailHeaderProps) {
         <S.ContactInfo>
           {project.email && (
             <S.ContactItem>
-              <MailIcon width={24} height={24} />
+              <Image src="/icons/mail.svg" alt="" width={24} height={24} />
               <Body level="body1" weight="medium" className="not-mobile info">
                 {project.email}
               </Body>
@@ -59,7 +58,12 @@ export default function WorksDetailHeader({ project }: WorksDetailHeaderProps) {
               rel="noopener noreferrer"
             >
               <S.ContactItem style={{ cursor: "pointer" }}>
-                <InstagramIcon width={24} height={24} />
+                <Image
+                  src="/icons/instagram.svg"
+                  alt=""
+                  width={24}
+                  height={24}
+                />
                 <Body level="body1" weight="medium" className="not-mobile info">
                   {project.instagram}
                 </Body>

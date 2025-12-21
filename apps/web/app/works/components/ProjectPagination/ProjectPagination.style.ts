@@ -61,12 +61,10 @@ export const NavButton = styled.button<{ $isLeft: boolean }>`
 `;
 
 export const ArrowWrapper = styled.div`
+  position: relative;
   width: 32px;
   height: 32px;
   flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   ${mq.mobile} {
     width: 24px;

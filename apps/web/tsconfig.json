@@ -13,8 +13,7 @@
       "@constants/*": ["./constants/*"],
       "@utils/*": ["./utils/*"],
       "@app-types/*": ["./types/*"],
-      "@services/*": ["./services/*"],
-      "@assets/*": ["./assets/*"]
+      "@services/*": ["./services/*"]
     }
   },
   "include": [

@@ -1,10 +1,10 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Subtitle, Title } from "@snud2025/ui";
 import * as S from "./ProjectPagination.style";
 import ProjectCard from "@/works/components/ProjectCard/ProjectCard";
 import type { ProjectDetail } from "@/works/types/projects";
-import ArrowBack from "@assets/icons/arrow_back.svg";
 
 interface ProjectPaginationProps {
   currentProjectId: string;
@@ -49,9 +49,11 @@ export default function ProjectPagination({
             <Link href={`/works/${previousProjectId}`}>
               <S.NavButton $isLeft>
                 <S.ArrowWrapper>
-                  <ArrowBack
-                    style={{ width: "100%", height: "100%" }}
-                    fill="#fff"
+                  <Image
+                    src="/icons/arrow_back_white.svg"
+                    alt=""
+                    fill
+                    style={{ objectFit: "contain" }}
                   />
                 </S.ArrowWrapper>
                 <Title language="en" level="title3" className="not-mobile">
@@ -76,9 +78,11 @@ export default function ProjectPagination({
             <Link href={`/works/${nextProjectId}`}>
               <S.NavButton $isLeft={false}>
                 <S.ArrowWrapper style={{ transform: "rotate(180deg)" }}>
-                  <ArrowBack
-                    style={{ width: "100%", height: "100%" }}
-                    fill="#fff"
+                  <Image
+                    src="/icons/arrow_back_white.svg"
+                    alt=""
+                    fill
+                    style={{ objectFit: "contain" }}
                   />
                 </S.ArrowWrapper>
                 <Title language="en" level="title3" className="not-mobile">

@@ -1,12 +1,10 @@
-import { Body, Subtitle, Title, colors } from "@snud2025/ui";
+import { Body, Subtitle, Title } from "@snud2025/ui";
 import Link from "next/link";
+import Image from "next/image";
 import RopeLine from "@components/RopeLine/RopeLine";
 import ProjectCard from "@/works/components/ProjectCard/ProjectCard";
 import * as S from "./StudentCard.style";
 import type { ProjectDetail } from "@/works/types/projects";
-import MailIcon from "@assets/icons/mail.svg";
-import InstagramIcon from "@assets/icons/instagram.svg";
-import ArrowIcon from "@assets/icons/arrow_back.svg";
 import { getInstagramUrl } from "@utils/getInstagramUrl";
 
 interface StudentCardProps {
@@ -42,7 +40,7 @@ export default function StudentCard({
         <S.ContactInfo>
           {project.email && (
             <S.ContactItem>
-              <MailIcon width={20} height={20} />
+              <Image src="/icons/mail.svg" alt="" width={20} height={20} />
               <Body level="body2" weight="medium">
                 {project.email}
               </Body>
@@ -55,7 +53,12 @@ export default function StudentCard({
               rel="noopener noreferrer"
             >
               <S.ContactItem style={{ cursor: "pointer" }}>
-                <InstagramIcon width={20} height={20} />
+                <Image
+                  src="/icons/instagram.svg"
+                  alt=""
+                  width={20}
+                  height={20}
+                />
                 <Body level="body2" weight="medium">
                   {project.instagram}
                 </Body>
@@ -83,7 +86,12 @@ export default function StudentCard({
                   height: "24px",
                 }}
               >
-                <ArrowIcon fill={colors.primaryGreen} width={24} height={24} />
+                <Image
+                  src="/icons/arrow_back_green.svg"
+                  alt=""
+                  width={24}
+                  height={24}
+                />
               </div>
             </S.OtherProject>
           </Link>
