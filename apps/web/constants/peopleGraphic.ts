@@ -1,26 +1,6 @@
-// Tied style Typo SVG Component
-import TiedBrand from "../public/subGraphic/TiedBrand.svg";
-import TiedGraphic from "../public/subGraphic/TiedGraphic.svg";
-import TiedLiving from "../public/subGraphic/TiedLiving.svg";
-import TiedMedia from "../public/subGraphic/TiedMedia.svg";
-import TiedMobility from "../public/subGraphic/TiedMobility.svg";
-import TiedProduct from "../public/subGraphic/TiedProduct.svg";
-import TiedSpace from "../public/subGraphic/TiedSpace.svg";
-import TiedUIUX from "../public/subGraphic/TiedUIUX.svg";
-
-// Inside style Typo SVG Component
-import InsideBrand from "../public/subGraphic/InsideBrand.svg";
-import InsideGraphic from "../public/subGraphic/InsideGraphic.svg";
-import InsideLiving from "../public/subGraphic/InsideLiving.svg";
-import InsideMedia from "../public/subGraphic/InsideMedia.svg";
-import InsideMobility from "../public/subGraphic/InsideMobility.svg";
-import InsideProduct from "../public/subGraphic/InsideProduct.svg";
-import InsideSpace from "../public/subGraphic/InsideSpace.svg";
-import InsideUIUX from "../public/subGraphic/InsideUIUX.svg";
-
 export type PeopleGraphicConfig = {
-  Svg: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-  HoverSvg: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  src: string;
+  hoverSrc: string;
   width: number;
   height: number;
 };
@@ -42,50 +22,50 @@ export const WORKS_RESPONSIVE_SCALES = {
 // 기본 크기
 export const peopleGraphicConfigs: PeopleGraphicConfig[] = [
   {
-    Svg: TiedBrand,
-    HoverSvg: InsideBrand,
+    src: "/subGraphic/TiedBrand.svg",
+    hoverSrc: "/subGraphic/InsideBrand.svg",
     width: 107,
     height: 151,
   },
   {
-    Svg: TiedGraphic,
-    HoverSvg: InsideGraphic,
+    src: "/subGraphic/TiedGraphic.svg",
+    hoverSrc: "/subGraphic/InsideGraphic.svg",
     width: 126,
     height: 150,
   },
   {
-    Svg: TiedMedia,
-    HoverSvg: InsideMedia,
+    src: "/subGraphic/TiedMedia.svg",
+    hoverSrc: "/subGraphic/InsideMedia.svg",
     width: 245,
     height: 148,
   },
   {
-    Svg: TiedUIUX,
-    HoverSvg: InsideUIUX,
+    src: "/subGraphic/TiedUIUX.svg",
+    hoverSrc: "/subGraphic/InsideUIUX.svg",
     width: 135,
     height: 150,
   },
   {
-    Svg: TiedLiving,
-    HoverSvg: InsideLiving,
+    src: "/subGraphic/TiedLiving.svg",
+    hoverSrc: "/subGraphic/InsideLiving.svg",
     width: 118,
     height: 151,
   },
   {
-    Svg: TiedProduct,
-    HoverSvg: InsideProduct,
+    src: "/subGraphic/TiedProduct.svg",
+    hoverSrc: "/subGraphic/InsideProduct.svg",
     width: 104,
     height: 152,
   },
   {
-    Svg: TiedSpace,
-    HoverSvg: InsideSpace,
+    src: "/subGraphic/TiedSpace.svg",
+    hoverSrc: "/subGraphic/InsideSpace.svg",
     width: 120,
     height: 151,
   },
   {
-    Svg: TiedMobility,
-    HoverSvg: InsideMobility,
+    src: "/subGraphic/TiedMobility.svg",
+    hoverSrc: "/subGraphic/InsideMobility.svg",
     width: 261,
     height: 150,
   },

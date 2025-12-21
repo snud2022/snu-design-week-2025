@@ -14,11 +14,10 @@ export type CategoryInfo = {
   descriptionEn?: string;
 };
 
-// 카테고리별 그래픽 컴포넌트 타입
+// 카테고리별 그래픽 타입 (이미지 경로 기반)
 export type CategoryGraphic = {
   type: "svg" | "image";
-  svg: React.ComponentType<React.SVGProps<SVGSVGElement>> | null;
-  imageUrl?: string;
+  src: string | null;
   width: number;
   height: number;
 };
