@@ -1,6 +1,6 @@
 import { Body } from "@snud2025/ui";
-import type { AboutContent } from "../../types/description";
-import { splitLines } from "../../utils/lineBreak";
+import type { AboutContent } from "@/about/types/description";
+import { splitLines } from "@/about/utils/lineBreak";
 import * as S from "./Description.style";
 
 interface DescriptionProps {

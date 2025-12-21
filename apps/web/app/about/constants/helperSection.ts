@@ -1,4 +1,4 @@
-import type { HelperSectionData } from "../types/helperSection";
+import type { HelperSectionData } from "@/about/types/helperSection";
 
 export const HELPER_SECTION: HelperSectionData = {
   titleKr: "도움 주신 분들",

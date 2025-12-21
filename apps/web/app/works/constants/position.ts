@@ -1,4 +1,4 @@
-import type { Position } from "../types/position";
+import type { Position } from "@/works/types/position";
 
 // 각 파츠의 고정 위치 (index 순서)
 export const STONE_POSITIONS: Position[] = [

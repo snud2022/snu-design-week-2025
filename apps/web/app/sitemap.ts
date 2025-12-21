@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { getWorks } from "../services/works";
+import { getWorks } from "@services/works";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl =

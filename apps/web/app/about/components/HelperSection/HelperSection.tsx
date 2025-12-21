@@ -1,5 +1,5 @@
 import { Body, Title } from "@snud2025/ui";
-import type { HelperSectionData } from "../../types/helperSection";
+import type { HelperSectionData } from "@/about/types/helperSection";
 import * as S from "./HelperSection.style";
 
 interface HelperSectionProps {

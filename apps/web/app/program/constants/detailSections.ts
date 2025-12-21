@@ -1,4 +1,4 @@
-import type { HiDaySection, TalkConcertSection } from "../types/detailSection";
+import type { HiDaySection, TalkConcertSection } from "@/program/types/detailSection";
 
 export const HI_DAY_SECTION: HiDaySection = {
   title: {

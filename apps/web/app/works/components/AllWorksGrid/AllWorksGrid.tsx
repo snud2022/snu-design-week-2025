@@ -1,6 +1,6 @@
 import React from "react";
-import ProjectCard from "../ProjectCard/ProjectCard";
-import type { ProjectDetail } from "../../types/projects";
+import ProjectCard from "@/works/components/ProjectCard/ProjectCard";
+import type { ProjectDetail } from "@/works/types/projects";
 import * as S from "./AllWorksGrid.style";
 
 interface AllWorksGridProps {

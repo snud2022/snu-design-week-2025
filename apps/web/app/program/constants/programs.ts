@@ -1,4 +1,4 @@
-import type { ProgramEvent } from "../types/program";
+import type { ProgramEvent } from "@/program/types/program";
 
 export const PROGRAM_INTRO = {
   kr: "2025 SNU Design Week WRAP UP은 하이데이와 토크 콘서트가 진행되었습니다.",

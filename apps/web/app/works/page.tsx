@@ -1,7 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import { WorksClient } from "./WorksClient";
-import { getWorks } from "../../services/works";
+import { getWorks } from "@services/works";
 import { transformWorks } from "./utils/transformWorks";
 
 export const metadata: Metadata = {

@@ -1,5 +1,5 @@
 import { Body, Title } from "@snud2025/ui";
-import type { Leadership, Team } from "../../types/committeeSection";
+import type { Leadership, Team } from "@/about/types/committeeSection";
 import * as S from "./CommitteeSection.style";
 
 interface CommitteeSectionProps {

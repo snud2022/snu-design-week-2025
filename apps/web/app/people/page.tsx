@@ -1,7 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import PeopleClient from "./PeopleClient";
-import { getPeople } from "../../services/people";
+import { getPeople } from "@services/people";
 import { transformPeople } from "./utils/transformPeople";
 
 export const metadata: Metadata = {

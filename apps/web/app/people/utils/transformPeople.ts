@@ -1,6 +1,6 @@
-import type { NotionPerson } from "../../../services/people";
-import type { Person, PersonClass } from "../types/people";
-import { extractText } from "../../../utils/notionExtract";
+import type { NotionPerson } from "@services/people";
+import type { Person, PersonClass } from "@/people/types/people";
+import { extractText } from "@utils/notionExtract";
 
 /**
  * NotionPerson을 Person으로 변환

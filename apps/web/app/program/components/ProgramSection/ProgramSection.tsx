@@ -1,8 +1,8 @@
 import { Body, Title } from "@snud2025/ui";
-import ProgramCard from "../ProgramCard";
-import type { ProgramEvent } from "../../types/program";
+import ProgramCard from "@/program/components/ProgramCard";
+import type { ProgramEvent } from "@/program/types/program";
 import * as S from "./ProgramSection.style";
-import RopeFrame from "../../../../components/RopeFrame/RopeFrame";
+import RopeFrame from "@components/RopeFrame/RopeFrame";
 
 interface ProgramSectionProps {
   programs: ProgramEvent[];

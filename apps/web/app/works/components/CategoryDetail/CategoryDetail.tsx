@@ -1,7 +1,7 @@
 import React from "react";
 import { Title, Body } from "@snud2025/ui";
-import { getCategoryByIndex } from "../../../../utils/categories";
-import { CATEGORY_INFO } from "../../constants/categories";
+import { getCategoryByIndex } from "@utils/categories";
+import { CATEGORY_INFO } from "@constants/categories";
 import * as S from "./CategoryDetail.style";
 
 interface CategoryDetailProps {

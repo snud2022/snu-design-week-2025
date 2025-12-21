@@ -2,9 +2,9 @@ import React from "react";
 import Link from "next/link";
 import { Subtitle, Title } from "@snud2025/ui";
 import * as S from "./ProjectPagination.style";
-import ProjectCard from "../ProjectCard/ProjectCard";
-import type { ProjectDetail } from "../../types/projects";
-import ArrowBack from "../../../../assets/icons/arrow_back.svg";
+import ProjectCard from "@/works/components/ProjectCard/ProjectCard";
+import type { ProjectDetail } from "@/works/types/projects";
+import ArrowBack from "@assets/icons/arrow_back.svg";
 
 interface ProjectPaginationProps {
   currentProjectId: string;

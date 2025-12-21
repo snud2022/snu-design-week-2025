@@ -1,9 +1,9 @@
 import React from "react";
 import * as S from "./VectorBanner.style";
-import { FilterStone } from "../FilterStone/FilterStone";
-import { peopleGraphicConfigs } from "../../../../constants/peopleGraphic";
-import { STONE_POSITIONS } from "../../constants/position";
-import MobileFilter from "../MobileFilter/MobileFilter";
+import { FilterStone } from "@/works/components/FilterStone/FilterStone";
+import { peopleGraphicConfigs } from "@constants/peopleGraphic";
+import { STONE_POSITIONS } from "@/works/constants/position";
+import MobileFilter from "@/works/components/MobileFilter/MobileFilter";
 
 interface VectorBannerProps {
   selectedFilterIndex: number | null;

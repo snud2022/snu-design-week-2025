@@ -3,7 +3,7 @@ import { Body, Subtitle, Title } from "@snud2025/ui";
 import { PartnerLogos, PartnerCards } from "./components";
 import { PARTNERS } from "./constants";
 import * as S from "./page.style";
-import RopeFrame from "../../components/RopeFrame/RopeFrame";
+import RopeFrame from "@components/RopeFrame/RopeFrame";
 
 export const metadata: Metadata = {
   title: "PARTNERS",

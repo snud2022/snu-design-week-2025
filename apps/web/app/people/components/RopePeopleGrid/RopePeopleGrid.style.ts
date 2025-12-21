@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { colors } from "@snud2025/ui";
-import { zIndex } from "../../../../constants/zIndex";
+import { zIndex } from "@constants/zIndex";
 
 export const LinkContainer = styled.div`
   display: contents;
