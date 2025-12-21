@@ -33,17 +33,14 @@ export const FilterButton = styled.button<{
 
   overflow: hidden;
 
-  /* 버튼 자체는 클릭 비활성화 - path에서만 클릭 */
-  pointer-events: none;
-
   /* transform-origin을 center로 설정 */
   transform-origin: center center;
 
   /* 기본 rotate는 태블릿 값 */
   transform: rotate(${({ $tabletRotate }) => -$tabletRotate}deg);
 
-  /* 벡터 영역(path)에만 hover 적용 - 수직으로 올라가도록 translate를 먼저 적용 */
-  &:has(path:hover) {
+  /* 호버 시 위로 올라가는 효과 */
+  &:hover {
     transform: translateY(-10px)
       rotate(${({ $tabletRotate }) => -$tabletRotate}deg);
   }
@@ -57,7 +54,7 @@ export const FilterButton = styled.button<{
   /* 모션 최소화 존중 */
   @media (prefers-reduced-motion: reduce) {
     &,
-    &:has(path:hover) {
+    &:hover {
       transition: none !important;
     }
   }
@@ -73,7 +70,7 @@ export const FilterButton = styled.button<{
   ${mq.desktop} {
     transform: rotate(${({ $desktopRotate }) => -$desktopRotate}deg);
 
-    &:has(path:hover) {
+    &:hover {
       transform: translateY(-10px)
         rotate(${({ $desktopRotate }) => -$desktopRotate}deg);
     }
