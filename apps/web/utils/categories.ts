@@ -22,8 +22,7 @@ export const getCategoryGraphic = (category: Category): CategoryGraphic => {
   if (category === "ALL") {
     return {
       type: "image",
-      svg: null,
-      imageUrl: "/mainGraphic/mainGraphic-W.png",
+      src: "/mainGraphic/mainGraphic-W.png",
       width: 166.74,
       height: 145,
     };
@@ -33,7 +32,7 @@ export const getCategoryGraphic = (category: Category): CategoryGraphic => {
   if (filterIndex === null || !peopleGraphicConfigs[filterIndex]) {
     return {
       type: "svg",
-      svg: null,
+      src: null,
       width: 0,
       height: 0,
     };
@@ -42,7 +41,7 @@ export const getCategoryGraphic = (category: Category): CategoryGraphic => {
   const config = peopleGraphicConfigs[filterIndex];
   return {
     type: "svg",
-    svg: config.Svg,
+    src: config.src,
     width: config.width,
     height: config.height,
   };

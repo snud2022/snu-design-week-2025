@@ -19,7 +19,6 @@
     "@types/react-dom": "catalog:",
     "clsx": "catalog:",
     "eslint": "catalog:",
-    "lottie-react": "catalog:",
     "next": "catalog:",
     "tailwind-merge": "catalog:",
     "typescript": "catalog:"
@@ -27,7 +26,6 @@
   "peerDependencies": {
     "@emotion/react": "catalog:",
     "@emotion/styled": "catalog:",
-    "lottie-react": "catalog:",
     "next": "catalog:",
     "notion-client": "catalog:",
     "notion-types": "catalog:",

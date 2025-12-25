@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import * as S from "./HoverStone.style";
-import type { PeopleGraphicConfig } from "../../constants/peopleGraphic";
+import type { PeopleGraphicConfig } from "@constants/peopleGraphic";
 
 interface HoverStoneProps {
   asset: PeopleGraphicConfig;
@@ -39,22 +40,28 @@ export default function HoverStone({
       aria-label=""
     >
       {/* 기본 상태 이미지 */}
-      <S.SvgLayer className="base">
-        <asset.Svg
-          preserveAspectRatio="xMidYMid meet"
-          width="100%"
-          height="100%"
+      <S.ImageLayer className="base">
+        <Image
+          src={asset.src}
+          alt=""
+          fill
+          sizes={`${width}px`}
+          style={{ objectFit: "contain" }}
+          priority={false}
         />
-      </S.SvgLayer>
+      </S.ImageLayer>
 
       {/* 호버 상태 이미지 */}
-      <S.SvgLayer className="hover">
-        <asset.HoverSvg
-          preserveAspectRatio="xMidYMid meet"
-          width="100%"
-          height="100%"
+      <S.ImageLayer className="hover">
+        <Image
+          src={asset.hoverSrc}
+          alt=""
+          fill
+          sizes={`${width}px`}
+          style={{ objectFit: "contain" }}
+          priority={false}
         />
-      </S.SvgLayer>
+      </S.ImageLayer>
     </S.Stone>
   );
 }

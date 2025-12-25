@@ -9,7 +9,6 @@ import {
 } from "@utils/categories";
 import { CATEGORIES } from "@constants/categories";
 import type { Category } from "@app-types/categories";
-import Arrow from "@assets/icons/arrow_down.svg";
 import { Title } from "@snud2025/ui";
 import * as S from "./MobileFilter.style";
 
@@ -49,15 +48,13 @@ export default function MobileFilter({
   return (
     <S.Container>
       <S.IconWrapper>
-        {graphic.type === "svg" && graphic.svg && (
-          <graphic.svg preserveAspectRatio="xMidYMid meet" />
-        )}
-        {graphic.type === "image" && graphic.imageUrl && (
+        {graphic.src && (
           <Image
-            src={graphic.imageUrl}
+            src={graphic.src}
             alt={selectedCategory}
             width={graphic.width}
             height={graphic.height}
+            style={{ objectFit: "contain" }}
           />
         )}
       </S.IconWrapper>
@@ -67,7 +64,7 @@ export default function MobileFilter({
             {selectedCategory}
           </Title>
           <S.Chevron $isOpen={isOpen}>
-            <Arrow width={36} height={36} />
+            <Image src="/icons/arrow_down.svg" alt="" width={36} height={36} />
           </S.Chevron>
         </S.SelectedCategoryButton>
         {isOpen && (

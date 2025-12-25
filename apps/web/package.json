@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev --turbopack --port 3000",
     "build": "next build",
+    "analyze": "ANALYZE=true next build",
     "start": "next start",
     "lint": "next lint --max-warnings 0",
     "check-types": "tsc --noEmit"
@@ -18,7 +19,6 @@
     "@snud2025/api": "workspace:*",
     "@snud2025/ui": "workspace:*",
     "@vercel/analytics": "catalog:",
-    "lottie-react": "catalog:",
     "matter-js": "catalog:",
     "next": "catalog:",
     "notion-client": "catalog:",
@@ -29,6 +29,7 @@
     "react-notion-x": "catalog:"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^16.1.0",
     "@snud2025/eslint-config": "workspace:*",
     "@snud2025/typescript-config": "workspace:*",
     "@svgr/webpack": "catalog:",
