@@ -143,10 +143,19 @@ export default async function ProjectDetailPage({
         <GoBackButton />
       </S.DesktopVisible>
       <S.Container>
-        <WorksDetailHeader project={project} />
-        {/* Notion 블록 컨텐츠 렌더링 */}
-        {recordMap && <NotionBlock recordMap={recordMap} />}
-        <StudentCard project={project} allProjects={allProjects} />
+        <article aria-labelledby="project-title">
+          <WorksDetailHeader project={project} />
+          {/* Notion 블록 컨텐츠 렌더링 */}
+          {recordMap && (
+            <NotionBlock
+              recordMap={recordMap}
+              aria-label={`${project.nameKo} 작품 상세 내용`}
+            />
+          )}
+        </article>
+        <aside aria-label="작품 정보">
+          <StudentCard project={project} allProjects={allProjects} />
+        </aside>
         <ProjectPagination
           currentProjectId={id}
           allProjectIds={allProjectIds}
@@ -154,15 +163,16 @@ export default async function ProjectDetailPage({
         />
       </S.Container>
       {thumbnailUrl && (
-        <S.BackgroundImage>
+        <S.BackgroundImage aria-hidden="true">
           <Image
             src={thumbnailUrl}
-            alt="작품 이미지"
+            alt=""
             width={1920}
             height={1080}
             style={{ width: "100%", height: "auto", objectFit: "contain" }}
             unoptimized
             priority
+            aria-hidden="true"
           />
         </S.BackgroundImage>
       )}

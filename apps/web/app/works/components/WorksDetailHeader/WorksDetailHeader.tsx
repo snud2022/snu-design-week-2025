@@ -19,12 +19,14 @@ export default function WorksDetailHeader({ project }: WorksDetailHeaderProps) {
         <Body level="body2" weight="medium" className="mobile">
           {project.projectType} DESIGN PROJECT
         </Body>
-        <Title language="kr" level="title1" className="not-mobile">
-          {project.nameKo}
-        </Title>
-        <Title language="kr" level="title3" className="mobile">
-          {project.nameKo}
-        </Title>
+        <div id="project-title">
+          <Title language="kr" level="title1" className="not-mobile">
+            {project.nameKo}
+          </Title>
+          <Title language="kr" level="title3" className="mobile">
+            {project.nameKo}
+          </Title>
+        </div>
         <S.NameRow>
           <Subtitle language="kr" className="not-mobile">
             {project.studentNameKo}
