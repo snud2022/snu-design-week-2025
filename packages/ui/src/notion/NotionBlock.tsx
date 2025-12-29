@@ -10,14 +10,18 @@ import { getImageUrl } from "../utils/getImageUrl";
 
 interface NotionBlockProps {
   recordMap: ExtendedRecordMap;
+  "aria-label"?: string;
 }
 
 /**
  * react-notion-x를 사용하여 Notion 페이지를 렌더링하는 컴포넌트
  */
-export const NotionBlock = ({ recordMap }: NotionBlockProps) => {
+export const NotionBlock = ({
+  recordMap,
+  "aria-label": ariaLabel,
+}: NotionBlockProps) => {
   return (
-    <S.Container>
+    <S.Container role="region" aria-label={ariaLabel || "작품 상세 내용"}>
       <NotionRenderer
         recordMap={recordMap}
         fullPage={false}
