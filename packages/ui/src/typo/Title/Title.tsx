@@ -10,6 +10,7 @@ interface TitleProps {
   language?: Language;
   className?: string;
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  id?: string;
 }
 
 const StyledTitle = styled.h1<{ level: TitleLevel; language: Language }>`
@@ -25,6 +26,7 @@ export const Title = ({
   language = "kr",
   className,
   as = "h1",
+  id,
 }: TitleProps) => {
   return (
     <StyledTitle
@@ -32,6 +34,7 @@ export const Title = ({
       level={level}
       language={language}
       className={className}
+      id={id}
     >
       {children}
     </StyledTitle>

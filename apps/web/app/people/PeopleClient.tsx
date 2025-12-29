@@ -74,7 +74,7 @@ export default function PeopleClient({ people }: PeopleClientProps) {
         role="tablist"
         aria-label="전공 선택"
       >
-        {TABS.map((t, index) => (
+        {TABS.map((t) => (
           <Tab
             key={t.key}
             krLabel={t.kr}
