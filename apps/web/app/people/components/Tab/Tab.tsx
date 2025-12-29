@@ -10,6 +10,7 @@ interface TabProps {
   active: boolean;
   side: Side;
   onSelect?: () => void;
+  tabIndex?: number;
 }
 
 export default function Tab({
@@ -18,6 +19,7 @@ export default function Tab({
   active,
   side,
   onSelect,
+  tabIndex,
 }: TabProps) {
   return (
     <S.Wrapper
@@ -26,6 +28,8 @@ export default function Tab({
       side={side}
       role="tab"
       aria-selected={active}
+      aria-label={`${krLabel} ${enLabel} 탭`}
+      tabIndex={tabIndex}
       onClick={onSelect}
     >
       <Title level="title3" className="krLabel">
