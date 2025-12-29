@@ -1,7 +1,5 @@
 :root {
-  --font-pretendard: var(--font-pretendard);
-  --font-bvh-anto-plot: var(--font-bvh-anto-plot);
-  --font-proxima-nova-hangeul: proxima-nova-hangeul, sans-serif;
+  --font-proxima-nova-hangeul: "proxima-nova-hangeul", sans-serif;
 }
 
 html,
@@ -39,4 +37,38 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* 전역 포커스 스타일 - 키보드 접근성 */
+*:focus-visible {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* 마우스 클릭 시 포커스 링 제거 */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* 스킵 링크 - 키보드 접근성 */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  color: #fff;
+  padding: 12px 24px;
+  z-index: 9999;
+  border-radius: 0 0 8px 8px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
 }
