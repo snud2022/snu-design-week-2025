@@ -88,6 +88,11 @@ export const NavLink = styled.a<{ $dark?: boolean }>((props) => ({
     opacity: 0.8,
     transform: "rotate(7deg)",
   },
+  "&:focus-visible": {
+    outline: `2px solid ${props.$dark ? "#fff" : colors.blackDefault}`,
+    outlineOffset: "4px",
+    borderRadius: "4px",
+  },
   [mq.tablet]: {
     fontSize: fontSizes["lg"],
   },
@@ -166,7 +171,7 @@ export const MobileMenuHeader = styled.div({
   marginBottom: "auto",
 });
 
-export const CloseButton = styled.button({
+export const CloseButton = styled.button<{ $dark?: boolean }>((props) => ({
   background: "none",
   border: "none",
   cursor: "pointer",
@@ -178,7 +183,12 @@ export const CloseButton = styled.button({
   "&:hover": {
     opacity: 0.6,
   },
-});
+  "&:focus-visible": {
+    outline: `2px solid ${props.$dark ? "#fff" : colors.blackDefault}`,
+    outlineOffset: "2px",
+    borderRadius: "4px",
+  },
+}));
 
 export const MobileNav = styled.nav({
   display: "flex",
@@ -200,5 +210,10 @@ export const MobileNavLink = styled.a<{ $dark: boolean }>((props) => ({
   transition: "opacity 0.2s ease",
   "&:hover": {
     opacity: 0.6,
+  },
+  "&:focus-visible": {
+    outline: `2px solid ${props.$dark ? "#fff" : colors.blackDefault}`,
+    outlineOffset: "4px",
+    borderRadius: "4px",
   },
 }));
