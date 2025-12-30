@@ -172,7 +172,11 @@ export default function PhysicsCell({
           return (
             <S.StoneWrapper key={i} data-stone={String(i)}>
               {workId ? (
-                <Link href={`/works/${workId}`} style={{ display: "block" }}>
+                <Link
+                  href={`/works/${workId}`}
+                  style={{ display: "block" }}
+                  aria-label={`작품 상세 보기`}
+                >
                   {stoneContent}
                 </Link>
               ) : (

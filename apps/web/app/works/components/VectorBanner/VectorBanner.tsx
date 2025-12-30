@@ -4,6 +4,7 @@ import { FilterStone } from "@/works/components/FilterStone/FilterStone";
 import { peopleGraphicConfigs } from "@constants/peopleGraphic";
 import { STONE_POSITIONS } from "@/works/constants/position";
 import MobileFilter from "@/works/components/MobileFilter/MobileFilter";
+import { CATEGORY_CONFIGS } from "@constants/categories";
 
 interface VectorBannerProps {
   selectedFilterIndex: number | null;
@@ -36,6 +37,11 @@ export default function VectorBanner({
                 onToggle={() => onToggle(index)}
                 tabletRotate={pos.tablet.rotate}
                 desktopRotate={pos.desktop.rotate}
+                ariaLabel={
+                  CATEGORY_CONFIGS[index]
+                    ? `${CATEGORY_CONFIGS[index].nameKo} 필터 ${selectedFilterIndex === index ? "선택됨" : "선택"}`
+                    : undefined
+                }
               />
             </S.FilterStoneWrapper>
           );

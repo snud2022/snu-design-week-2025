@@ -38,19 +38,35 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <S.Wrapper>
-      <S.PosterContainer>
-        <Image src="/about/poster.png" alt="about" width={580} height={896} />
-      </S.PosterContainer>
+      <aside aria-label="전시 포스터">
+        <S.PosterContainer>
+          <Image
+            src="/about/poster.png"
+            alt="SNU DESIGN WEEK 2025 전시 포스터"
+            width={580}
+            height={896}
+            fetchPriority="high"
+          />
+        </S.PosterContainer>
+      </aside>
       <S.ContentContainer>
-        <EventHeader
-          title={EVENT_TITLE}
-          eventInfo={EVENT_INFO}
-          ropeFrameConfig={ROPE_FRAME_CONFIG}
-        />
+        <section aria-labelledby="event-header">
+          <EventHeader
+            title={EVENT_TITLE}
+            eventInfo={EVENT_INFO}
+            ropeFrameConfig={ROPE_FRAME_CONFIG}
+          />
+        </section>
         <S.DescriptionSection>
-          <Description content={ABOUT_CONTENT} />
-          <CommitteeSection leadership={LEADERSHIP} teams={TEAMS} />
-          <HelperSection data={HELPER_SECTION} />
+          <section aria-labelledby="about-description">
+            <Description content={ABOUT_CONTENT} />
+          </section>
+          <section aria-labelledby="committee-section">
+            <CommitteeSection leadership={LEADERSHIP} teams={TEAMS} />
+          </section>
+          <section aria-labelledby="helper-section">
+            <HelperSection data={HELPER_SECTION} />
+          </section>
         </S.DescriptionSection>
       </S.ContentContainer>
     </S.Wrapper>

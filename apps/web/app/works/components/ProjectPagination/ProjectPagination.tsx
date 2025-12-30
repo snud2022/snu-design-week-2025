@@ -41,12 +41,23 @@ export default function ProjectPagination({
     : null;
 
   return (
-    <S.Container>
+    <S.Container
+      role="navigation"
+      aria-label="작품 네비게이션"
+      aria-live="polite"
+    >
       {/* 이전 프로젝트 네비게이션 섹션 */}
       <S.NavSection $isLeft>
         {hasPrevious && previousProject && (
           <>
-            <Link href={`/works/${previousProjectId}`}>
+            <Link
+              href={`/works/${previousProjectId}`}
+              aria-label={`이전 작품: ${previousProject.nameKo} - ${previousProject.studentNameKo}${
+                previousProject.studentNameEn
+                  ? ` (${previousProject.studentNameEn})`
+                  : ""
+              }`}
+            >
               <S.NavButton $isLeft>
                 <S.ArrowWrapper>
                   <Image
@@ -54,6 +65,7 @@ export default function ProjectPagination({
                     alt=""
                     fill
                     style={{ objectFit: "contain" }}
+                    aria-hidden="true"
                   />
                 </S.ArrowWrapper>
                 <Title language="en" level="title3" className="not-mobile">
@@ -75,7 +87,14 @@ export default function ProjectPagination({
       <S.NavSection $isLeft={false}>
         {hasNext && nextProject && (
           <>
-            <Link href={`/works/${nextProjectId}`}>
+            <Link
+              href={`/works/${nextProjectId}`}
+              aria-label={`다음 작품: ${nextProject.nameKo} - ${nextProject.studentNameKo}${
+                nextProject.studentNameEn
+                  ? ` (${nextProject.studentNameEn})`
+                  : ""
+              }`}
+            >
               <S.NavButton $isLeft={false}>
                 <S.ArrowWrapper style={{ transform: "rotate(180deg)" }}>
                   <Image
@@ -83,6 +102,7 @@ export default function ProjectPagination({
                     alt=""
                     fill
                     style={{ objectFit: "contain" }}
+                    aria-hidden="true"
                   />
                 </S.ArrowWrapper>
                 <Title language="en" level="title3" className="not-mobile">

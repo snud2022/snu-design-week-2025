@@ -20,7 +20,13 @@ export default function PartnerCard({ partner }: PartnerCardProps) {
         />
       </S.CardHeader>
       <S.StringImageContainer>
-        <Image src="/partners/string.png" alt="" height={24} width={492} />
+        <Image
+          src="/partners/string.png"
+          alt="파트너 사"
+          height={24}
+          width={492}
+          aria-hidden="true"
+        />
       </S.StringImageContainer>
       <S.CardDescription>
         <Body level="body2" weight="medium">

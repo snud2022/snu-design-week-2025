@@ -10,6 +10,7 @@ type FilterStoneProps = {
   onToggle?: () => void;
   tabletRotate?: number;
   desktopRotate?: number;
+  ariaLabel?: string;
 };
 
 export function FilterStone({
@@ -18,11 +19,13 @@ export function FilterStone({
   onToggle,
   tabletRotate = 0,
   desktopRotate = 0,
+  ariaLabel,
 }: FilterStoneProps) {
   return (
     <S.FilterButton
       type="button"
       aria-pressed={active}
+      aria-label={ariaLabel || "필터 토글"}
       onClick={onToggle}
       $tabletRotate={tabletRotate}
       $desktopRotate={desktopRotate}

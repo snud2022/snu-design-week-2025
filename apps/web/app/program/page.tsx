@@ -29,11 +29,15 @@ export const metadata: Metadata = {
 export default function Program() {
   return (
     <S.Wrapper>
-      <ProgramSection programs={PROGRAMS} intro={PROGRAM_INTRO} />
-      <DetailSection
-        hiDay={HI_DAY_SECTION}
-        talkConcert={TALK_CONCERT_SECTION}
-      />
+      <section aria-labelledby="program-section">
+        <ProgramSection programs={PROGRAMS} intro={PROGRAM_INTRO} />
+      </section>
+      <section aria-labelledby="program-detail-section">
+        <DetailSection
+          hiDay={HI_DAY_SECTION}
+          talkConcert={TALK_CONCERT_SECTION}
+        />
+      </section>
     </S.Wrapper>
   );
 }

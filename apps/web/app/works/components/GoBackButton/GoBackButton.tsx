@@ -13,8 +13,18 @@ export default function GoBackButton() {
   };
 
   return (
-    <S.Container onClick={handleGoBack}>
-      <Image src="/icons/arrow_back_white.svg" alt="" width={48} height={48} />
+    <S.Container
+      onClick={handleGoBack}
+      aria-label="이전 페이지로 돌아가기"
+      type="button"
+    >
+      <Image
+        src="/icons/arrow_back_white.svg"
+        alt=""
+        width={48}
+        height={48}
+        aria-hidden="true"
+      />
       <Title language="en" level="title3">
         BACK
       </Title>

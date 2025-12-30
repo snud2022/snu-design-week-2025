@@ -34,6 +34,13 @@ export const Wrapper = styled.button<{ active: boolean; side: string }>`
     color: ${colors.primaryGreen};
     opacity: ${({ active }) => (active ? 1 : 0.5)};
   }
+
+  /* 포커스 스타일 */
+  &:focus-visible {
+    outline: 2px solid ${colors.primaryGreen};
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
 `;
 
 const TAB_SIZE = {

@@ -38,6 +38,7 @@ export default function HoverStone({
       $rotate={rotateDeg}
       role="img"
       aria-label=""
+      aria-hidden="true"
     >
       {/* 기본 상태 이미지 */}
       <S.ImageLayer className="base">
