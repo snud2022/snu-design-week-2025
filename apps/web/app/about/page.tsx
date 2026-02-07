@@ -16,6 +16,7 @@ import {
   EVENT_TITLE,
   ROPE_FRAME_CONFIG,
 } from "./constants";
+import JsonLd from "@components/JsonLd";
 
 export const metadata: Metadata = {
   title: "ABOUT",
@@ -35,9 +36,40 @@ export const metadata: Metadata = {
   },
 };
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://2025.snudesignweek.com";
+
+const exhibitionJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ExhibitionEvent",
+  name: "SNU DESIGN WEEK 2025 | WRAP UP",
+  description: "서울대학교 디자인학부 졸업전시 2025",
+  startDate: "2025-12-04",
+  endDate: "2025-12-09",
+  eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+  eventStatus: "https://schema.org/EventScheduled",
+  location: {
+    "@type": "Place",
+    name: "서울대학교 49동 & 파워플랜트",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "서울",
+      addressCountry: "KR",
+    },
+  },
+  organizer: {
+    "@type": "Organization",
+    name: "서울대학교 디자인학부",
+    url: siteUrl,
+  },
+  image: `${siteUrl}/meta/og-image.png`,
+  url: `${siteUrl}/about`,
+};
+
 export default function About() {
   return (
     <S.Wrapper>
+      <JsonLd data={exhibitionJsonLd} />
       <aside aria-label="전시 포스터">
         <S.PosterContainer>
           <Image

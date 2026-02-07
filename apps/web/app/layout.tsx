@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import EmotionRegistry from "./emotion-registry";
 import { Header } from "@snud2025/ui";
+import JsonLd from "@components/JsonLd";
 
 const pretendard = localFont({
   src: "./fonts/PretendardVariable.woff2",
@@ -108,6 +109,14 @@ export const metadata: Metadata = {
   },
 };
 
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "SNU DESIGN WEEK 2025",
+  alternateName: "서울대학교 디자인학부 졸업전시 2025",
+  url: siteUrl,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -116,6 +125,7 @@ export default function RootLayout({
   return (
     <html lang="ko" suppressHydrationWarning>
       <head>
+        <JsonLd data={websiteJsonLd} />
         {/* Typekit 폰트 로딩 최적화 */}
         <link
           rel="preconnect"
