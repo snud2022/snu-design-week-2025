@@ -16,6 +16,7 @@ import {
   transformWork,
 } from "@/works/utils/transformWorks";
 import { extractCoverUrl, extractOgImageUrl } from "@utils/notionExtract";
+import JsonLd from "@components/JsonLd";
 import * as S from "./page.style";
 
 interface ProjectDetailPageProps {
@@ -50,15 +51,20 @@ export async function generateMetadata({
   // OG 이미지는 크롤러가 접근 가능한 external URL만 사용
   // file 타입(S3 signed URL)은 만료되므로 기본 OG 이미지로 폴백
   const ogImageUrl = extractOgImageUrl(notionWork);
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://2025.snudesignweek.com";
+
   // 동적 값 검증 및 안전한 조합
   const hasStudentName = project.studentNameKo && project.studentNameKo.trim();
   const hasStudentNameEn =
     project.studentNameEn && project.studentNameEn.trim();
   const hasProjectNameEn = project.nameEn && project.nameEn !== "Untitled";
 
-  // title: "작품이름 - 학생이름" 또는 "작품이름"
+  // title: "학생이름 (영문) - 작품이름" — 작가 이름을 앞에 배치하여 검색 매칭 강화
   const title = hasStudentName
-    ? `${project.nameKo} - ${project.studentNameKo}`
+    ? hasStudentNameEn
+      ? `${project.studentNameKo} (${project.studentNameEn}) - ${project.nameKo}`
+      : `${project.studentNameKo} - ${project.nameKo}`
     : project.nameKo;
 
   // description 구성
@@ -72,11 +78,25 @@ export async function generateMetadata({
     ? `"${project.nameKo}" (${project.nameEn})`
     : `"${project.nameKo}"`;
 
-  const description = `${studentInfo}졸업 작품 ${projectInfo}. SNU DESIGN WEEK 2025 | ${project.projectType}`;
+  const description = `${studentInfo}서울대학교 디자인학부 졸업 작품 ${projectInfo}. SNU DESIGN WEEK 2025 | ${project.projectType}`;
 
   return {
     title,
     description,
+    keywords: [
+      project.studentNameKo,
+      project.studentNameEn,
+      project.nameKo,
+      project.nameEn,
+      project.projectType,
+      "서울대학교",
+      "디자인학부",
+      "졸업전시",
+      "SNU DESIGN WEEK 2025",
+    ].filter(Boolean),
+    alternates: {
+      canonical: `${siteUrl}/works/${id}`,
+    },
     openGraph: {
       title: `${title} | SNU DESIGN WEEK 2025`,
       description,
@@ -137,8 +157,42 @@ export default async function ProjectDetailPage({
   // 썸네일 URL 추출
   const thumbnailUrl = extractCoverUrl(notionWork);
 
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://2025.snudesignweek.com";
+
+  const jsonLdData: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "VisualArtwork",
+    name: project.nameKo,
+    ...(project.nameEn &&
+      project.nameEn !== "Untitled" && { alternateName: project.nameEn }),
+    ...(project.studentNameKo && {
+      creator: {
+        "@type": "Person",
+        name: project.studentNameKo,
+        ...(project.studentNameEn && {
+          alternateName: project.studentNameEn,
+        }),
+        affiliation: {
+          "@type": "Organization",
+          name: "서울대학교 디자인학부",
+        },
+      },
+    }),
+    genre: project.projectType,
+    url: `${siteUrl}/works/${id}`,
+    ...(thumbnailUrl && { image: thumbnailUrl }),
+    isPartOf: {
+      "@type": "ExhibitionEvent",
+      name: "SNU DESIGN WEEK 2025",
+      startDate: "2025-12-04",
+      endDate: "2025-12-09",
+    },
+  };
+
   return (
     <S.Wrapper data-page="works-detail">
+      <JsonLd data={jsonLdData} />
       <S.DesktopVisible>
         <GoBackButton />
       </S.DesktopVisible>
